@@ -12,7 +12,7 @@ English · [日本語](README.ja.md)
 
 </div>
 
-![Codex Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product.png)
+![Codex Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product-v2.png)
 
 AI can do more. The way we work with it should move forward, too.
 
@@ -33,7 +33,7 @@ Our vision is a tactile interface for increasingly capable AI—including a futu
 | <img src="packages/microplus/static/imgs/action-keycap-diff.svg" width="36" alt=""> | **Stay close to the code** | Place development controls beside the conversation. |
 | <img src="packages/microplus/static/imgs/action-keycap-skills.svg" width="36" alt=""> | **Make it yours** | Arrange the actions you use around your workflow. |
 
-*The hero is a CG product visualization based on the running plugin UI. Task names are examples; fine details may differ from the hardware. Icons in this table are the plugin’s action-list assets, not screenshots of its dynamic key displays.*
+*The hero is a CG product visualization based on the running plugin UI. It shows an example layout with four Codex Keys dials, including usage on the right. Task names are examples; fine details may differ from the hardware. Icons in this table are the plugin’s action-list assets, not screenshots of its dynamic key displays.*
 
 ## Talk. Turn. Keep moving.
 

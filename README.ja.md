@@ -12,7 +12,7 @@
 
 </div>
 
-![Codex Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product.png)
+![Codex Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product-v2.png)
 
 AIにできることが増えた。なら、AIとの付き合い方も進化していい。
 
@@ -33,7 +33,7 @@ AIにできることが増えた。なら、AIとの付き合い方も進化し�
 | <img src="packages/microplus/static/imgs/action-keycap-diff.svg" width="36" alt=""> | **コードとの距離を縮める** | 差分など開発操作も会話のそばに。 |
 | <img src="packages/microplus/static/imgs/action-keycap-skills.svg" width="36" alt=""> | **あなたの操作面に** | よく使う操作を、使う順番で配置。 |
 
-*冒頭は稼働中のプラグインUIを参照した商品CGです。タスク名はサンプルで、細部は実機と異なる場合があります。一覧のアイコンは操作一覧用の実アセットで、動的なキー画面のスクリーンショットではありません。*
+*冒頭は稼働中のプラグインUIを参照した商品CGです。右端の使用量を含め、4本ともCodex Keysのダイヤルを配置した例です。タスク名はサンプルで、細部は実機と異なる場合があります。一覧のアイコンは操作一覧用の実アセットで、動的なキー画面のスクリーンショットではありません。*
 
 ## 話す。回す。流れを止めない。
 
