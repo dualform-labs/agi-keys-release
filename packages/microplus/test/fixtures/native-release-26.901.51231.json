@@ -1,0 +1,28 @@
+{
+  "bundleVersion": "26.901.51231",
+  "build": "8109",
+  "assets": {
+    "bridge": {
+      "path": "webview/assets/codex-micro-bridge-757becea5c3f.js",
+      "bytes": 26150,
+      "sha256": "e1d0c6735f800771786f74cc358709fae55ebcf2df497389945d8ea821dc7cb5"
+    },
+    "appInitial": {
+      "path": "webview/assets/app-initial-cadb12d4a15e.js",
+      "bytes": 10300166,
+      "sha256": "73594359b28d81b6fcc9a52aac808f6a2e9fc32ced661adb3e23d297827b9285"
+    },
+    "commands": {
+      "path": "webview/assets/codex-micro-commands-c2886e99422c.js",
+      "bytes": 517,
+      "sha256": "04ba51ff62ad90c744b4870ee8308fb1f1375cceb37ae2ffc9158cbe07cedde9"
+    }
+  },
+  "modelPickerCommand": {
+    "id": "composer.openModelPicker",
+    "catalogGetter": "n",
+    "requiredAccess": null,
+    "renderer": "electron",
+    "source": "codex_micro_encoder"
+  }
+}

@@ -1,0 +1,13 @@
+node_modules/
+.cache/
+dist/
+.DS_Store
+*.log
+coverage/
+
+# MicroPlus generates its launcher and packaged plugin under its own tree.
+/packages/microplus/release/
+
+# Retired builds and runtime caches remain local; existing tracked archives
+# are preserved locally and excluded by scripts/export-policy.mjs.
+/TRASH/

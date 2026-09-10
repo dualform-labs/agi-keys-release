@@ -1,0 +1,30 @@
+{
+  "name": "@codexkeys/plugin",
+  "version": "0.1.0.63",
+  "private": true,
+  "type": "module",
+  "description": "Native Codex control surface for Stream Deck on macOS",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "node --import tsx/esm --test --test-concurrency=1 test/*.test.ts",
+    "build": "node scripts/build.mjs",
+    "pack": "npm run build && streamdeck validate dist/io.local.codexdeck.microplus.sdPlugin && streamdeck pack dist/io.local.codexdeck.microplus.sdPlugin --output dist --force --no-update-check",
+    "validate": "npm run build && streamdeck validate dist/io.local.codexdeck.microplus.sdPlugin"
+  },
+  "dependencies": {
+    "@elgato/streamdeck": "2.1.0",
+    "ws": "^8.21.1"
+  },
+  "devDependencies": {
+    "@elgato/cli": "1.7.4",
+    "@types/node": "^24.0.0",
+    "@types/ws": "^8.18.1",
+    "esbuild": "0.28.1",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}

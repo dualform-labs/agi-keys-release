@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Usage Limit</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; padding: 14px; color: #d8d8d8; background: #2d2d2d; font-size: 12px; }
+    label { display: grid; grid-template-columns: 108px 1fr; align-items: center; gap: 8px; margin-bottom: 9px; }
+    input[type="text"], select { box-sizing: border-box; width: 100%; min-height: 28px; color: #efefef; background: #3b3b3b; border: 1px solid #555; border-radius: 4px; padding: 3px 7px; }
+    input[type="checkbox"] { width: 17px; height: 17px; margin: 0; accent-color: #1683ff; }
+    optgroup { color: #a9a9a9; font-weight: 600; }
+    option { color: #efefef; font-weight: 400; }
+    p { margin: 12px 0 0 116px; color: #a9a9a9; line-height: 1.35; }
+    #mode-row[hidden], #press-command-row[hidden], #mode-help[hidden] { display: none; }
+  </style>
+</head>
+<body>
+  <label><span id="label-title">表示名</span><input id="label" type="text" maxlength="24" placeholder="既定"></label>
+  <label><span id="language-title">言語</span><select id="language"><option value="ja">日本語</option><option value="en">English</option></select></label>
+  <label><span id="text-size-title">文字サイズ</span><select id="textSize"><option value="normal">標準</option><option value="large">大</option></select></label>
+  <label><span id="theme-title">テーマ</span><select id="theme"><option value="auto">自動</option><option value="dark">ダーク</option><option value="light">ライト</option></select></label>
+  <label><span id="details-title">詳細を表示</span><input id="showDetails" type="checkbox" checked></label>
+  <label><span id="animation-title">アニメーション</span><input id="animation" type="checkbox" checked></label>
+  <label><span id="focus-title">ChatGPT／Codexを最前面にする</span><input id="focusBeforeAction" type="checkbox"></label>
+  <label><span id="press-title">押した時</span><select id="pressBehavior">
+    <optgroup id="behavior-group-basic" label="基本">
+      <option value="none">追加操作なし</option>
+      <option value="disabled">何もしない</option>
+      <option value="refresh">使用量を更新</option>
+      <option value="focus">ChatGPT／Codexを最前面にする</option>
+    </optgroup>
+    <optgroup id="behavior-group-common" label="よく使う操作">
+      <option value="command:CODEX">メッセージを送信</option>
+      <option value="command:NEW">新しいタスク</option>
+      <option value="command:PARTY">サイドチャット</option>
+      <option value="ptt">Voice PTT（押している間）</option>
+      <option value="command:APPR">承認</option>
+      <option value="command:REJ">拒否</option>
+      <option value="command:FAST">高速モード</option>
+    </optgroup>
+    <optgroup id="behavior-group-model" label="モデルと推論">
+      <option value="model-next">次のモデル</option>
+      <option value="model-previous">前のモデル</option>
+      <option value="reasoning-increase">推論を上げる</option>
+      <option value="reasoning-decrease">推論を下げる</option>
+    </optgroup>
+    <optgroup id="behavior-group-other" label="その他">
+      <option value="command">すべてのCodex操作から選ぶ</option>
+    </optgroup>
+  </select></label>
+  <label id="press-command-row" hidden><span id="press-command-title">Codex操作</span><select id="pressCommand">
+    <option value="">選択してください</option>
+    <optgroup id="command-group-conversation" label="会話と推論">
+      <option value="FAST">高速モード</option>
+      <option value="APPR">承認</option>
+      <option value="REJ">拒否</option>
+      <option value="SPLIT">チャットを分岐</option>
+      <option value="CODEX">メッセージ送信</option>
+      <option value="NEW">新しいチャット</option>
+      <option value="MIND+">推論を上げる</option>
+      <option value="MIND-">推論を下げる</option>
+    </optgroup>
+    <optgroup id="command-group-chat" label="チャットと表示">
+      <option value="DWN">チャットをMarkdownコピー</option>
+      <option value="DEL">チャットをアーカイブ</option>
+      <option value="NAV">ブラウザータブ</option>
+      <option value="MAGIC">チャットをピン留め</option>
+      <option value="DIFF">レビュー表示</option>
+      <option value="PARTY">サイドチャット</option>
+      <option value="TIME">タスク管理</option>
+      <option value="BUG">フィードバック</option>
+    </optgroup>
+    <optgroup id="command-group-development" label="開発">
+      <option value="PLAY">主アクション実行</option>
+      <option value="GIT">コミットまたはPush</option>
+      <option value="BRCH">ドラフトPR作成</option>
+      <option value="BRANCH">ブランチ作成</option>
+      <option value="MRG">PRをマージ</option>
+      <option value="PR">PR作成</option>
+      <option value="PAINT">写真を追加</option>
+      <option value="LAB">Codex Micro設定</option>
+    </optgroup>
+    <optgroup id="command-group-workspace" label="ツールとワークスペース">
+      <option value="OAI">OpenAIドキュメント</option>
+      <option value="TERM">ターミナル</option>
+      <option value="SETUP">設定</option>
+      <option value="FOLD">フォルダーを開く</option>
+      <option value="UPL">ファイルを添付</option>
+      <option value="APPS">プラグイン</option>
+      <option value="YOLO">:yolo:を入力</option>
+      <option value="YEET">:yeet:を入力</option>
+    </optgroup>
+  </select></label>
+  <label id="mode-row">
+    <span id="mode-title">使用枠</span>
+    <select id="mode">
+      <option value="auto">自動</option>
+      <option value="five-hour">5時間</option>
+      <option value="weekly">週間</option>
+    </select>
+  </label>
+  <p id="mode-help">自動は5時間枠を優先し、利用できない場合は週間枠に切り替えます。</p>
+  <script src="shared.js"></script>
+  <script>
+    window.CodexPropertyInspector.usage();
+  </script>
+</body>
+</html>

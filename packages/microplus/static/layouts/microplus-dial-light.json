@@ -1,0 +1,137 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/layout.json",
+  "id": "io.local.codexdeck.microplus.dial-status-normal-light",
+  "items": [
+    {
+      "key": "surface",
+      "type": "pixmap",
+      "rect": [
+        0,
+        0,
+        200,
+        100
+      ],
+      "zOrder": 0,
+      "background": "#E7ECF1"
+    },
+    {
+      "key": "icon",
+      "type": "pixmap",
+      "rect": [
+        8,
+        8,
+        42,
+        42
+      ],
+      "zOrder": 20
+    },
+    {
+      "key": "heading",
+      "type": "text",
+      "rect": [
+        56,
+        4,
+        136,
+        18
+      ],
+      "alignment": "left",
+      "font": {
+        "size": 10,
+        "weight": 500
+      },
+      "text-overflow": "ellipsis",
+      "value": "Codex Keys",
+      "color": "#64717D",
+      "zOrder": 20
+    },
+    {
+      "key": "value",
+      "type": "text",
+      "rect": [
+        56,
+        24,
+        136,
+        34
+      ],
+      "alignment": "left",
+      "font": {
+        "size": 20,
+        "weight": 600
+      },
+      "text-overflow": "ellipsis",
+      "value": "—",
+      "color": "#172027",
+      "zOrder": 20
+    },
+    {
+      "key": "detail",
+      "type": "text",
+      "rect": [
+        8,
+        60,
+        136,
+        18
+      ],
+      "alignment": "left",
+      "font": {
+        "size": 10,
+        "weight": 400
+      },
+      "text-overflow": "ellipsis",
+      "value": "値未取得",
+      "color": "#64717D",
+      "zOrder": 20
+    },
+    {
+      "key": "status",
+      "type": "text",
+      "rect": [
+        148,
+        60,
+        44,
+        18
+      ],
+      "alignment": "right",
+      "font": {
+        "size": 9,
+        "weight": 500
+      },
+      "text-overflow": "ellipsis",
+      "value": "unknown",
+      "color": "#64717D",
+      "zOrder": 20
+    },
+    {
+      "key": "progress",
+      "type": "bar",
+      "rect": [
+        8,
+        84,
+        184,
+        6
+      ],
+      "range": {
+        "min": 0,
+        "max": 100
+      },
+      "bar_bg_c": "transparent",
+      "bar_fill_c": "#19B7A1",
+      "bar_border_c": "transparent",
+      "border_w": 0,
+      "subtype": 0,
+      "value": 0,
+      "zOrder": 20
+    },
+    {
+      "key": "backdrop-13",
+      "type": "pixmap",
+      "rect": [
+        0,
+        78,
+        200,
+        6
+      ],
+      "zOrder": 30
+    }
+  ]
+}
