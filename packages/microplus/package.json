@@ -1,6 +1,6 @@
 {
   "name": "@codexkeys/plugin",
-  "version": "0.1.0.63",
+  "version": "0.1.0.64",
   "private": true,
   "type": "module",
   "description": "Native Codex control surface for Stream Deck on macOS",

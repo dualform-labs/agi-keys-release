@@ -1,7 +1,37 @@
-import { SingletonAction, type DidReceiveSettingsEvent, type WillAppearEvent } from "@elgato/streamdeck";
+import streamDeck, { SingletonAction, type DidReceiveSettingsEvent, type WillAppearEvent } from "@elgato/streamdeck";
 import { EXCLUDED_KEYCAP_IDS, OFFICIAL_KEYCAP_IDS, type OfficialKeycapId } from "./keycaps.js";
 
 export type ActionLanguage = "ja" | "en";
+
+/**
+ * Reduce the Stream Deck registration locale to the two display languages
+ * supported by the plugin. Stream Deck may send regional forms such as
+ * `en-US`; all non-English locales use the established Japanese fallback.
+ */
+export function displayLanguageFromLocale(value: unknown): ActionLanguage {
+  if (typeof value !== "string") return "ja";
+  const locale = value.trim().toLowerCase().replaceAll("_", "-");
+  return locale === "en" || locale.startsWith("en-") ? "en" : "ja";
+}
+
+/**
+ * Return the host's preferred display language without making a pre-connect
+ * SDK info read a hard failure. Unit tests and early plugin startup can run
+ * before registration info exists, in which case Japanese remains the
+ * historical default.
+ */
+export function streamDeckDisplayLanguage(): ActionLanguage {
+  try {
+    return displayLanguageFromLocale(streamDeck.info.application.language);
+  } catch {
+    return "ja";
+  }
+}
+
+function normalizeActionLanguage(value: unknown, fallback: ActionLanguage): ActionLanguage {
+  if (value === "en" || value === "ja") return value;
+  return fallback === "en" ? "en" : "ja";
+}
 /** How a task-slot press should route a task that is not open yet. */
 export type UnopenedTaskBehavior = "current-window" | "new-window";
 /** Safe actions that can be triggered from an Encoder touch gesture. */
@@ -99,7 +129,7 @@ type ActionPreferenceController = {
   setActionPreferences(actionId: string, preferences: ActionPreferences): void;
 };
 
-export function parseActionPreferences(settings: unknown): ActionPreferences {
+export function parseActionPreferences(settings: unknown, defaultLanguage: ActionLanguage = "ja"): ActionPreferences {
   const source: ActionPreferenceSettings = settings != null && typeof settings === "object" && !Array.isArray(settings)
     ? settings as ActionPreferenceSettings
     : {};
@@ -107,7 +137,7 @@ export function parseActionPreferences(settings: unknown): ActionPreferences {
     ? source.label.replace(/[\u0000-\u001f\u007f]/gu, " ").replace(/\s+/gu, " ").trim()
     : "";
   return {
-    language: source.language === "en" ? "en" : "ja",
+    language: normalizeActionLanguage(source.language, defaultLanguage),
     focusBeforeAction: source.focusBeforeAction === true,
     unopenedTaskBehavior: source.unopenedTaskBehavior === "new-window" ? "new-window" : "current-window",
     label: Array.from(rawLabel).slice(0, 24).join(""),
@@ -139,7 +169,10 @@ export abstract class PreferenceAction extends SingletonAction {
   protected constructor(private readonly preferenceController: ActionPreferenceController) { super(); }
 
   protected syncActionPreferences(ev: WillAppearEvent | DidReceiveSettingsEvent): void {
-    this.preferenceController.setActionPreferences(ev.action.id, parseActionPreferences(ev.payload.settings));
+    this.preferenceController.setActionPreferences(
+      ev.action.id,
+      parseActionPreferences(ev.payload.settings, streamDeckDisplayLanguage()),
+    );
   }
 
   override onDidReceiveSettings(ev: DidReceiveSettingsEvent): void {

@@ -1,7 +1,7 @@
 {
   "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
   "Name": "Codex Keys",
-  "Version": "0.1.0.63",
+  "Version": "0.1.0.64",
   "Author": "Codex Keys contributors",
   "Description": "Mac-only Codex Micro compatible controls for Stream Deck, with live task status and usage.",
   "UUID": "io.local.codexdeck.microplus",
@@ -30,8 +30,8 @@
   "Actions": [
     {
       "UUID": "io.local.codexdeck.microplus.agent-1",
-      "Name": "エージェント1（スロット1）",
-      "Tooltip": "Codex Microのエージェントスロット1を選択し、Codexを前面表示します。",
+      "Name": "Agent 1 (Slot 1)",
+      "Tooltip": "Selects Codex Micro agent slot 1 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-1",
       "PropertyInspectorPath": "static/property-inspector/agent.html",
       "Controllers": [
@@ -46,8 +46,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.agent-2",
-      "Name": "エージェント2（スロット2）",
-      "Tooltip": "Codex Microのエージェントスロット2を選択し、Codexを前面表示します。",
+      "Name": "Agent 2 (Slot 2)",
+      "Tooltip": "Selects Codex Micro agent slot 2 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-2",
       "PropertyInspectorPath": "static/property-inspector/agent.html",
       "Controllers": [
@@ -62,8 +62,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.agent-3",
-      "Name": "エージェント3（スロット3）",
-      "Tooltip": "Codex Microのエージェントスロット3を選択し、Codexを前面表示します。",
+      "Name": "Agent 3 (Slot 3)",
+      "Tooltip": "Selects Codex Micro agent slot 3 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-3",
       "PropertyInspectorPath": "static/property-inspector/agent.html",
       "Controllers": [
@@ -78,8 +78,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.agent-4",
-      "Name": "エージェント4（スロット4）",
-      "Tooltip": "Codex Microのエージェントスロット4を選択し、Codexを前面表示します。",
+      "Name": "Agent 4 (Slot 4)",
+      "Tooltip": "Selects Codex Micro agent slot 4 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-4",
       "PropertyInspectorPath": "static/property-inspector/agent.html",
       "Controllers": [
@@ -94,8 +94,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.agent-5",
-      "Name": "エージェント5（スロット5）",
-      "Tooltip": "Codex Microのエージェントスロット5を選択し、Codexを前面表示します。",
+      "Name": "Agent 5 (Slot 5)",
+      "Tooltip": "Selects Codex Micro agent slot 5 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-5",
       "PropertyInspectorPath": "static/property-inspector/agent.html",
       "Controllers": [
@@ -110,8 +110,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.agent-6",
-      "Name": "エージェント6（スロット6）",
-      "Tooltip": "Codex Microのエージェントスロット6を選択し、Codexを前面表示します。",
+      "Name": "Agent 6 (Slot 6)",
+      "Tooltip": "Selects Codex Micro agent slot 6 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-6",
       "PropertyInspectorPath": "static/property-inspector/agent.html",
       "Controllers": [
@@ -126,17 +126,17 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.dial-agent",
-      "Name": "ダイヤル · エージェント選択",
-      "Tooltip": "Stream Deck+のダイヤルでCodex Microのエージェント候補を移動し、押下またはタッチで前面表示します。タッチ長押しも個別設定できます。",
+      "Name": "Dial · Agent selection",
+      "Tooltip": "Use the Stream Deck+ dial to move through Codex Micro agent candidates, then press or touch to bring the selected agent to the foreground. Touch-and-hold behavior can be configured.",
       "Icon": "static/imgs/action-dial-agent",
       "Encoder": {
         "Icon": "static/imgs/action-dial-agent",
         "layout": "static/layouts/microplus-dial.json",
         "TriggerDescription": {
-          "Push": "選択中のAgentを前面化",
-          "Rotate": "Agent候補を移動",
-          "Touch": "選択中のAgentを前面化",
-          "LongTouch": "設定したダイヤル操作"
+          "Push": "Bring selected agent to foreground",
+          "Rotate": "Move through agent candidates",
+          "Touch": "Bring selected agent to foreground",
+          "LongTouch": "Configured dial action"
         }
       },
       "Controllers": [
@@ -152,17 +152,17 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.dial-reasoning",
-      "Name": "ダイヤル · 思考レベル",
-      "Tooltip": "Stream Deck+のダイヤル回転でCodex Microの思考レベルを調整します。押下またはタッチでEncoderクリックを送信し、長押し動作を個別設定できます。",
+      "Name": "Dial · Reasoning level",
+      "Tooltip": "Adjust the Codex Micro reasoning level by rotating the Stream Deck+ dial. Press or touch to send an encoder click; long-touch behavior can be configured.",
       "Icon": "static/imgs/action-dial-reasoning",
       "Encoder": {
         "Icon": "static/imgs/action-dial-reasoning",
         "layout": "static/layouts/microplus-dial.json",
         "TriggerDescription": {
-          "Push": "Encoderクリック",
-          "Rotate": "思考レベルを調整",
-          "Touch": "Encoderクリック",
-          "LongTouch": "設定したダイヤル操作"
+          "Push": "Encoder click",
+          "Rotate": "Adjust reasoning level",
+          "Touch": "Encoder click",
+          "LongTouch": "Configured dial action"
         }
       },
       "Controllers": [
@@ -178,17 +178,17 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.dial-conversation",
-      "Name": "ダイヤル · 左右操作",
-      "Tooltip": "Codex Microの設定に応じたnative左右操作を送ります。押下またはタッチでEncoderクリックを送信し、長押し動作を個別設定できます。",
+      "Name": "Dial · Left/right control",
+      "Tooltip": "Sends the native left/right control configured in Codex Micro. Press or touch to send an encoder click; long-touch behavior can be configured.",
       "Icon": "static/imgs/action-dial-conversation",
       "Encoder": {
         "Icon": "static/imgs/action-dial-conversation",
         "layout": "static/layouts/microplus-dial.json",
         "TriggerDescription": {
-          "Push": "Encoderクリック",
-          "Rotate": "native左右操作",
-          "Touch": "Encoderクリック",
-          "LongTouch": "設定したダイヤル操作"
+          "Push": "Encoder click",
+          "Rotate": "Native left/right control",
+          "Touch": "Encoder click",
+          "LongTouch": "Configured dial action"
         }
       },
       "Controllers": [
@@ -204,8 +204,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.fast",
-      "Name": "ACT06 · 物理キー",
-      "Tooltip": "Codex Microの物理位置ACT06を送信します。実行内容とキー画像はCodex側の現在の割当に従います。",
+      "Name": "ACT06 · Physical key",
+      "Tooltip": "Sends physical position ACT06 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-fast",
       "Controllers": [
         "Keypad"
@@ -220,8 +220,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.approve",
-      "Name": "ACT07 · 物理キー",
-      "Tooltip": "Codex Microの物理位置ACT07を送信します。実行内容とキー画像はCodex側の現在の割当に従います。",
+      "Name": "ACT07 · Physical key",
+      "Tooltip": "Sends physical position ACT07 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-approve",
       "Controllers": [
         "Keypad"
@@ -236,8 +236,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.decline",
-      "Name": "ACT08 · 物理キー",
-      "Tooltip": "Codex Microの物理位置ACT08を送信します。実行内容とキー画像はCodex側の現在の割当に従います。",
+      "Name": "ACT08 · Physical key",
+      "Tooltip": "Sends physical position ACT08 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-decline",
       "Controllers": [
         "Keypad"
@@ -252,8 +252,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.fork",
-      "Name": "ACT09 · 物理キー",
-      "Tooltip": "Codex Microの物理位置ACT09を送信します。実行内容とキー画像はCodex側の現在の割当に従います。",
+      "Name": "ACT09 · Physical key",
+      "Tooltip": "Sends physical position ACT09 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-fork",
       "Controllers": [
         "Keypad"
@@ -268,8 +268,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.dictation",
-      "Name": "ACT10 · 物理キー",
-      "Tooltip": "Codex Microの物理位置ACT10へ押下・解放を送信します。実行内容とキー画像はCodex側の現在の割当に従います。",
+      "Name": "ACT10 · Physical key",
+      "Tooltip": "Sends key-down and key-up to physical position ACT10 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-dictation",
       "Controllers": [
         "Keypad"
@@ -284,8 +284,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.act11",
-      "Name": "ACT11 · 物理キー",
-      "Tooltip": "Codex Microの物理位置ACT11へ押下・解放を送信します。実行内容とキー画像はCodex側の現在の割当に従います。",
+      "Name": "ACT11 · Physical key",
+      "Tooltip": "Sends key-down and key-up to physical position ACT11 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-act11",
       "Controllers": [
         "Keypad"
@@ -300,8 +300,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.send",
-      "Name": "ACT12 · 物理キー",
-      "Tooltip": "Codex Microの物理位置ACT12を送信します。実行内容とキー画像はCodex側の現在の割当に従います。",
+      "Name": "ACT12 · Physical key",
+      "Tooltip": "Sends physical position ACT12 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-send",
       "Controllers": [
         "Keypad"
@@ -316,8 +316,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.plan",
-      "Name": "JOY_UP · 物理方向",
-      "Tooltip": "Codex Microの物理方向JOY_UPを送信します。実行内容はCodex側の現在の割当に従います。",
+      "Name": "JOY_UP · Physical direction",
+      "Tooltip": "Sends physical direction JOY_UP in Codex Micro. The action follows the current assignment in Codex.",
       "Icon": "static/imgs/action-plan",
       "Controllers": [
         "Keypad"
@@ -332,8 +332,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.back",
-      "Name": "JOY_LEFT · 物理方向",
-      "Tooltip": "Codex Microの物理方向JOY_LEFTを送信します。実行内容はCodex側の現在の割当に従います。",
+      "Name": "JOY_LEFT · Physical direction",
+      "Tooltip": "Sends physical direction JOY_LEFT in Codex Micro. The action follows the current assignment in Codex.",
       "Icon": "static/imgs/action-back",
       "Controllers": [
         "Keypad"
@@ -348,8 +348,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.forward",
-      "Name": "JOY_RIGHT · 物理方向",
-      "Tooltip": "Codex Microの物理方向JOY_RIGHTを送信します。実行内容はCodex側の現在の割当に従います。",
+      "Name": "JOY_RIGHT · Physical direction",
+      "Tooltip": "Sends physical direction JOY_RIGHT in Codex Micro. The action follows the current assignment in Codex.",
       "Icon": "static/imgs/action-forward",
       "Controllers": [
         "Keypad"
@@ -364,8 +364,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.sidebar",
-      "Name": "JOY_DOWN · 物理方向",
-      "Tooltip": "Codex Microの物理方向JOY_DOWNを送信します。実行内容はCodex側の現在の割当に従います。",
+      "Name": "JOY_DOWN · Physical direction",
+      "Tooltip": "Sends physical direction JOY_DOWN in Codex Micro. The action follows the current assignment in Codex.",
       "Icon": "static/imgs/action-sidebar",
       "Controllers": [
         "Keypad"
@@ -380,8 +380,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.reasoning",
-      "Name": "ENC_CLK · 物理押下",
-      "Tooltip": "Codex Microの物理位置ENC_CLKを送信します。実行内容はCodex側の現在のエンコーダー割当に従います。",
+      "Name": "ENC_CLK · Physical press",
+      "Tooltip": "Sends physical position ENC_CLK in Codex Micro. The action follows the current encoder assignment in Codex.",
       "Icon": "static/imgs/action-reasoning",
       "Controllers": [
         "Keypad"
@@ -396,8 +396,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.reasoning-down",
-      "Name": "操作 · 思考レベルを下げる",
-      "Tooltip": "CodexのComposerの思考レベルを1段階下げます。",
+      "Name": "Action · Lower reasoning level",
+      "Tooltip": "Lowers the Codex Composer reasoning level by one step.",
       "Icon": "static/imgs/action-reasoning-down",
       "Controllers": [
         "Keypad"
@@ -412,8 +412,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.reasoning-up",
-      "Name": "操作 · 思考レベルを上げる",
-      "Tooltip": "CodexのComposerの思考レベルを1段階上げます。",
+      "Name": "Action · Raise reasoning level",
+      "Tooltip": "Raises the Codex Composer reasoning level by one step.",
       "Icon": "static/imgs/action-reasoning-up",
       "Controllers": [
         "Keypad"
@@ -428,8 +428,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.new-task",
-      "Name": "操作 · 新しいタスク",
-      "Tooltip": "Codexで新しいタスクを開きます。",
+      "Name": "Action · New task",
+      "Tooltip": "Opens a new task in Codex.",
       "Icon": "static/imgs/action-new-task",
       "Controllers": [
         "Keypad"
@@ -444,8 +444,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.usage-limit",
-      "Name": "使用状況 · 残量表示",
-      "Tooltip": "Codexの残り使用量を表示します。5時間・週間の表示を設定できます。 押した時のCodex操作をキーごとに設定できます。",
+      "Name": "Usage · Remaining",
+      "Tooltip": "Shows the remaining Codex usage. Five-hour and weekly views can be configured. The Codex action on press can be configured per key.",
       "Icon": "static/imgs/action-usage-limit",
       "PropertyInspectorPath": "static/property-inspector/usage-limit.html",
       "Controllers": [
@@ -460,8 +460,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.usage-overview",
-      "Name": "使用状況 · 5時間／週間",
-      "Tooltip": "Codexの5時間枠と週間枠の使用状況を同時に表示します。 押した時のCodex操作をキーごとに設定できます。",
+      "Name": "Usage · Five-hour / weekly",
+      "Tooltip": "Shows five-hour and weekly Codex usage at the same time. The Codex action on press can be configured per key.",
       "Icon": "static/imgs/action-usage-overview",
       "Controllers": [
         "Keypad"
@@ -476,8 +476,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.rate-limit-reset",
-      "Name": "使用状況 · リセット",
-      "Tooltip": "利用できるリセット権を表示します。対象時に1.2秒長押しすると1件を消費します。",
+      "Name": "Usage · Reset",
+      "Tooltip": "Shows available usage reset credits. Hold for 1.2 seconds when eligible to consume one credit.",
       "Icon": "static/imgs/action-rate-limit-reset",
       "Controllers": [
         "Keypad"
@@ -492,8 +492,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-fast",
-      "Name": "キーキャップ · 高速モード",
-      "Tooltip": "Codex Microの高速モードを切り替えます。",
+      "Name": "Keycap · Fast mode",
+      "Tooltip": "Toggles Codex Micro fast mode.",
       "Icon": "static/imgs/action-keycap-fast",
       "Controllers": [
         "Keypad"
@@ -508,8 +508,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-approve",
-      "Name": "キーキャップ · 承認",
-      "Tooltip": "現在のCodex要求を承認します。",
+      "Name": "Keycap · Approve",
+      "Tooltip": "Approves the current Codex request.",
       "Icon": "static/imgs/action-keycap-approve",
       "Controllers": [
         "Keypad"
@@ -524,8 +524,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-reject",
-      "Name": "キーキャップ · 拒否",
-      "Tooltip": "現在のCodex要求を拒否します。",
+      "Name": "Keycap · Reject",
+      "Tooltip": "Rejects the current Codex request.",
       "Icon": "static/imgs/action-keycap-reject",
       "Controllers": [
         "Keypad"
@@ -540,8 +540,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-split",
-      "Name": "キーキャップ · チャットを分岐",
-      "Tooltip": "現在のCodexチャットを分岐します。",
+      "Name": "Keycap · Split chat",
+      "Tooltip": "Splits the current Codex chat.",
       "Icon": "static/imgs/action-keycap-split",
       "Controllers": [
         "Keypad"
@@ -556,8 +556,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-new-task",
-      "Name": "キーキャップ · 新しいチャット",
-      "Tooltip": "Native Codex Microの新しいチャットを開きます。",
+      "Name": "Keycap · New chat",
+      "Tooltip": "Opens a new chat in native Codex Micro.",
       "Icon": "static/imgs/action-keycap-new-task",
       "Controllers": [
         "Keypad"
@@ -572,8 +572,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-reasoning-up",
-      "Name": "キーキャップ · 推論を上げる",
-      "Tooltip": "現在のComposerの推論レベルを上げます。",
+      "Name": "Keycap · Increase reasoning",
+      "Tooltip": "Increases the current Composer reasoning level.",
       "Icon": "static/imgs/action-keycap-reasoning-up",
       "Controllers": [
         "Keypad"
@@ -588,8 +588,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-reasoning-down",
-      "Name": "キーキャップ · 推論を下げる",
-      "Tooltip": "現在のComposerの推論レベルを下げます。",
+      "Name": "Keycap · Decrease reasoning",
+      "Tooltip": "Decreases the current Composer reasoning level.",
       "Icon": "static/imgs/action-keycap-reasoning-down",
       "Controllers": [
         "Keypad"
@@ -604,8 +604,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-codex",
-      "Name": "Codexに送信",
-      "Tooltip": "現在のComposerのメッセージを送信します。",
+      "Name": "Send to Codex",
+      "Tooltip": "Sends the current Composer message.",
       "Icon": "static/imgs/action-keycap-codex",
       "Controllers": [
         "Keypad"
@@ -620,8 +620,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-bug",
-      "Name": "キーキャップ · フィードバック",
-      "Tooltip": "Codexのフィードバック画面を開きます。",
+      "Name": "Keycap · Feedback",
+      "Tooltip": "Opens the Codex feedback screen.",
       "Icon": "static/imgs/action-keycap-bug",
       "Controllers": [
         "Keypad"
@@ -636,8 +636,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-openai-docs",
-      "Name": "キーキャップ · OpenAIドキュメント",
-      "Tooltip": "OpenAI公式開発者ドキュメントを開きます。",
+      "Name": "Keycap · OpenAI docs",
+      "Tooltip": "Opens the official OpenAI developer documentation.",
       "Icon": "static/imgs/action-keycap-openai-docs",
       "Controllers": [
         "Keypad"
@@ -652,8 +652,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-terminal",
-      "Name": "キーキャップ · ターミナル",
-      "Tooltip": "Codexのターミナル表示を切り替えます。",
+      "Name": "Keycap · Terminal",
+      "Tooltip": "Toggles the Codex terminal view.",
       "Icon": "static/imgs/action-keycap-terminal",
       "Controllers": [
         "Keypad"
@@ -668,8 +668,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-download",
-      "Name": "キーキャップ · チャットをMarkdownコピー",
-      "Tooltip": "現在の会話をMarkdownとしてコピーします。",
+      "Name": "Keycap · Copy chat as Markdown",
+      "Tooltip": "Copies the current conversation as Markdown.",
       "Icon": "static/imgs/action-keycap-download",
       "Controllers": [
         "Keypad"
@@ -684,8 +684,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-archive",
-      "Name": "キーキャップ · チャットをアーカイブ",
-      "Tooltip": "現在のCodexチャットをアーカイブします。",
+      "Name": "Keycap · Archive chat",
+      "Tooltip": "Archives the current Codex chat.",
       "Icon": "static/imgs/action-keycap-archive",
       "Controllers": [
         "Keypad"
@@ -700,8 +700,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-browser",
-      "Name": "キーキャップ · ブラウザータブ",
-      "Tooltip": "Codexのブラウザータブを開きます。",
+      "Name": "Keycap · Browser tab",
+      "Tooltip": "Opens the Codex browser tab.",
       "Icon": "static/imgs/action-keycap-browser",
       "Controllers": [
         "Keypad"
@@ -716,8 +716,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-pin",
-      "Name": "キーキャップ · チャットをピン留め",
-      "Tooltip": "現在のチャットのピン留めを切り替えます。",
+      "Name": "Keycap · Pin chat",
+      "Tooltip": "Toggles pinning for the current chat.",
       "Icon": "static/imgs/action-keycap-pin",
       "Controllers": [
         "Keypad"
@@ -732,8 +732,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-diff",
-      "Name": "キーキャップ · レビュー表示",
-      "Tooltip": "Codexのレビュー表示を切り替えます。",
+      "Name": "Keycap · Review view",
+      "Tooltip": "Toggles the Codex review view.",
       "Icon": "static/imgs/action-keycap-diff",
       "Controllers": [
         "Keypad"
@@ -748,8 +748,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-play",
-      "Name": "キーキャップ · 主アクション実行",
-      "Tooltip": "設定済み環境アクションの先頭を実行します。",
+      "Name": "Keycap · Run primary action",
+      "Tooltip": "Runs the first configured environment action.",
       "Icon": "static/imgs/action-keycap-play",
       "Controllers": [
         "Keypad"
@@ -764,8 +764,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-git-commit",
-      "Name": "キーキャップ · コミットまたはPush",
-      "Tooltip": "Native CodexのGitコミット操作を開きます。",
+      "Name": "Keycap · Commit or push",
+      "Tooltip": "Opens the native Codex Git commit action.",
       "Icon": "static/imgs/action-keycap-git-commit",
       "Controllers": [
         "Keypad"
@@ -780,8 +780,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-branch",
-      "Name": "キーキャップ · ドラフトPR作成",
-      "Tooltip": "CodexでドラフトPR作成フローを開きます。",
+      "Name": "Keycap · Create draft PR",
+      "Tooltip": "Opens the draft PR creation flow in Codex.",
       "Icon": "static/imgs/action-keycap-branch",
       "Controllers": [
         "Keypad"
@@ -796,8 +796,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-merge",
-      "Name": "キーキャップ · PRをマージ",
-      "Tooltip": "CodexでPRマージフローを開きます。",
+      "Name": "Keycap · Merge PR",
+      "Tooltip": "Opens the PR merge flow in Codex.",
       "Icon": "static/imgs/action-keycap-merge",
       "Controllers": [
         "Keypad"
@@ -812,8 +812,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-pull-request",
-      "Name": "キーキャップ · PR作成",
-      "Tooltip": "Native CodexのPR作成フローを開きます。",
+      "Name": "Keycap · Create PR",
+      "Tooltip": "Opens the native Codex PR creation flow.",
       "Icon": "static/imgs/action-keycap-pull-request",
       "Controllers": [
         "Keypad"
@@ -828,8 +828,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-add-photos",
-      "Name": "キーキャップ · 写真を追加",
-      "Tooltip": "現在のComposerに写真を追加します。",
+      "Name": "Keycap · Add photos",
+      "Tooltip": "Adds photos to the current Composer.",
       "Icon": "static/imgs/action-keycap-add-photos",
       "Controllers": [
         "Keypad"
@@ -844,8 +844,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-lab",
-      "Name": "キーキャップ · Codex Micro設定 / Codex Micro settings",
-      "Tooltip": "Codex Micro設定を開きます。 / Opens Codex Micro settings.",
+      "Name": "Keycap · Codex Micro settings",
+      "Tooltip": "Opens Codex Micro settings.",
       "Icon": "static/imgs/action-keycap-lab",
       "Controllers": [
         "Keypad"
@@ -860,8 +860,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-side-chat",
-      "Name": "キーキャップ · サイドチャット",
-      "Tooltip": "Codexのサイドチャットを開きます。",
+      "Name": "Keycap · Side chat",
+      "Tooltip": "Opens Codex side chat.",
       "Icon": "static/imgs/action-keycap-side-chat",
       "Controllers": [
         "Keypad"
@@ -876,8 +876,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-tasks",
-      "Name": "キーキャップ · タスク管理",
-      "Tooltip": "Codexのタスク管理を開きます。",
+      "Name": "Keycap · Task management",
+      "Tooltip": "Opens Codex task management.",
       "Icon": "static/imgs/action-keycap-tasks",
       "Controllers": [
         "Keypad"
@@ -892,8 +892,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-settings",
-      "Name": "キーキャップ · 設定",
-      "Tooltip": "Codex設定を開きます。",
+      "Name": "Keycap · Settings",
+      "Tooltip": "Opens Codex settings.",
       "Icon": "static/imgs/action-keycap-settings",
       "Controllers": [
         "Keypad"
@@ -908,8 +908,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-open-folder",
-      "Name": "キーキャップ · フォルダーを開く",
-      "Tooltip": "Codexでフォルダーを開きます。",
+      "Name": "Keycap · Open folder",
+      "Tooltip": "Opens a folder in Codex.",
       "Icon": "static/imgs/action-keycap-open-folder",
       "Controllers": [
         "Keypad"
@@ -924,8 +924,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-add-files",
-      "Name": "キーキャップ · ファイルを添付",
-      "Tooltip": "現在のComposerにファイルやフォルダーを添付します。",
+      "Name": "Keycap · Attach files",
+      "Tooltip": "Attaches files or folders to the current Composer.",
       "Icon": "static/imgs/action-keycap-add-files",
       "Controllers": [
         "Keypad"
@@ -940,8 +940,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-skills",
-      "Name": "キーキャップ · プラグイン",
-      "Tooltip": "Codexのプラグイン一覧を開きます。",
+      "Name": "Keycap · Plugins",
+      "Tooltip": "Opens the Codex plugin list.",
       "Icon": "static/imgs/action-keycap-skills",
       "Controllers": [
         "Keypad"
@@ -956,8 +956,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-mic",
-      "Name": "キーキャップ · プッシュトゥトーク（大）",
-      "Tooltip": "押している間だけCodexの音声入力を開始します。",
+      "Name": "Keycap · Push to talk (large)",
+      "Tooltip": "Starts Codex voice input while pressed.",
       "Icon": "static/imgs/action-keycap-mic",
       "Controllers": [
         "Keypad"
@@ -972,8 +972,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-mic-single",
-      "Name": "キーキャップ · プッシュトゥトーク",
-      "Tooltip": "Codexの音声入力を開始します。",
+      "Name": "Keycap · Push to talk",
+      "Tooltip": "Starts Codex voice input.",
       "Icon": "static/imgs/action-keycap-mic-single",
       "Controllers": [
         "Keypad"
@@ -988,8 +988,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-create-branch",
-      "Name": "キーキャップ · ブランチ作成",
-      "Tooltip": "Codexでブランチ作成フローを開きます。",
+      "Name": "Keycap · Create branch",
+      "Tooltip": "Opens the branch creation flow in Codex.",
       "Icon": "static/imgs/action-keycap-create-branch",
       "Controllers": [
         "Keypad"
@@ -1004,8 +1004,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-yolo",
-      "Name": "キーキャップ · :yolo:を入力",
-      "Tooltip": "Composerに:yolo:を入力します。",
+      "Name": "Keycap · Enter :yolo:",
+      "Tooltip": "Enters :yolo: into the Composer.",
       "Icon": "static/imgs/action-keycap-yolo",
       "Controllers": [
         "Keypad"
@@ -1020,8 +1020,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.keycap-yeet",
-      "Name": "キーキャップ · :yeet:を入力",
-      "Tooltip": "Composerに:yeet:を入力します。",
+      "Name": "Keycap · Enter :yeet:",
+      "Tooltip": "Enters :yeet: into the Composer.",
       "Icon": "static/imgs/action-keycap-yeet",
       "Controllers": [
         "Keypad"
@@ -1036,17 +1036,17 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.dial-commands",
-      "Name": "ダイヤル · 操作選択",
-      "Tooltip": "回転して操作を選び、押して実行します。",
+      "Name": "Dial · Select action",
+      "Tooltip": "Rotate to choose an action and press to run it.",
       "Icon": "static/imgs/action-keycap-terminal",
       "Encoder": {
         "Icon": "static/imgs/action-keycap-terminal",
         "layout": "static/layouts/microplus-dial.json",
         "TriggerDescription": {
-          "Push": "選択した操作を実行",
-          "Rotate": "操作を選択",
-          "Touch": "選択した操作を実行",
-          "LongTouch": "設定したダイヤル操作"
+          "Push": "Run selected action",
+          "Rotate": "Choose an action",
+          "Touch": "Run selected action",
+          "LongTouch": "Configured dial action"
         }
       },
       "Controllers": [
@@ -1062,17 +1062,17 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.dial-usage",
-      "Name": "ダイヤル · 使用量",
-      "Tooltip": "回転して5時間・週間の残りを切り替え、押して更新します。",
+      "Name": "Dial · Usage",
+      "Tooltip": "Rotate to switch between five-hour and weekly remaining usage, then press to refresh.",
       "Icon": "static/imgs/action-usage-overview",
       "Encoder": {
         "Icon": "static/imgs/action-usage-overview",
         "layout": "static/layouts/microplus-dial.json",
         "TriggerDescription": {
-          "Push": "使用量を更新",
-          "Rotate": "5時間・週間を切替",
-          "Touch": "使用量を更新",
-          "LongTouch": "設定したダイヤル操作"
+          "Push": "Refresh usage",
+          "Rotate": "Switch five-hour / weekly",
+          "Touch": "Refresh usage",
+          "LongTouch": "Configured dial action"
         }
       },
       "Controllers": [
@@ -1088,17 +1088,17 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.dial-model",
-      "Name": "ダイヤル · モデル",
-      "Tooltip": "回転するだけでモデルを変更します。ディスプレイには現在のモデルを表示します。",
+      "Name": "Dial · Model",
+      "Tooltip": "Rotate to change the model. The current model is shown on the display.",
       "Icon": "static/imgs/action-keycap-codex",
       "Encoder": {
         "Icon": "static/imgs/action-keycap-codex",
         "layout": "static/layouts/microplus-dial.json",
         "TriggerDescription": {
-          "Push": "モデル一覧を開く・選択を決定",
-          "Rotate": "モデルを選択",
-          "Touch": "モデル一覧を開く・選択を決定",
-          "LongTouch": "設定したダイヤル操作"
+          "Push": "Open/select model list",
+          "Rotate": "Select model",
+          "Touch": "Open/select model list",
+          "LongTouch": "Configured dial action"
         }
       },
       "Controllers": [
@@ -1114,8 +1114,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.context-compaction",
-      "Name": "コンテキスト圧縮 · Context compaction",
-      "Tooltip": "現在のCodexタスクの実測コンテキスト使用量を表示し、押下でネイティブ圧縮を要求します。 / Shows observed active-task context usage and requests native compaction on press.",
+      "Name": "Context compaction",
+      "Tooltip": "Shows observed context usage for the current Codex task and requests native compaction on press.",
       "Icon": "static/imgs/action-usage-overview",
       "Controllers": [
         "Keypad"
@@ -1130,8 +1130,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.side-to-main",
-      "Name": "サイド入力をメインへ移す",
-      "Tooltip": "サイドチャットの未送信テキストを、空のメイン入力欄へ移します。送信しません。",
+      "Name": "Move side input to main",
+      "Tooltip": "Moves unsent side-chat text into an empty main input field without sending it.",
       "Icon": "static/imgs/action-keycap-split",
       "Controllers": [
         "Keypad"
@@ -1146,8 +1146,8 @@
     },
     {
       "UUID": "io.local.codexdeck.microplus.global-dictation",
-      "Name": "音声入力（ショートカットでPTT）",
-      "Tooltip": "設定画面で録音切替のショートカットを実際に押して登録します。押下と解放で1回ずつ送信します。録音停止中から使ってください。",
+      "Name": "Voice input · Shortcut PTT",
+      "Tooltip": "Records the shortcut used to toggle recording in settings. Sends once on press and once on release. Use while recording is stopped.",
       "Icon": "static/imgs/action-keycap-mic",
       "Controllers": [
         "Keypad"

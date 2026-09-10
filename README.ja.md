@@ -26,7 +26,7 @@ AIにできることが増えた。なら、AIとの付き合い方も進化し�
 |:--:|---|---|
 | <img src="packages/microplus/static/imgs/action-agent-1.svg" width="36" alt=""> | **集中するタスクへ** | タスクを切り替え、状態をひと目で。 |
 | <img src="packages/microplus/static/imgs/action-keycap-mic.svg" width="36" alt=""> | **思いつきを、そのまま声に** | 音声入力のショートカットをキーごとに登録。 |
-| <img src="packages/microplus/static/imgs/action-send.svg" width="36" alt=""> | **会話を止めない** | 送信を、指先の定位置へ。 |
+| <img src="packages/microplus/static/imgs/action-keycap-codex.svg" width="36" alt=""> | **会話を止めない** | 送信を、指先の定位置へ。 |
 | <img src="packages/microplus/static/imgs/action-keycap-side-chat.svg" width="36" alt=""> | **横道のアイデアもすぐに** | サイドチャットを手元から展開。 |
 | <img src="packages/microplus/static/imgs/action-plus-reasoning.svg" width="36" alt=""> | **考えるペースを選ぶ** | モデルや思考レベルをダイヤルで調整。 |
 | <img src="packages/microplus/static/imgs/action-usage-overview.svg" width="36" alt=""> | **残量を、視界の中に** | 使用量を表示し、押した時の動作もカスタム。 |

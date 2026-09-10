@@ -6,11 +6,11 @@ script_dir="${0:A:h}"
 result=$?
 
 if [[ $result -eq 2 ]]; then
-  if /usr/bin/osascript -e 'display dialog "Codex Keysに接続するため、Codexを再起動します。未送信の入力を保存してから「再起動して接続」を押してください。" with title "Codex Keys" buttons {"キャンセル", "再起動して接続"} default button "再起動して接続" cancel button "キャンセル"' >/dev/null 2>&1; then
+  if /usr/bin/osascript -e 'display dialog "Codex will restart to connect to Codex Keys. Save any unsent input, then choose Restart and Connect." with title "Codex Keys" buttons {"Cancel", "Restart and Connect"} default button "Restart and Connect" cancel button "Cancel"' >/dev/null 2>&1; then
     "$script_dir/start-microplus.sh" start --restart
     result=$?
   else
-    print "キャンセルしました。Codexは変更していません。"
+    print "Cancelled. Codex was not changed."
     exit 0
   fi
 elif [[ $result -eq 3 ]]; then

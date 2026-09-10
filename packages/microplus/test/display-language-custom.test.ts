@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { OFFICIAL_KEYCAP_IDS } from "../src/keycaps.js";
+import { parseActionPreferences } from "../src/action-preferences.js";
 import {
   customizeKeyImage,
   renderActionFeedback,
@@ -98,6 +99,18 @@ test("every official keycap has a compact English label", () => {
     const svg = decode(renderFallbackKeycapForTest(id));
     assert.doesNotMatch(svg, /[\u3040-\u30ff\u3400-\u9fff]/u, `${id} leaked Japanese fallback copy`);
   }
+});
+
+test("English host default reaches key and dial rendering when a key has no language setting", () => {
+  const language = parseActionPreferences({}, "en").language;
+  const key = decode(renderActionKey({ identity: "ACT10", current: "MIC", state: "ready", language }));
+  const dial = renderPlusDialFeedback({ kind: "model", observedValue: "gpt-6", health: "ready", language });
+
+  assert.match(key, />CURRENT</u);
+  assert.match(key, />TARGET</u);
+  assert.equal(dial.title, "MODEL");
+  assert.equal(dial.detail, "Turn to change model");
+  assert.doesNotMatch(key, /[\u3040-\u30ff\u3400-\u9fff]/u);
 });
 
 test("prototype-property fallback IDs render in both languages", () => {

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -20,68 +20,68 @@
   </style>
 </head>
 <body>
-  <label><span id="label-title">表示名</span><input id="label" type="text" maxlength="24" placeholder="既定"></label>
-  <label><span id="language-title">言語</span><select id="language"><option value="ja">日本語</option><option value="en">English</option></select></label>
-  <label><span id="text-size-title">文字サイズ</span><select id="textSize"><option value="normal">標準</option><option value="large">大</option></select></label>
-  <label><span id="theme-title">テーマ</span><select id="theme"><option value="auto">自動</option><option value="dark">ダーク</option><option value="light">ライト</option></select></label>
-  <label><span id="details-title">詳細を表示</span><input id="showDetails" type="checkbox" checked></label>
-  <label><span id="animation-title">アニメーション</span><input id="animation" type="checkbox" checked></label>
-  <label><span id="focus-title">ChatGPT／Codexを最前面にする</span><input id="focusBeforeAction" type="checkbox"></label>
+  <label><span id="label-title">Label</span><input id="label" type="text" maxlength="24" placeholder="Default"></label>
+  <label><span id="language-title">Language</span><select id="language"><option value="ja">Japanese</option><option value="en">English</option></select></label>
+  <label><span id="text-size-title">Text size</span><select id="textSize"><option value="normal">Normal</option><option value="large">Large</option></select></label>
+  <label><span id="theme-title">Theme</span><select id="theme"><option value="auto">Automatic</option><option value="dark">Dark</option><option value="light">Light</option></select></label>
+  <label><span id="details-title">Show details</span><input id="showDetails" type="checkbox" checked></label>
+  <label><span id="animation-title">Animation</span><input id="animation" type="checkbox" checked></label>
+  <label><span id="focus-title">Bring ChatGPT / Codex to front</span><input id="focusBeforeAction" type="checkbox"></label>
   <section id="dictation-shortcut-options" hidden>
-    <label><span id="shortcut-title">音声入力の切替キー</span><output id="shortcut-value"></output></label>
-    <button id="shortcut-record" type="button">ショートカットを登録</button>
-    <button id="shortcut-cancel" type="button" hidden>キャンセル</button>
+    <label><span id="shortcut-title">Dictation toggle shortcut</span><output id="shortcut-value"></output></label>
+    <button id="shortcut-record" type="button">Record shortcut</button>
+    <button id="shortcut-cancel" type="button" hidden>Cancel</button>
     <p id="shortcut-help" role="status" aria-live="polite"></p>
   </section>
   <section id="press-options" hidden>
-    <label><span id="press-title">押した時</span><select id="pressBehavior">
-      <optgroup id="behavior-group-basic" label="基本">
-        <option value="none">既定の操作</option>
-        <option value="disabled">何もしない</option>
-        <option value="refresh">使用量を更新</option>
-        <option value="focus">ChatGPT／Codexを最前面にする</option>
+    <label><span id="press-title">On press</span><select id="pressBehavior">
+      <optgroup id="behavior-group-basic" label="Basic">
+        <option value="none">Default action</option>
+        <option value="disabled">Do nothing</option>
+        <option value="refresh">Refresh usage</option>
+        <option value="focus">Bring ChatGPT / Codex to front</option>
       </optgroup>
-      <optgroup id="behavior-group-common" label="よく使う操作">
-        <option value="command:CODEX">現在のCodexに送信</option>
-        <option value="command:NEW">新しいタスク</option>
-        <option value="command:PARTY">サイドチャット</option>
-        <option value="ptt">Voice PTT（押している間）</option>
-        <option value="command:APPR">承認</option>
-        <option value="command:REJ">拒否</option>
-        <option value="command:FAST">高速モード</option>
+      <optgroup id="behavior-group-common" label="Common actions">
+        <option value="command:CODEX">Send to current Codex</option>
+        <option value="command:NEW">New task</option>
+        <option value="command:PARTY">Side chat</option>
+        <option value="ptt">Voice PTT (while held)</option>
+        <option value="command:APPR">Approve</option>
+        <option value="command:REJ">Reject</option>
+        <option value="command:FAST">Fast mode</option>
       </optgroup>
-      <optgroup id="behavior-group-model" label="モデルと推論">
-        <option value="model-next">次のモデル</option><option value="model-previous">前のモデル</option>
-        <option value="reasoning-increase">推論を上げる</option><option value="reasoning-decrease">推論を下げる</option>
+      <optgroup id="behavior-group-model" label="Model &amp; reasoning">
+        <option value="model-next">Next model</option><option value="model-previous">Previous model</option>
+        <option value="reasoning-increase">Increase reasoning</option><option value="reasoning-decrease">Decrease reasoning</option>
       </optgroup>
-      <optgroup id="behavior-group-other" label="その他"><option value="command">すべてのCodex操作から選ぶ</option></optgroup>
+      <optgroup id="behavior-group-other" label="Other"><option value="command">Choose from all Codex actions</option></optgroup>
     </select></label>
-    <label id="press-command-row" hidden><span id="press-command-title">Codex操作</span><select id="pressCommand">
-      <option value="">選択してください</option>
-      <optgroup id="command-group-conversation" label="会話と推論">
-        <option value="FAST">高速モード</option><option value="APPR">承認</option><option value="REJ">拒否</option><option value="SPLIT">チャットを分岐</option><option value="CODEX">メッセージ送信</option><option value="NEW">新しいチャット</option><option value="MIND+">推論を上げる</option><option value="MIND-">推論を下げる</option>
+    <label id="press-command-row" hidden><span id="press-command-title">Codex action</span><select id="pressCommand">
+      <option value="">Select an action</option>
+      <optgroup id="command-group-conversation" label="Conversation &amp; reasoning">
+        <option value="FAST">Fast mode</option><option value="APPR">Approve</option><option value="REJ">Reject</option><option value="SPLIT">Split chat</option><option value="CODEX">Send message</option><option value="NEW">New chat</option><option value="MIND+">Increase reasoning</option><option value="MIND-">Decrease reasoning</option>
       </optgroup>
-      <optgroup id="command-group-chat" label="チャットと表示">
-        <option value="DWN">チャットをMarkdownコピー</option><option value="DEL">チャットをアーカイブ</option><option value="NAV">ブラウザータブ</option><option value="MAGIC">チャットをピン留め</option><option value="DIFF">レビュー表示</option><option value="PARTY">サイドチャット</option><option value="TIME">タスク管理</option><option value="BUG">フィードバック</option>
+      <optgroup id="command-group-chat" label="Chat &amp; view">
+        <option value="DWN">Copy chat as Markdown</option><option value="DEL">Archive chat</option><option value="NAV">Browser tab</option><option value="MAGIC">Pin chat</option><option value="DIFF">Show review</option><option value="PARTY">Side chat</option><option value="TIME">Task manager</option><option value="BUG">Feedback</option>
       </optgroup>
-      <optgroup id="command-group-development" label="開発">
-        <option value="PLAY">主アクション実行</option><option value="GIT">コミットまたはPush</option><option value="BRCH">ドラフトPR作成</option><option value="BRANCH">ブランチ作成</option><option value="MRG">PRをマージ</option><option value="PR">PR作成</option><option value="PAINT">写真を追加</option><option value="LAB">Codex Micro設定</option>
+      <optgroup id="command-group-development" label="Development">
+        <option value="PLAY">Run main action</option><option value="GIT">Commit or push</option><option value="BRCH">Create draft PR</option><option value="BRANCH">Create branch</option><option value="MRG">Merge PR</option><option value="PR">Create PR</option><option value="PAINT">Add photos</option><option value="LAB">Codex Micro settings</option>
       </optgroup>
-      <optgroup id="command-group-workspace" label="ツールとワークスペース">
-        <option value="OAI">OpenAIドキュメント</option><option value="TERM">ターミナル</option><option value="SETUP">設定</option><option value="FOLD">フォルダーを開く</option><option value="UPL">ファイルを添付</option><option value="APPS">プラグイン</option><option value="YOLO">:yolo:を入力</option><option value="YEET">:yeet:を入力</option>
+      <optgroup id="command-group-workspace" label="Tools &amp; workspace">
+        <option value="OAI">OpenAI docs</option><option value="TERM">Terminal</option><option value="SETUP">Settings</option><option value="FOLD">Open folder</option><option value="UPL">Attach files</option><option value="APPS">Plugins</option><option value="YOLO">Type :yolo:</option><option value="YEET">Type :yeet:</option>
       </optgroup>
     </select></label>
   </section>
   <section id="dial-options" hidden>
-    <label><span id="reverse-dial-title">回転を反転</span><input id="reverseDial" type="checkbox"></label>
-    <label><span id="dial-step-title">1目盛りの移動量</span><select id="dialStep"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></label>
-    <label><span id="dial-touch-title">タッチ時</span><select id="dialTouchBehavior">
-      <option value="press">ダイヤル押下を実行</option>
-      <option value="none">何もしない</option>
+    <label><span id="reverse-dial-title">Reverse rotation</span><input id="reverseDial" type="checkbox"></label>
+    <label><span id="dial-step-title">Movement per tick</span><select id="dialStep"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></label>
+    <label><span id="dial-touch-title">On touch</span><select id="dialTouchBehavior">
+      <option value="press">Run dial press</option>
+      <option value="none">Do nothing</option>
     </select></label>
-    <label><span id="dial-long-title">タッチ長押し時</span><select id="dialLongPressBehavior">
-      <option value="none">何もしない</option>
-      <option value="press">ダイヤル押下を実行</option>
+    <label><span id="dial-long-title">On touch hold</span><select id="dialLongPressBehavior">
+      <option value="none">Do nothing</option>
+      <option value="press">Run dial press</option>
     </select></label>
   </section>
   <script src="shortcut-recorder.js"></script>

@@ -90,7 +90,7 @@ for (const inspector of ["common.html", "agent.html", "usage-limit.html", "conte
     const window: Record<string, unknown> = {};
     const context = {
       document: {
-        documentElement: { lang: "ja" },
+        documentElement: { lang: "en" },
         getElementById: (id: string) => {
           const element = elements.get(id) ?? new FakeElement();
           elements.set(id, element);

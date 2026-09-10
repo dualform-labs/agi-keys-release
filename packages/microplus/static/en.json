@@ -1,0 +1,320 @@
+{
+  "Name": "Codex Keys",
+  "Description": "Mac-only Codex Micro compatible controls for Stream Deck, with live task status and usage.",
+  "io.local.codexdeck.microplus.agent-1": {
+    "Name": "Agent 1 (Slot 1)",
+    "Tooltip": "Selects Codex Micro agent slot 1 and brings Codex to the foreground."
+  },
+  "io.local.codexdeck.microplus.agent-2": {
+    "Name": "Agent 2 (Slot 2)",
+    "Tooltip": "Selects Codex Micro agent slot 2 and brings Codex to the foreground."
+  },
+  "io.local.codexdeck.microplus.agent-3": {
+    "Name": "Agent 3 (Slot 3)",
+    "Tooltip": "Selects Codex Micro agent slot 3 and brings Codex to the foreground."
+  },
+  "io.local.codexdeck.microplus.agent-4": {
+    "Name": "Agent 4 (Slot 4)",
+    "Tooltip": "Selects Codex Micro agent slot 4 and brings Codex to the foreground."
+  },
+  "io.local.codexdeck.microplus.agent-5": {
+    "Name": "Agent 5 (Slot 5)",
+    "Tooltip": "Selects Codex Micro agent slot 5 and brings Codex to the foreground."
+  },
+  "io.local.codexdeck.microplus.agent-6": {
+    "Name": "Agent 6 (Slot 6)",
+    "Tooltip": "Selects Codex Micro agent slot 6 and brings Codex to the foreground."
+  },
+  "io.local.codexdeck.microplus.dial-agent": {
+    "Name": "Dial · Agent selection",
+    "Tooltip": "Use the Stream Deck+ dial to move through Codex Micro agent candidates, then press or touch to bring the selected agent to the foreground. Touch-and-hold behavior can be configured.",
+    "Encoder": {
+      "TriggerDescription": {
+        "Push": "Bring selected agent to foreground",
+        "Rotate": "Move through agent candidates",
+        "Touch": "Bring selected agent to foreground",
+        "LongTouch": "Configured dial action"
+      }
+    }
+  },
+  "io.local.codexdeck.microplus.dial-reasoning": {
+    "Name": "Dial · Reasoning level",
+    "Tooltip": "Adjust the Codex Micro reasoning level by rotating the Stream Deck+ dial. Press or touch to send an encoder click; long-touch behavior can be configured.",
+    "Encoder": {
+      "TriggerDescription": {
+        "Push": "Encoder click",
+        "Rotate": "Adjust reasoning level",
+        "Touch": "Encoder click",
+        "LongTouch": "Configured dial action"
+      }
+    }
+  },
+  "io.local.codexdeck.microplus.dial-conversation": {
+    "Name": "Dial · Left/right control",
+    "Tooltip": "Sends the native left/right control configured in Codex Micro. Press or touch to send an encoder click; long-touch behavior can be configured.",
+    "Encoder": {
+      "TriggerDescription": {
+        "Push": "Encoder click",
+        "Rotate": "Native left/right control",
+        "Touch": "Encoder click",
+        "LongTouch": "Configured dial action"
+      }
+    }
+  },
+  "io.local.codexdeck.microplus.fast": {
+    "Name": "ACT06 · Physical key",
+    "Tooltip": "Sends physical position ACT06 in Codex Micro. The action and key image follow the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.approve": {
+    "Name": "ACT07 · Physical key",
+    "Tooltip": "Sends physical position ACT07 in Codex Micro. The action and key image follow the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.decline": {
+    "Name": "ACT08 · Physical key",
+    "Tooltip": "Sends physical position ACT08 in Codex Micro. The action and key image follow the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.fork": {
+    "Name": "ACT09 · Physical key",
+    "Tooltip": "Sends physical position ACT09 in Codex Micro. The action and key image follow the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.dictation": {
+    "Name": "ACT10 · Physical key",
+    "Tooltip": "Sends key-down and key-up to physical position ACT10 in Codex Micro. The action and key image follow the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.act11": {
+    "Name": "ACT11 · Physical key",
+    "Tooltip": "Sends key-down and key-up to physical position ACT11 in Codex Micro. The action and key image follow the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.send": {
+    "Name": "ACT12 · Physical key",
+    "Tooltip": "Sends physical position ACT12 in Codex Micro. The action and key image follow the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.plan": {
+    "Name": "JOY_UP · Physical direction",
+    "Tooltip": "Sends physical direction JOY_UP in Codex Micro. The action follows the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.back": {
+    "Name": "JOY_LEFT · Physical direction",
+    "Tooltip": "Sends physical direction JOY_LEFT in Codex Micro. The action follows the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.forward": {
+    "Name": "JOY_RIGHT · Physical direction",
+    "Tooltip": "Sends physical direction JOY_RIGHT in Codex Micro. The action follows the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.sidebar": {
+    "Name": "JOY_DOWN · Physical direction",
+    "Tooltip": "Sends physical direction JOY_DOWN in Codex Micro. The action follows the current assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.reasoning": {
+    "Name": "ENC_CLK · Physical press",
+    "Tooltip": "Sends physical position ENC_CLK in Codex Micro. The action follows the current encoder assignment in Codex."
+  },
+  "io.local.codexdeck.microplus.reasoning-down": {
+    "Name": "Action · Lower reasoning level",
+    "Tooltip": "Lowers the Codex Composer reasoning level by one step."
+  },
+  "io.local.codexdeck.microplus.reasoning-up": {
+    "Name": "Action · Raise reasoning level",
+    "Tooltip": "Raises the Codex Composer reasoning level by one step."
+  },
+  "io.local.codexdeck.microplus.new-task": {
+    "Name": "Action · New task",
+    "Tooltip": "Opens a new task in Codex."
+  },
+  "io.local.codexdeck.microplus.usage-limit": {
+    "Name": "Usage · Remaining",
+    "Tooltip": "Shows the remaining Codex usage. Five-hour and weekly views can be configured. The Codex action on press can be configured per key."
+  },
+  "io.local.codexdeck.microplus.usage-overview": {
+    "Name": "Usage · Five-hour / weekly",
+    "Tooltip": "Shows five-hour and weekly Codex usage at the same time. The Codex action on press can be configured per key."
+  },
+  "io.local.codexdeck.microplus.rate-limit-reset": {
+    "Name": "Usage · Reset",
+    "Tooltip": "Shows available usage reset credits. Hold for 1.2 seconds when eligible to consume one credit."
+  },
+  "io.local.codexdeck.microplus.keycap-fast": {
+    "Name": "Keycap · Fast mode",
+    "Tooltip": "Toggles Codex Micro fast mode."
+  },
+  "io.local.codexdeck.microplus.keycap-approve": {
+    "Name": "Keycap · Approve",
+    "Tooltip": "Approves the current Codex request."
+  },
+  "io.local.codexdeck.microplus.keycap-reject": {
+    "Name": "Keycap · Reject",
+    "Tooltip": "Rejects the current Codex request."
+  },
+  "io.local.codexdeck.microplus.keycap-split": {
+    "Name": "Keycap · Split chat",
+    "Tooltip": "Splits the current Codex chat."
+  },
+  "io.local.codexdeck.microplus.keycap-new-task": {
+    "Name": "Keycap · New chat",
+    "Tooltip": "Opens a new chat in native Codex Micro."
+  },
+  "io.local.codexdeck.microplus.keycap-reasoning-up": {
+    "Name": "Keycap · Increase reasoning",
+    "Tooltip": "Increases the current Composer reasoning level."
+  },
+  "io.local.codexdeck.microplus.keycap-reasoning-down": {
+    "Name": "Keycap · Decrease reasoning",
+    "Tooltip": "Decreases the current Composer reasoning level."
+  },
+  "io.local.codexdeck.microplus.keycap-codex": {
+    "Name": "Send to Codex",
+    "Tooltip": "Sends the current Composer message."
+  },
+  "io.local.codexdeck.microplus.keycap-bug": {
+    "Name": "Keycap · Feedback",
+    "Tooltip": "Opens the Codex feedback screen."
+  },
+  "io.local.codexdeck.microplus.keycap-openai-docs": {
+    "Name": "Keycap · OpenAI docs",
+    "Tooltip": "Opens the official OpenAI developer documentation."
+  },
+  "io.local.codexdeck.microplus.keycap-terminal": {
+    "Name": "Keycap · Terminal",
+    "Tooltip": "Toggles the Codex terminal view."
+  },
+  "io.local.codexdeck.microplus.keycap-download": {
+    "Name": "Keycap · Copy chat as Markdown",
+    "Tooltip": "Copies the current conversation as Markdown."
+  },
+  "io.local.codexdeck.microplus.keycap-archive": {
+    "Name": "Keycap · Archive chat",
+    "Tooltip": "Archives the current Codex chat."
+  },
+  "io.local.codexdeck.microplus.keycap-browser": {
+    "Name": "Keycap · Browser tab",
+    "Tooltip": "Opens the Codex browser tab."
+  },
+  "io.local.codexdeck.microplus.keycap-pin": {
+    "Name": "Keycap · Pin chat",
+    "Tooltip": "Toggles pinning for the current chat."
+  },
+  "io.local.codexdeck.microplus.keycap-diff": {
+    "Name": "Keycap · Review view",
+    "Tooltip": "Toggles the Codex review view."
+  },
+  "io.local.codexdeck.microplus.keycap-play": {
+    "Name": "Keycap · Run primary action",
+    "Tooltip": "Runs the first configured environment action."
+  },
+  "io.local.codexdeck.microplus.keycap-git-commit": {
+    "Name": "Keycap · Commit or push",
+    "Tooltip": "Opens the native Codex Git commit action."
+  },
+  "io.local.codexdeck.microplus.keycap-branch": {
+    "Name": "Keycap · Create draft PR",
+    "Tooltip": "Opens the draft PR creation flow in Codex."
+  },
+  "io.local.codexdeck.microplus.keycap-merge": {
+    "Name": "Keycap · Merge PR",
+    "Tooltip": "Opens the PR merge flow in Codex."
+  },
+  "io.local.codexdeck.microplus.keycap-pull-request": {
+    "Name": "Keycap · Create PR",
+    "Tooltip": "Opens the native Codex PR creation flow."
+  },
+  "io.local.codexdeck.microplus.keycap-add-photos": {
+    "Name": "Keycap · Add photos",
+    "Tooltip": "Adds photos to the current Composer."
+  },
+  "io.local.codexdeck.microplus.keycap-lab": {
+    "Name": "Keycap · Codex Micro settings",
+    "Tooltip": "Opens Codex Micro settings."
+  },
+  "io.local.codexdeck.microplus.keycap-side-chat": {
+    "Name": "Keycap · Side chat",
+    "Tooltip": "Opens Codex side chat."
+  },
+  "io.local.codexdeck.microplus.keycap-tasks": {
+    "Name": "Keycap · Task management",
+    "Tooltip": "Opens Codex task management."
+  },
+  "io.local.codexdeck.microplus.keycap-settings": {
+    "Name": "Keycap · Settings",
+    "Tooltip": "Opens Codex settings."
+  },
+  "io.local.codexdeck.microplus.keycap-open-folder": {
+    "Name": "Keycap · Open folder",
+    "Tooltip": "Opens a folder in Codex."
+  },
+  "io.local.codexdeck.microplus.keycap-add-files": {
+    "Name": "Keycap · Attach files",
+    "Tooltip": "Attaches files or folders to the current Composer."
+  },
+  "io.local.codexdeck.microplus.keycap-skills": {
+    "Name": "Keycap · Plugins",
+    "Tooltip": "Opens the Codex plugin list."
+  },
+  "io.local.codexdeck.microplus.keycap-mic": {
+    "Name": "Keycap · Push to talk (large)",
+    "Tooltip": "Starts Codex voice input while pressed."
+  },
+  "io.local.codexdeck.microplus.keycap-mic-single": {
+    "Name": "Keycap · Push to talk",
+    "Tooltip": "Starts Codex voice input."
+  },
+  "io.local.codexdeck.microplus.keycap-create-branch": {
+    "Name": "Keycap · Create branch",
+    "Tooltip": "Opens the branch creation flow in Codex."
+  },
+  "io.local.codexdeck.microplus.keycap-yolo": {
+    "Name": "Keycap · Enter :yolo:",
+    "Tooltip": "Enters :yolo: into the Composer."
+  },
+  "io.local.codexdeck.microplus.keycap-yeet": {
+    "Name": "Keycap · Enter :yeet:",
+    "Tooltip": "Enters :yeet: into the Composer."
+  },
+  "io.local.codexdeck.microplus.dial-commands": {
+    "Name": "Dial · Select action",
+    "Tooltip": "Rotate to choose an action and press to run it.",
+    "Encoder": {
+      "TriggerDescription": {
+        "Push": "Run selected action",
+        "Rotate": "Choose an action",
+        "Touch": "Run selected action",
+        "LongTouch": "Configured dial action"
+      }
+    }
+  },
+  "io.local.codexdeck.microplus.dial-usage": {
+    "Name": "Dial · Usage",
+    "Tooltip": "Rotate to switch between five-hour and weekly remaining usage, then press to refresh.",
+    "Encoder": {
+      "TriggerDescription": {
+        "Push": "Refresh usage",
+        "Rotate": "Switch five-hour / weekly",
+        "Touch": "Refresh usage",
+        "LongTouch": "Configured dial action"
+      }
+    }
+  },
+  "io.local.codexdeck.microplus.dial-model": {
+    "Name": "Dial · Model",
+    "Tooltip": "Rotate to change the model. The current model is shown on the display.",
+    "Encoder": {
+      "TriggerDescription": {
+        "Push": "Open/select model list",
+        "Rotate": "Select model",
+        "Touch": "Open/select model list",
+        "LongTouch": "Configured dial action"
+      }
+    }
+  },
+  "io.local.codexdeck.microplus.context-compaction": {
+    "Name": "Context compaction",
+    "Tooltip": "Shows observed context usage for the current Codex task and requests native compaction on press."
+  },
+  "io.local.codexdeck.microplus.side-to-main": {
+    "Name": "Move side input to main",
+    "Tooltip": "Moves unsent side-chat text into an empty main input field without sending it."
+  },
+  "io.local.codexdeck.microplus.global-dictation": {
+    "Name": "Voice input · Shortcut PTT",
+    "Tooltip": "Records the shortcut used to toggle recording in settings. Sends once on press and once on release. Use while recording is stopped."
+  }
+}

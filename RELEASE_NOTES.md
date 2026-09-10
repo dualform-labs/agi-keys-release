@@ -1,41 +1,44 @@
-# Codex Keys 0.1.0.63 — Preview
+# Codex Keys 0.1.0.64 — Preview
 
-macOS用の非公式Stream Deck+プラグインです。タスク選択、モデル・思考レベル、音声入力、送信、サイドチャット、使用量・コンテキスト表示をStream Deckアプリで配置できます。独立したWeb設定画面はありません。
+English | [日本語](RELEASE_NOTES.ja.md)
 
-## この版の修正
+An unofficial macOS Stream Deck+ plugin for task selection, models, reasoning effort, dictation, send, side chat, usage and context displays. All configuration is inside Stream Deck.
 
-- カスタムアイコンの読み込みに名前・リンク・サイズ制限を追加しました。
-- キー解放が失敗した場合、所有状態を保持し、別の入力との衝突を防ぎます。
-- 接続方式の未解決リスクは [SECURITY.md](SECURITY.md) を参照してください。
+## Changes
 
-- コンテキスト圧縮で、応答が終わったタスクを作業中と誤判定する状態処理を修正。利用者による実機成功を確認しました。
-- 音声入力のショートカットを実際に押してキーごとに登録できます。左右の修飾キーを区別します。音声入力は0.1.0.60で利用者の実機成功を確認済みです。
-- 設定の正規化を独立モジュールへ整理し、不正な設定値と未接続時の保存表示を修正しました。
+- English localization across the action list, settings, display feedback and documentation, with Japanese retained.
 
-## 導入
+- Custom icon reads now validate names, links and file sizes. Prototype-property names render safely as fallback labels.
+- Failed key release retains input ownership so another input cannot collide with it.
+- Context compaction no longer treats a completed response as an active task. Hardware success was confirmed on 0.1.0.62.
+- Record a shortcut by pressing it, with left/right modifiers and per-key settings. Hardware dictation success was confirmed on 0.1.0.60.
+- Configuration normalization was extracted into a module; invalid settings and disconnected save feedback were corrected.
 
-1. Stream Deckアプリから現在のプロファイルをバックアップしてください。
-2. 同梱の `.streamDeckPlugin` を開き、Stream Deckのインストール画面に従ってください。
-3. Action Listから必要な操作を配置し、Stream Deck内の設定欄で言語・押下操作などを設定してください。
-4. Codexとの接続が利用可能であることを確認してから操作してください。プラグインの導入だけで接続準備が必ず完了するわけではありません。新規環境の接続導入・再起動後の自動復帰は最終検証待ちです。
+## Install
 
-既存の内部UUIDは互換性のため `io.local.codexdeck.microplus` を維持しています。既存プロファイルを削除して入れ直す必要はありません。
+1. Back up your profiles in Stream Deck.
+2. Open the included `.streamDeckPlugin` and follow Stream Deck's installer.
+3. Drag actions from the action list and configure language and press behavior in the property inspector.
+4. Confirm the Codex connection before using the actions. Plugin installation alone does not establish the connection. Fresh installation and automatic recovery after restart remain pending final verification.
 
-## 音声キー
+The compatibility UUID remains `io.local.codexdeck.microplus`. Existing profiles do not need to be deleted.
 
-アプリ側の「録音切替」ショートカットを、Stream Deckの「ショートカットを登録」で登録してください。初期値は右Optionです。「押している間だけ録音」のショートカットとは異なります。プラグインは押下と解放で録音切替を1回ずつ送ります。録音停止状態から使い、押下中は手動で録音を切り替えないでください。録音アプリからの停止確認を直接受信する方式ではありません。
+## Voice input
 
-## ACT06〜ACT12とは
+Register the receiving app's **toggle recording** shortcut. The default is Right Option; this differs from its hold-to-talk shortcut. The plugin sends one toggle when pressed and another when released. Start with recording stopped and do not toggle it manually while holding the key. The plugin receives no direct recording-state acknowledgement.
 
-Codex Microの物理キー識別番号を送る互換操作です。Stream Deckの配置位置ではなく、動作はCodex側の割当に従います。通常は用途の分かる機能名付き操作を選んでください。
+## ACT06–ACT12
 
-## 互換性と検証の範囲
+These send Codex Micro physical key identifiers. They do not identify Stream Deck positions. Their behavior follows Codex's mapping; use named actions for ordinary assignments.
 
-- 公開APIではなくCodexのMicro操作経路に依存するため、Codexの更新で互換性が変わる可能性があります。
-- 接続・操作結果を確認できない場合は成功とは表示しません。一部操作は送信受付までしか観測できません。
-- 711件の自動テストと型検査に合格しています。全67操作の実機試験、全ショートカット、再起動後の復帰を保証する結果ではありません。
-- この版はPreviewです。全操作確認と新規環境の導入確認を終えてから正式公開を判断します。
+## Verification and limitations
 
-## ライセンス
+- The connection depends on Codex's Micro operation path rather than a public API; Codex updates can change compatibility.
+- Some operations can be observed only as accepted dispatches, not confirmed downstream effects.
+- The 0.1.0.63 baseline passed 711 automated tests and type checking. This does not establish hardware acceptance of all 67 actions, all shortcuts or restart recovery.
+- This is a Preview. Complete hardware and fresh-install checks before a stable release.
+- The local CDP client-authentication limitation remains unresolved. See [SECURITY.md](SECURITY.md).
 
-MIT。`LICENSE` と `packages/microplus/THIRD_PARTY_NOTICE.md` を参照してください。OpenAI、Elgato、Work Louderの公式製品ではありません。
+## License
+
+MIT. See `LICENSE` and `THIRD_PARTY_NOTICE.md` in the release bundle, or `packages/microplus/THIRD_PARTY_NOTICE.md` in the source tree. This is not an official OpenAI, Elgato or Work Louder product.

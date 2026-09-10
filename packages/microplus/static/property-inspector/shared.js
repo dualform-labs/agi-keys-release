@@ -189,6 +189,44 @@
     },
   };
 
+  function normalizeLanguage(value) {
+    if (typeof value !== "string") return undefined;
+    const language = value.trim().toLowerCase().replace(/_/g, "-");
+    if (language === "ja" || language.startsWith("ja-")) return "ja";
+    if (language === "en" || language.startsWith("en-")) return "en";
+    return undefined;
+  }
+
+  function parseInfo(info) {
+    if (typeof info !== "string" || info.trim() === "") return info ?? {};
+    try {
+      return JSON.parse(info);
+    } catch {
+      return {};
+    }
+  }
+
+  function detectHostLanguage(info) {
+    const parsed = parseInfo(info);
+    const candidates = [
+      parsed?.application?.language,
+      parsed?.application?.locale,
+      parsed?.application?.languageCode,
+      parsed?.locale,
+      parsed?.language,
+    ];
+    for (const candidate of candidates) {
+      const language = normalizeLanguage(candidate);
+      if (language) return language;
+    }
+
+    const browserLanguage = typeof navigator !== "undefined"
+      ? normalizeLanguage(navigator.language ?? navigator.userLanguage)
+      : undefined;
+    const documentLanguage = normalizeLanguage(document.documentElement?.lang);
+    return browserLanguage ?? documentLanguage ?? "en";
+  }
+
   function element(id) {
     return document.getElementById(id);
   }
@@ -233,12 +271,17 @@
     let actionContext;
     let settings = {};
     let globalSettings = {};
+    let hostLanguage = detectHostLanguage();
+
+    function inspectorLanguage() {
+      return hostLanguage;
+    }
 
     const shortcutButton = element("shortcut-record");
     const shortcutCancel = element("shortcut-cancel");
     let shortcutState = "idle";
     function renderShortcut() {
-      const en = settings.language === "en";
+      const en = inspectorLanguage() === "en";
       const section = element("dictation-shortcut-options");
       if (section) section.hidden = actionUUID !== "io.local.codexdeck.microplus.global-dictation";
       const shortcut = settings.globalDictationShortcut ?? { code: "AltRight", modifiers: [] };
@@ -281,7 +324,7 @@
       for (const id of options.preferenceIds) {
         const target = element(id);
         if (!target) continue;
-        const configured = settings[id] ?? defaults[id];
+        const configured = settings[id] ?? (id === "language" ? inspectorLanguage() : defaults[id]);
         const value = id === "unopenedTaskBehavior"
           && configured !== "new-window"
           && configured !== "current-window"
@@ -303,7 +346,7 @@
         const mode = element("mode");
         if (mode) mode.value = ["auto", "five-hour", "weekly"].includes(settings.mode) ? settings.mode : "auto";
       }
-      applyLanguage(settings.language, options);
+      applyLanguage(inspectorLanguage(), options);
       renderShortcut();
     }
 
@@ -316,7 +359,7 @@
     function save(id, target) {
       const value = checkboxIds.has(id) ? target.checked : numberIds.has(id) ? Number(target.value) : target.value;
       settings = { ...settings, [id]: value };
-      if (id === "language") { applyLanguage(target.value, options); renderShortcut(); }
+      if (id === "language") { applyLanguage(inspectorLanguage(), options); renderShortcut(); }
       sendSettings();
     }
 
@@ -336,6 +379,7 @@
     }
 
     window.connectElgatoStreamDeckSocket = (port, uuid, registerEvent, info, actionInfo) => {
+      hostLanguage = detectHostLanguage(info);
       const action = JSON.parse(actionInfo);
       pluginContext = uuid;
       actionUUID = action.action;

@@ -55,7 +55,7 @@ class FakeWebSocket {
 
 test("common and agent PIs localize every visible control and document language", async () => {
   for (const inspector of ["common.html", "agent.html"] as const) {
-    const mounted = await mountInspector(inspector, { language: "en" });
+    const mounted = await mountInspector(inspector, { language: "ja" }, JSON.stringify({ application: { language: "en" } }));
     const english = inspector === "agent.html"
       ? {
         "label-title": "Label", "language-title": "Language", "text-size-title": "Text size",
@@ -82,12 +82,40 @@ test("common and agent PIs localize every visible control and document language"
 
     const language = mounted.elements.get("language");
     assert.ok(language);
-    language.value = "ja";
+    language.value = "en";
     language.dispatch("change");
-    assert.equal(mounted.documentElement.lang, "ja", `${inspector} must restore document.lang for Japanese`);
-    assert.equal(mounted.elements.get("label-title")?.textContent, "表示名", `${inspector}:Japanese label title`);
-    assert.equal(mounted.elements.get("label")?.placeholder, "既定", `${inspector}:Japanese label placeholder`);
-    assert.equal(mounted.options.get("normal")?.textContent, "標準", `${inspector}:Japanese normal option`);
+    assert.equal(mounted.documentElement.lang, "en", `${inspector} inspector locale must remain the host locale`);
+    assert.equal(mounted.elements.get("label-title")?.textContent, "Label", `${inspector}:host label title`);
+    assert.equal(mounted.elements.get("label")?.placeholder, "Default", `${inspector}:host label placeholder`);
+    assert.equal(mounted.options.get("normal")?.textContent, "Normal", `${inspector}:host normal option`);
+  }
+});
+
+test("Stream Deck locale drives inspector copy independently of the per-key language", async () => {
+  const englishHost = await mountInspector("agent.html", { language: "ja" }, JSON.stringify({ application: { language: "en-US" } }));
+  assert.equal(englishHost.documentElement.lang, "en");
+  assert.equal(englishHost.elements.get("label-title")?.textContent, "Label");
+  assert.equal(englishHost.elements.get("language")?.value, "ja", "the per-key display language remains Japanese");
+
+  const japaneseHost = await mountInspector("agent.html", { language: "en" }, JSON.stringify({ application: { locale: "ja-JP" } }));
+  assert.equal(japaneseHost.documentElement.lang, "ja");
+  assert.equal(japaneseHost.elements.get("label-title")?.textContent, "表示名");
+  assert.equal(japaneseHost.elements.get("language")?.value, "en", "the per-key display language remains English");
+
+  const missingLanguage = await mountInspector("context-compaction.html", {}, JSON.stringify({ application: { language: "en" } }));
+  assert.equal(missingLanguage.documentElement.lang, "en");
+  assert.equal(missingLanguage.elements.get("press-help")?.textContent, "The default requests native compaction for the active Codex task. Display actions leave context unchanged.");
+  assert.equal(missingLanguage.elements.get("language")?.value, "en", "missing per-key language follows the host locale in the inspector");
+});
+
+test("every native property inspector has English labels and help on an English host", async () => {
+  for (const inspector of ["common.html", "agent.html", "usage-limit.html", "context-compaction.html"] as const) {
+    const mounted = await mountInspector(inspector, {}, JSON.stringify({ application: { language: "en" } }));
+    const visibleCopy = [
+      ...[...mounted.elements.values()].map((element) => `${element.textContent} ${element.label} ${element.placeholder}`),
+      ...[...mounted.options.values()].map((option) => option.textContent),
+    ].join(" ");
+    assert.doesNotMatch(visibleCopy, /[\u3040-\u30ff\u3400-\u9fff]/u, `${inspector} leaked Japanese copy on an English host`);
   }
 });
 
@@ -173,7 +201,7 @@ async function flush(): Promise<void> {
   await new Promise<void>((resolve) => setImmediate(resolve));
 }
 
-async function mountInspector(inspector: "common.html" | "agent.html", settings: Record<string, unknown>): Promise<{
+async function mountInspector(inspector: "common.html" | "agent.html" | "usage-limit.html" | "context-compaction.html", settings: Record<string, unknown>, info = "{}"): Promise<{
   elements: Map<string, FakeElement>;
   options: Map<string, FakeElement>;
   documentElement: { lang: string };
@@ -221,7 +249,7 @@ async function mountInspector(inspector: "common.html" | "agent.html", settings:
   runInNewContext(shared, context);
   runInNewContext(script, context);
   const connect = window.connectElgatoStreamDeckSocket as (port: string, uuid: string, register: string, info: string, actionInfo: string) => void;
-  connect("12345", "pi-test", "registerPropertyInspector", "{}", JSON.stringify({
+  connect("12345", "pi-test", "registerPropertyInspector", info, JSON.stringify({
     action: "io.local.codexdeck.microplus.test-action",
     context: "action-context",
     payload: { controller: inspector === "common.html" ? "Encoder" : "Keypad", settings },

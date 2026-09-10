@@ -6,7 +6,12 @@ import { safeActionFailureCode, type ActionFailureCode } from "./action-feedback
 import { CodexMicroRendererBridge } from "./codex-micro-renderer-bridge.js";
 import { focusCodexApp } from "./codex-focus.js";
 import { feedbackDelta } from "./feedback-delta.js";
-import { DISPLAY_PRESS_EXCLUDED_KEYCAP_IDS, parseActionPreferences, type ActionPreferences } from "./action-preferences.js";
+import {
+  DISPLAY_PRESS_EXCLUDED_KEYCAP_IDS,
+  parseActionPreferences,
+  streamDeckDisplayLanguage,
+  type ActionPreferences,
+} from "./action-preferences.js";
 import { resolveEffectivePhysicalSlot } from "./effective-layout.js";
 import { InputCoordinator, InputOwnedError } from "./input-coordination.js";
 import { OFFICIAL_KEYCAP_IDS, type OfficialKeycapId } from "./keycaps.js";
@@ -240,7 +245,7 @@ export class DeckController {
 
   setActionPreferences(actionId: string, settings: unknown): void {
     const previous = this.actionPreferences.get(actionId);
-    const next = parseActionPreferences(settings);
+    const next = parseActionPreferences(settings, streamDeckDisplayLanguage());
     this.actionPreferences.set(actionId, next);
     if (next.animation === false) this.keyContacts.delete(actionId);
     const dial = this.plusDials.get(actionId);
@@ -346,7 +351,7 @@ export class DeckController {
   }
 
   private language(actionId: string): "ja" | "en" {
-    return this.actionPreferences.get(actionId)?.language ?? "ja";
+    return this.actionPreferences.get(actionId)?.language ?? streamDeckDisplayLanguage();
   }
 
   async start(): Promise<void> {
@@ -769,7 +774,10 @@ export class DeckController {
     const pressToken = this.pressFeedbackTokens.get(ownerId);
     const token = this.beginFeedbackOperation(ownerId);
     const release = this.inputs.release(ownerId);
-    void this.setOperationFeedback(ownerId, { phase: "pending", detail: "解除確認中" }, token);
+    void this.setOperationFeedback(ownerId, {
+      phase: "pending",
+      detail: this.language(ownerId) === "ja" ? "解除確認中" : "RELEASE",
+    }, token);
     try {
       const downResult = await release;
       const recorded = this.retainedPressResults.get(ownerId);
@@ -855,7 +863,10 @@ export class DeckController {
     const operation = previousRotation.catch(() => undefined).then(async () => {
       if (this.plusDials.get(actionId) !== dial) throw new Error("E_MAPPING_STALE");
       token = this.beginFeedbackOperation(actionId);
-      void this.setOperationFeedback(actionId, { phase: "pending", detail: "結果確認中" }, token);
+      void this.setOperationFeedback(actionId, {
+        phase: "pending",
+        detail: this.language(actionId) === "ja" ? "結果確認中" : "RESULT",
+      }, token);
       try {
         await this.plusDialRotateNow(actionId, ticks);
       } catch (error) {
@@ -1019,7 +1030,11 @@ export class DeckController {
   ): Promise<MutationConfirmation> {
     const token = this.beginFeedbackOperation(actionId);
     const observationSequence = ++this.snapshotObservationSequence;
-    void this.setOperationFeedback(actionId, { phase: "pending", detail: "結果確認中", target }, token);
+    void this.setOperationFeedback(actionId, {
+      phase: "pending",
+      detail: this.language(actionId) === "ja" ? "結果確認中" : "RESULT",
+      target,
+    }, token);
     const pending = this.prepareAction(actionId).then(operation);
     try {
       const result = await pending;
@@ -1063,7 +1078,11 @@ export class DeckController {
     this.pressFeedbackTokens.set(ownerId, token);
     this.retainedPressResults.delete(ownerId);
     const pending = operation();
-    void this.setOperationFeedback(ownerId, { phase: "pending", detail: "結果確認中", target }, token);
+    void this.setOperationFeedback(ownerId, {
+      phase: "pending",
+      detail: this.language(ownerId) === "ja" ? "結果確認中" : "RESULT",
+      target,
+    }, token);
     try {
       const result = await pending;
       if (this.pressFeedbackTokens.get(ownerId) !== token) return result;
@@ -1072,7 +1091,11 @@ export class DeckController {
         this.retainedPressResults.set(ownerId, { token, feedback });
         await this.setOperationFeedback(ownerId, feedback, token);
       } else {
-        await this.setOperationFeedback(ownerId, { phase: "held", detail: "押下中", target }, token);
+        await this.setOperationFeedback(ownerId, {
+          phase: "held",
+          detail: this.language(ownerId) === "ja" ? "押下中" : "HELD",
+          target,
+        }, token);
       }
       return result;
     } catch (error) {
@@ -1392,7 +1415,7 @@ export class DeckController {
           : this.lastReasoningAdjustment === "decrease" ? "下げる" : null) : null,
       } : {
         activeThreadTitle: this.snapshot?.activeThreadTitle ?? null,
-        target: "設定依存",
+        target: this.language(action.id) === "ja" ? "設定依存" : "SETTINGS DEPENDENT",
       }),
       ...(operation ? {
         state: operation.phase === "pending" ? "pending" as const
@@ -1523,7 +1546,9 @@ export class DeckController {
       this.lastImages.delete(action.id);
     }
     const unavailable = this.health.state === "degraded" ? "Signals unavailable" : "Not assigned";
-    const title = agent?.title ?? (agent?.threadKey && this.health.state === "ready" ? "名称未取得" : unavailable);
+    const title = agent?.title ?? (agent?.threadKey && this.health.state === "ready"
+      ? this.language(action.id) === "ja" ? "名称未取得" : "TITLE UNAVAILABLE"
+      : unavailable);
     await this.setImage(action, this.withOperationFeedback(action.id, renderAgentKey(
       slot,
       title,

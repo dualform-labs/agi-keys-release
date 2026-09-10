@@ -26,7 +26,7 @@ Our vision is a tactile interface for increasingly capable AI—including a futu
 |:--:|---|---|
 | <img src="packages/microplus/static/imgs/action-agent-1.svg" width="36" alt=""> | **Find your focus** | Switch tasks and see their state. |
 | <img src="packages/microplus/static/imgs/action-keycap-mic.svg" width="36" alt=""> | **Speak your next move** | Register your dictation shortcut per key. |
-| <img src="packages/microplus/static/imgs/action-send.svg" width="36" alt=""> | **Keep the conversation moving** | Put send within fingertip reach. |
+| <img src="packages/microplus/static/imgs/action-keycap-codex.svg" width="36" alt=""> | **Keep the conversation moving** | Put send within fingertip reach. |
 | <img src="packages/microplus/static/imgs/action-keycap-side-chat.svg" width="36" alt=""> | **Explore a side thought** | Bring side chat into your physical workflow. |
 | <img src="packages/microplus/static/imgs/action-plus-reasoning.svg" width="36" alt=""> | **Set the pace** | Adjust model and reasoning with dial controls. |
 | <img src="packages/microplus/static/imgs/action-usage-overview.svg" width="36" alt=""> | **Know where you stand** | Keep usage visible; choose the press action. |

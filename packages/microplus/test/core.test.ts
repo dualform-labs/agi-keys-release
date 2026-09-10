@@ -56,7 +56,7 @@ test("raw Micro actions advertise physical IDs and defer meaning to Codex settin
     assert.ok(action, `${suffix} is missing from the manifest`);
     assert.match(action.Name, new RegExp(`^${physicalId} · `));
     assert.match(action.Tooltip ?? "", new RegExp(`${physicalId}`));
-    assert.match(action.Tooltip ?? "", /現在の割当|エンコーダー割当/u);
+    assert.match(action.Tooltip ?? "", /current assignment|encoder assignment/u);
     assert.doesNotMatch(action.Name, /既定:|承認|拒否|分岐|送信|Plan|戻る|進む|サイドバー|思考レベル/u);
   }
 });
@@ -99,7 +99,7 @@ test("six agents, Micro controls, and 34 executable keycaps are exposed from the
   const act11 = manifest.Actions.find(({ UUID }) => UUID === "io.local.codexdeck.microplus.act11");
   assert.deepEqual(
     { name: act11?.Name, icon: act11?.Icon },
-    { name: "ACT11 · 物理キー", icon: "static/imgs/action-act11" }
+    { name: "ACT11 · Physical key", icon: "static/imgs/action-act11" }
   );
   const act11Icon = await readFile(new URL("../static/imgs/action-act11.svg", import.meta.url), "utf8");
   const act11Icon2x = await readFile(new URL("../static/imgs/action-act11@2x.svg", import.meta.url), "utf8");
@@ -120,8 +120,8 @@ test("six agents, Micro controls, and 34 executable keycaps are exposed from the
   const executableActions = manifest.Actions.filter(({ UUID }) => UUID.includes(".keycap-"));
   assert.equal(executableActions.length, 34);
   for (const action of executableActions) {
-    if (action.UUID.endsWith(".keycap-codex")) assert.equal(action.Name, "Codexに送信");
-    else assert.match(action.Name, /^キーキャップ · /);
+    if (action.UUID.endsWith(".keycap-codex")) assert.equal(action.Name, "Send to Codex");
+    else assert.match(action.Name, /^Keycap · /);
   }
   for (const id of ["MIC", "MIC1", "BRANCH", "EMPT1", "EMPT2", "EMPT3", "EMPT4", "YOLO", "YEET", "EMPT5"]) {
     assert.ok(OFFICIAL_KEYCAP_IDS.includes(id as (typeof OFFICIAL_KEYCAP_IDS)[number]), id);

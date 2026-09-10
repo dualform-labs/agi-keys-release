@@ -60,6 +60,8 @@ await cp(resolve("static/imgs"), resolve(output, "static/imgs"), { recursive: tr
 await cp(resolve("static/property-inspector"), resolve(output, "static/property-inspector"), { recursive: true });
 await cp(resolve("static/layouts"), resolve(output, "static/layouts"), { recursive: true });
 await cp(resolve("static/manifest.json"), resolve(output, "manifest.json"));
+await cp(resolve("static/en.json"), resolve(output, "en.json"));
+await cp(resolve("static/ja.json"), resolve(output, "ja.json"));
 await cp(resolve("LICENSE"), resolve(output, "LICENSE"));
 await cp(resolve("THIRD_PARTY_NOTICE.md"), resolve(output, "THIRD_PARTY_NOTICE.md"));
 

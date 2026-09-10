@@ -4,6 +4,7 @@ import test from "node:test";
 import type { DidReceiveSettingsEvent, WillAppearEvent } from "@elgato/streamdeck";
 import {
   DISPLAY_PRESS_EXCLUDED_KEYCAP_IDS,
+  displayLanguageFromLocale,
   parseActionPreferences,
   parseDialGesturePreferences,
   PreferenceAction,
@@ -69,6 +70,19 @@ test("action preferences normalize untrusted per-instance settings", () => {
     assert.equal(parseActionPreferences({ pressBehavior }).pressBehavior, pressBehavior);
   }
   assert.equal(parseActionPreferences({ pressBehavior: "model-increase" }).pressBehavior, "none");
+});
+
+test("host locale supplies the default display language while explicit settings win", () => {
+  assert.equal(displayLanguageFromLocale("en"), "en");
+  assert.equal(displayLanguageFromLocale("en-US"), "en");
+  assert.equal(displayLanguageFromLocale("en_GB"), "en");
+  assert.equal(displayLanguageFromLocale("ja-JP"), "ja");
+  assert.equal(displayLanguageFromLocale("fr-FR"), "ja");
+
+  assert.equal(parseActionPreferences({}, "en").language, "en");
+  assert.equal(parseActionPreferences({ language: "ja" }, "en").language, "ja");
+  assert.equal(parseActionPreferences({ language: "en" }, "ja").language, "en");
+  assert.equal(parseActionPreferences({ language: "fr" }, "en").language, "en");
 });
 
 test("dial gesture preferences normalize explicit and legacy touch settings", () => {

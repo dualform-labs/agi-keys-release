@@ -1,6 +1,11 @@
 import streamDeck, { action, type DidReceiveSettingsEvent, type KeyAction, type KeyDownEvent, type KeyUpEvent, type WillAppearEvent, type WillDisappearEvent } from "@elgato/streamdeck";
 import { beginActionFeedback, currentActionFeedback, showAlertIfCurrent, type ActionFeedbackToken } from "./action-feedback.js";
-import { parseActionPreferences, PreferenceAction, type ActionPreferences } from "./action-preferences.js";
+import {
+  parseActionPreferences,
+  PreferenceAction,
+  streamDeckDisplayLanguage,
+  type ActionPreferences,
+} from "./action-preferences.js";
 import type { DeckController } from "./controller.js";
 import {
   globalDictationHold,
@@ -79,7 +84,7 @@ export class GlobalDictationAction extends PreferenceAction {
       beginActionFeedback(ev.action);
       const key: VisibleKey = {
         action: ev.action,
-        preferences: parseActionPreferences(ev.payload.settings),
+        preferences: parseActionPreferences(ev.payload.settings, streamDeckDisplayLanguage()),
         held: false,
         desiredPressed: false,
         generation: 0,
@@ -102,7 +107,7 @@ export class GlobalDictationAction extends PreferenceAction {
     const key = this.keys.get(ev.action.id);
     if (!key || !ev.action.isKey()) return;
     key.action = ev.action;
-    key.preferences = parseActionPreferences(ev.payload.settings);
+    key.preferences = parseActionPreferences(ev.payload.settings, streamDeckDisplayLanguage());
     key.shortcut = parseShortcutSetting(ev.payload.settings);
     if (key.preferences.animation === false) key.contact = undefined;
     this.stopAnimation(key);
