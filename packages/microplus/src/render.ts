@@ -1303,8 +1303,8 @@ function localizeFallbackKeycap(value: string, language?: DisplayLanguage): stri
       empt1: "SHORTCUT 1", empt2: "SHORTCUT 2", empt3: "SHORTCUT 3", empt4: "SHORTCUT 4", empt5: "SHORTCUT 5",
       "not connected": "OFFLINE", unassigned: "UNASSIGNED", "act11 inactive": "ACT11 OFF"
     };
-    if (labels[rawId]) return labels[rawId];
-    if (labels[raw]) return labels[raw];
+    if (Object.hasOwn(labels, rawId)) return labels[rawId]!;
+    if (Object.hasOwn(labels, raw)) return labels[raw]!;
     if (value === "ACT11 無効") return "ACT11 OFF";
     if (value === "未接続") return "OFFLINE";
     if (value === "未割当") return "UNASSIGNED";
@@ -1335,7 +1335,7 @@ function localizeFallbackKeycap(value: string, language?: DisplayLanguage): stri
     settings: "設定",
     skills: "スキル"
   };
-  return labels[normalized] ?? value;
+  return Object.hasOwn(labels, normalized) ? labels[normalized]! : value;
 }
 
 export function escapeXml(value: string): string {

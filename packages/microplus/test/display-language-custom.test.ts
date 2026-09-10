@@ -100,6 +100,16 @@ test("every official keycap has a compact English label", () => {
   }
 });
 
+test("prototype-property fallback IDs render in both languages", () => {
+  for (const language of ["ja", "en"] as const) {
+    for (const id of ["__proto__", "constructor"] as const) {
+      const svg = decode(renderFallbackKeycap(id, "dark", language));
+      assert.match(svg, /data-icon-source="fallback-label"/u, `${id}/${language} should use fallback rendering`);
+      assert.ok(svg.includes(`data-keycap-id="${id}"`), `${id}/${language} should preserve the fallback ID marker`);
+    }
+  }
+});
+
 function renderFallbackKeycapForTest(id: string): string {
   // Keep this helper local to the contract test so the loop checks the public
   // renderer output while the import remains independent of implementation
