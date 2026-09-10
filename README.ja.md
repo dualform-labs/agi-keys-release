@@ -12,7 +12,7 @@
 
 </div>
 
-![Codex Keys — a tactile control concept with assignable keys and four dials](docs/assets/readme-hero.svg)
+![Codex Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product.png)
 
 AIにできることが増えた。なら、AIとの付き合い方も進化していい。
 
@@ -33,7 +33,7 @@ AIにできることが増えた。なら、AIとの付き合い方も進化し�
 | <img src="packages/microplus/static/imgs/action-keycap-diff.svg" width="36" alt=""> | **コードとの距離を縮める** | 差分など開発操作も会話のそばに。 |
 | <img src="packages/microplus/static/imgs/action-keycap-skills.svg" width="36" alt=""> | **あなたの操作面に** | よく使う操作を、使う順番で配置。 |
 
-*一覧は実際のプラグインアイコンです。冒頭の図は操作イメージで、実機スクリーンショットや固定の初期配置ではありません。*
+*冒頭は稼働中のプラグインUIを参照した商品CGです。タスク名はサンプルで、細部は実機と異なる場合があります。一覧のアイコンは操作一覧用の実アセットで、動的なキー画面のスクリーンショットではありません。*
 
 ## 話す。回す。流れを止めない。
 
