@@ -144,7 +144,7 @@ abstract class MicroPlusDialAction extends PreferenceAction {
 }
 
 /** Selects one of the six native Codex Micro agent slots, then activates it on press. */
-@action({ UUID: "io.local.codexdeck.microplus.dial-agent" })
+@action({ UUID: "com.dualform.agikeys.dial-agent" })
 export class PlusAgentsDial extends MicroPlusDialAction {
   constructor(controller: DeckController) {
     super(controller, "agents", "Agent");
@@ -152,7 +152,7 @@ export class PlusAgentsDial extends MicroPlusDialAction {
 }
 
 /** Uses the native MIND+/MIND- reasoning actions and native encoder click. */
-@action({ UUID: "io.local.codexdeck.microplus.dial-reasoning" })
+@action({ UUID: "com.dualform.agikeys.dial-reasoning" })
 export class PlusReasoningDial extends MicroPlusDialAction {
   constructor(controller: DeckController) {
     super(controller, "reasoning", "Reasoning");
@@ -160,7 +160,7 @@ export class PlusReasoningDial extends MicroPlusDialAction {
 }
 
 /** Sends the native Micro left/right navigation path; its semantic meaning is settings-dependent. */
-@action({ UUID: "io.local.codexdeck.microplus.dial-conversation" })
+@action({ UUID: "com.dualform.agikeys.dial-conversation" })
 export class PlusConversationDial extends MicroPlusDialAction {
   constructor(controller: DeckController) {
     super(controller, "navigation", "左右操作");
@@ -168,7 +168,7 @@ export class PlusConversationDial extends MicroPlusDialAction {
 }
 
 /** Selects a configured Codex command on rotation and invokes it on press. */
-@action({ UUID: "io.local.codexdeck.microplus.dial-commands" })
+@action({ UUID: "com.dualform.agikeys.dial-commands" })
 export class PlusCommandsDial extends MicroPlusDialAction {
   constructor(controller: DeckController) {
     super(controller, "commands", "コマンド");
@@ -176,7 +176,7 @@ export class PlusCommandsDial extends MicroPlusDialAction {
 }
 
 /** Selects a usage window on rotation and refreshes the usage snapshot on press. */
-@action({ UUID: "io.local.codexdeck.microplus.dial-usage" })
+@action({ UUID: "com.dualform.agikeys.dial-usage" })
 export class PlusUsageDial extends MicroPlusDialAction {
   constructor(controller: DeckController) {
     super(controller, "usage", "使用量");
@@ -184,7 +184,7 @@ export class PlusUsageDial extends MicroPlusDialAction {
 }
 
 /** Opens the native model picker and navigates its verified menu on rotation. */
-@action({ UUID: "io.local.codexdeck.microplus.dial-model" })
+@action({ UUID: "com.dualform.agikeys.dial-model" })
 export class PlusModelDial extends MicroPlusDialAction {
   constructor(controller: DeckController) {
     super(controller, "model", "モデル");

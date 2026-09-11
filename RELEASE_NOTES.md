@@ -1,4 +1,4 @@
-# Codex Keys 0.1.0.64 — Preview
+# AGI Keys 0.1.0.66 — Preview
 
 English | [日本語](RELEASE_NOTES.ja.md)
 
@@ -6,6 +6,7 @@ An unofficial macOS Stream Deck+ plugin for task selection, models, reasoning ef
 
 ## Changes
 
+- Renamed the product to AGI Keys and moved the plugin/action namespace to `com.dualform.agikeys` before public release.
 - English localization across the action list, settings, display feedback and documentation, with Japanese retained.
 
 - Custom icon reads now validate names, links and file sizes. Prototype-property names render safely as fallback labels.
@@ -21,7 +22,7 @@ An unofficial macOS Stream Deck+ plugin for task selection, models, reasoning ef
 3. Drag actions from the action list and configure language and press behavior in the property inspector.
 4. Confirm the Codex connection before using the actions. Plugin installation alone does not establish the connection. Fresh installation and automatic recovery after restart remain pending final verification.
 
-The compatibility UUID remains `io.local.codexdeck.microplus`. Existing profiles do not need to be deleted.
+This pre-release rename changes the plugin UUID to `com.dualform.agikeys`. Pre-release profiles that referenced the former development UUID must assign the AGI Keys actions again.
 
 ## Voice input
 
@@ -35,7 +36,7 @@ These send Codex Micro physical key identifiers. They do not identify Stream Dec
 
 - The connection depends on Codex's Micro operation path rather than a public API; Codex updates can change compatibility.
 - Some operations can be observed only as accepted dispatches, not confirmed downstream effects.
-- The 0.1.0.63 baseline passed 711 automated tests and type checking. This does not establish hardware acceptance of all 67 actions, all shortcuts or restart recovery.
+- The AGI Keys 0.1.0.66 source passed 723 automated checks, type checking and official Stream Deck package validation. This does not establish hardware acceptance of all 67 actions, all shortcuts or restart recovery.
 - This is a Preview. Complete hardware and fresh-install checks before a stable release.
 - The local CDP client-authentication limitation remains unresolved. See [SECURITY.md](SECURITY.md).
 

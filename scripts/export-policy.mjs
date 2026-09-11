@@ -4,7 +4,7 @@ const localFiles = new Set([
   'AGENTS.md', 'APPROVED_PLAN.md', 'HANDOFF.md', 'DESIGN.md', 'TRASH-FILES.md',
   'docs/private-github.md', 'docs/refactoring-20260909.md',
   'scripts/publish-private.mjs',
-  'Restore Codex Connection.command',
+  'Restore AGI Keys Connection.command',
 ]);
 const localDirectories = [
   'TRASH/', 'specs/', 'docs/evidence/', 'docs/research/', 'docs/research-v2/',

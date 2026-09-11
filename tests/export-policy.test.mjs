@@ -8,7 +8,7 @@ test('local histories, task fixtures, and machine evidence are excluded', () => 
     'specs/codex-deck-plus/00_overview.md', 'packages/desktop/verify-fixture.ts',
     'packages/desktop/fixture-settings-evidence.json', 'docs/private-github.md',
     'docs/refactoring-20260909.md', 'scripts/publish-private.mjs',
-    'Restore Codex Connection.command', 'packages/desktop/NORMAL-START.md',
+    'Restore AGI Keys Connection.command', 'packages/desktop/NORMAL-START.md',
     'packages/desktop/EXPLICIT-INPUT-CONTRACT.md', 'packages/desktop/FOLLOWER-CONTRACT.md',
     'packages/desktop/README.md']) {
     assert.equal(excludeFromSourceExport(path), true, path);

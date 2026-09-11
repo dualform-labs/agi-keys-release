@@ -330,7 +330,7 @@ test("every manifest action routes its family events to exact controller calls",
 
   // Native six-slot agent actions: key down and key up retain the physical slot.
   for (let slot = 0; slot < 6; slot += 1) {
-    const uuid = `io.local.codexdeck.microplus.agent-${slot + 1}`;
+    const uuid = `com.dualform.agikeys.agent-${slot + 1}`;
     const harness = createController();
     const action = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -359,7 +359,7 @@ test("every manifest action routes its family events to exact controller calls",
     send: "ACT12",
   };
   for (const [suffix, physicalSlot] of Object.entries(microSlots)) {
-    const uuid = `io.local.codexdeck.microplus.${suffix}`;
+    const uuid = `com.dualform.agikeys.${suffix}`;
     const harness = createController();
     const action = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -385,7 +385,7 @@ test("every manifest action routes its family events to exact controller calls",
     sidebar: { direction: "down", icon: "sidebar" },
   };
   for (const [suffix, { direction, icon }] of Object.entries(joystickDirections)) {
-    const uuid = `io.local.codexdeck.microplus.${suffix}`;
+    const uuid = `com.dualform.agikeys.${suffix}`;
     const harness = createController();
     const action = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -404,7 +404,7 @@ test("every manifest action routes its family events to exact controller calls",
   }
 
   {
-    const uuid = "io.local.codexdeck.microplus.reasoning";
+    const uuid = "com.dualform.agikeys.reasoning";
     const harness = createController();
     const action = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -427,7 +427,7 @@ test("every manifest action routes its family events to exact controller calls",
     "reasoning-up": { direction: "increase", keycapId: "MIND+" },
   };
   for (const [suffix, contract] of Object.entries(reasoningDirections)) {
-    const uuid = `io.local.codexdeck.microplus.${suffix}`;
+    const uuid = `com.dualform.agikeys.${suffix}`;
     const harness = createController();
     const action = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -453,7 +453,7 @@ test("every manifest action routes its family events to exact controller calls",
     "dial-model": "model",
   };
   for (const [suffix, kind] of Object.entries(dialKinds)) {
-    const uuid = `io.local.codexdeck.microplus.${suffix}`;
+    const uuid = `com.dualform.agikeys.${suffix}`;
     const harness = createController();
     const action = dialAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -509,7 +509,7 @@ test("every manifest action routes its family events to exact controller calls",
   }
 
   {
-    const uuid = "io.local.codexdeck.microplus.new-task";
+    const uuid = "com.dualform.agikeys.new-task";
     const harness = createController();
     const action = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -525,7 +525,7 @@ test("every manifest action routes its family events to exact controller calls",
   }
 
   {
-    const uuid = "io.local.codexdeck.microplus.usage-limit";
+    const uuid = "com.dualform.agikeys.usage-limit";
     const harness = createController();
     const action = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -541,7 +541,7 @@ test("every manifest action routes its family events to exact controller calls",
   }
 
   {
-    const uuid = "io.local.codexdeck.microplus.usage-overview";
+    const uuid = "com.dualform.agikeys.usage-overview";
     const harness = createController();
     const action = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -555,7 +555,7 @@ test("every manifest action routes its family events to exact controller calls",
   }
 
   {
-    const uuid = "io.local.codexdeck.microplus.context-compaction";
+    const uuid = "com.dualform.agikeys.context-compaction";
     const harness = createController();
     const action = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -572,7 +572,7 @@ test("every manifest action routes its family events to exact controller calls",
   }
 
   {
-    const uuid = "io.local.codexdeck.microplus.rate-limit-reset";
+    const uuid = "com.dualform.agikeys.rate-limit-reset";
     const harness = createController();
     const action = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -591,7 +591,7 @@ test("every manifest action routes its family events to exact controller calls",
   }
 
   {
-    const uuid = 'io.local.codexdeck.microplus.side-to-main';
+    const uuid = 'com.dualform.agikeys.side-to-main';
     const harness = createController();
     const key = keyAction(uuid, harness);
     const runtime = instanceFor(uuid, harness, classes);
@@ -605,7 +605,7 @@ test("every manifest action routes its family events to exact controller calls",
     covered.add(uuid);
   }
   {
-    const uuid = 'io.local.codexdeck.microplus.global-dictation';
+    const uuid = 'com.dualform.agikeys.global-dictation';
     const harness = createController();
     const key = keyAction(uuid, harness);
     const calls: string[] = [];

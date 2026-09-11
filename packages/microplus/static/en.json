@@ -1,31 +1,31 @@
 {
-  "Name": "Codex Keys",
+  "Name": "AGI Keys",
   "Description": "Mac-only Codex Micro compatible controls for Stream Deck, with live task status and usage.",
-  "io.local.codexdeck.microplus.agent-1": {
+  "com.dualform.agikeys.agent-1": {
     "Name": "Agent 1 (Slot 1)",
     "Tooltip": "Selects Codex Micro agent slot 1 and brings Codex to the foreground."
   },
-  "io.local.codexdeck.microplus.agent-2": {
+  "com.dualform.agikeys.agent-2": {
     "Name": "Agent 2 (Slot 2)",
     "Tooltip": "Selects Codex Micro agent slot 2 and brings Codex to the foreground."
   },
-  "io.local.codexdeck.microplus.agent-3": {
+  "com.dualform.agikeys.agent-3": {
     "Name": "Agent 3 (Slot 3)",
     "Tooltip": "Selects Codex Micro agent slot 3 and brings Codex to the foreground."
   },
-  "io.local.codexdeck.microplus.agent-4": {
+  "com.dualform.agikeys.agent-4": {
     "Name": "Agent 4 (Slot 4)",
     "Tooltip": "Selects Codex Micro agent slot 4 and brings Codex to the foreground."
   },
-  "io.local.codexdeck.microplus.agent-5": {
+  "com.dualform.agikeys.agent-5": {
     "Name": "Agent 5 (Slot 5)",
     "Tooltip": "Selects Codex Micro agent slot 5 and brings Codex to the foreground."
   },
-  "io.local.codexdeck.microplus.agent-6": {
+  "com.dualform.agikeys.agent-6": {
     "Name": "Agent 6 (Slot 6)",
     "Tooltip": "Selects Codex Micro agent slot 6 and brings Codex to the foreground."
   },
-  "io.local.codexdeck.microplus.dial-agent": {
+  "com.dualform.agikeys.dial-agent": {
     "Name": "Dial · Agent selection",
     "Tooltip": "Use the Stream Deck+ dial to move through Codex Micro agent candidates, then press or touch to bring the selected agent to the foreground. Touch-and-hold behavior can be configured.",
     "Encoder": {
@@ -37,7 +37,7 @@
       }
     }
   },
-  "io.local.codexdeck.microplus.dial-reasoning": {
+  "com.dualform.agikeys.dial-reasoning": {
     "Name": "Dial · Reasoning level",
     "Tooltip": "Adjust the Codex Micro reasoning level by rotating the Stream Deck+ dial. Press or touch to send an encoder click; long-touch behavior can be configured.",
     "Encoder": {
@@ -49,7 +49,7 @@
       }
     }
   },
-  "io.local.codexdeck.microplus.dial-conversation": {
+  "com.dualform.agikeys.dial-conversation": {
     "Name": "Dial · Left/right control",
     "Tooltip": "Sends the native left/right control configured in Codex Micro. Press or touch to send an encoder click; long-touch behavior can be configured.",
     "Encoder": {
@@ -61,215 +61,215 @@
       }
     }
   },
-  "io.local.codexdeck.microplus.fast": {
+  "com.dualform.agikeys.fast": {
     "Name": "ACT06 · Physical key",
     "Tooltip": "Sends physical position ACT06 in Codex Micro. The action and key image follow the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.approve": {
+  "com.dualform.agikeys.approve": {
     "Name": "ACT07 · Physical key",
     "Tooltip": "Sends physical position ACT07 in Codex Micro. The action and key image follow the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.decline": {
+  "com.dualform.agikeys.decline": {
     "Name": "ACT08 · Physical key",
     "Tooltip": "Sends physical position ACT08 in Codex Micro. The action and key image follow the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.fork": {
+  "com.dualform.agikeys.fork": {
     "Name": "ACT09 · Physical key",
     "Tooltip": "Sends physical position ACT09 in Codex Micro. The action and key image follow the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.dictation": {
+  "com.dualform.agikeys.dictation": {
     "Name": "ACT10 · Physical key",
     "Tooltip": "Sends key-down and key-up to physical position ACT10 in Codex Micro. The action and key image follow the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.act11": {
+  "com.dualform.agikeys.act11": {
     "Name": "ACT11 · Physical key",
     "Tooltip": "Sends key-down and key-up to physical position ACT11 in Codex Micro. The action and key image follow the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.send": {
+  "com.dualform.agikeys.send": {
     "Name": "ACT12 · Physical key",
     "Tooltip": "Sends physical position ACT12 in Codex Micro. The action and key image follow the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.plan": {
+  "com.dualform.agikeys.plan": {
     "Name": "JOY_UP · Physical direction",
     "Tooltip": "Sends physical direction JOY_UP in Codex Micro. The action follows the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.back": {
+  "com.dualform.agikeys.back": {
     "Name": "JOY_LEFT · Physical direction",
     "Tooltip": "Sends physical direction JOY_LEFT in Codex Micro. The action follows the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.forward": {
+  "com.dualform.agikeys.forward": {
     "Name": "JOY_RIGHT · Physical direction",
     "Tooltip": "Sends physical direction JOY_RIGHT in Codex Micro. The action follows the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.sidebar": {
+  "com.dualform.agikeys.sidebar": {
     "Name": "JOY_DOWN · Physical direction",
     "Tooltip": "Sends physical direction JOY_DOWN in Codex Micro. The action follows the current assignment in Codex."
   },
-  "io.local.codexdeck.microplus.reasoning": {
+  "com.dualform.agikeys.reasoning": {
     "Name": "ENC_CLK · Physical press",
     "Tooltip": "Sends physical position ENC_CLK in Codex Micro. The action follows the current encoder assignment in Codex."
   },
-  "io.local.codexdeck.microplus.reasoning-down": {
+  "com.dualform.agikeys.reasoning-down": {
     "Name": "Action · Lower reasoning level",
     "Tooltip": "Lowers the Codex Composer reasoning level by one step."
   },
-  "io.local.codexdeck.microplus.reasoning-up": {
+  "com.dualform.agikeys.reasoning-up": {
     "Name": "Action · Raise reasoning level",
     "Tooltip": "Raises the Codex Composer reasoning level by one step."
   },
-  "io.local.codexdeck.microplus.new-task": {
+  "com.dualform.agikeys.new-task": {
     "Name": "Action · New task",
     "Tooltip": "Opens a new task in Codex."
   },
-  "io.local.codexdeck.microplus.usage-limit": {
+  "com.dualform.agikeys.usage-limit": {
     "Name": "Usage · Remaining",
     "Tooltip": "Shows the remaining Codex usage. Five-hour and weekly views can be configured. The Codex action on press can be configured per key."
   },
-  "io.local.codexdeck.microplus.usage-overview": {
+  "com.dualform.agikeys.usage-overview": {
     "Name": "Usage · Five-hour / weekly",
     "Tooltip": "Shows five-hour and weekly Codex usage at the same time. The Codex action on press can be configured per key."
   },
-  "io.local.codexdeck.microplus.rate-limit-reset": {
+  "com.dualform.agikeys.rate-limit-reset": {
     "Name": "Usage · Reset",
     "Tooltip": "Shows available usage reset credits. Hold for 1.2 seconds when eligible to consume one credit."
   },
-  "io.local.codexdeck.microplus.keycap-fast": {
+  "com.dualform.agikeys.keycap-fast": {
     "Name": "Keycap · Fast mode",
     "Tooltip": "Toggles Codex Micro fast mode."
   },
-  "io.local.codexdeck.microplus.keycap-approve": {
+  "com.dualform.agikeys.keycap-approve": {
     "Name": "Keycap · Approve",
     "Tooltip": "Approves the current Codex request."
   },
-  "io.local.codexdeck.microplus.keycap-reject": {
+  "com.dualform.agikeys.keycap-reject": {
     "Name": "Keycap · Reject",
     "Tooltip": "Rejects the current Codex request."
   },
-  "io.local.codexdeck.microplus.keycap-split": {
+  "com.dualform.agikeys.keycap-split": {
     "Name": "Keycap · Split chat",
     "Tooltip": "Splits the current Codex chat."
   },
-  "io.local.codexdeck.microplus.keycap-new-task": {
+  "com.dualform.agikeys.keycap-new-task": {
     "Name": "Keycap · New chat",
     "Tooltip": "Opens a new chat in native Codex Micro."
   },
-  "io.local.codexdeck.microplus.keycap-reasoning-up": {
+  "com.dualform.agikeys.keycap-reasoning-up": {
     "Name": "Keycap · Increase reasoning",
     "Tooltip": "Increases the current Composer reasoning level."
   },
-  "io.local.codexdeck.microplus.keycap-reasoning-down": {
+  "com.dualform.agikeys.keycap-reasoning-down": {
     "Name": "Keycap · Decrease reasoning",
     "Tooltip": "Decreases the current Composer reasoning level."
   },
-  "io.local.codexdeck.microplus.keycap-codex": {
+  "com.dualform.agikeys.keycap-codex": {
     "Name": "Send to Codex",
     "Tooltip": "Sends the current Composer message."
   },
-  "io.local.codexdeck.microplus.keycap-bug": {
+  "com.dualform.agikeys.keycap-bug": {
     "Name": "Keycap · Feedback",
     "Tooltip": "Opens the Codex feedback screen."
   },
-  "io.local.codexdeck.microplus.keycap-openai-docs": {
+  "com.dualform.agikeys.keycap-openai-docs": {
     "Name": "Keycap · OpenAI docs",
     "Tooltip": "Opens the official OpenAI developer documentation."
   },
-  "io.local.codexdeck.microplus.keycap-terminal": {
+  "com.dualform.agikeys.keycap-terminal": {
     "Name": "Keycap · Terminal",
     "Tooltip": "Toggles the Codex terminal view."
   },
-  "io.local.codexdeck.microplus.keycap-download": {
+  "com.dualform.agikeys.keycap-download": {
     "Name": "Keycap · Copy chat as Markdown",
     "Tooltip": "Copies the current conversation as Markdown."
   },
-  "io.local.codexdeck.microplus.keycap-archive": {
+  "com.dualform.agikeys.keycap-archive": {
     "Name": "Keycap · Archive chat",
     "Tooltip": "Archives the current Codex chat."
   },
-  "io.local.codexdeck.microplus.keycap-browser": {
+  "com.dualform.agikeys.keycap-browser": {
     "Name": "Keycap · Browser tab",
     "Tooltip": "Opens the Codex browser tab."
   },
-  "io.local.codexdeck.microplus.keycap-pin": {
+  "com.dualform.agikeys.keycap-pin": {
     "Name": "Keycap · Pin chat",
     "Tooltip": "Toggles pinning for the current chat."
   },
-  "io.local.codexdeck.microplus.keycap-diff": {
+  "com.dualform.agikeys.keycap-diff": {
     "Name": "Keycap · Review view",
     "Tooltip": "Toggles the Codex review view."
   },
-  "io.local.codexdeck.microplus.keycap-play": {
+  "com.dualform.agikeys.keycap-play": {
     "Name": "Keycap · Run primary action",
     "Tooltip": "Runs the first configured environment action."
   },
-  "io.local.codexdeck.microplus.keycap-git-commit": {
+  "com.dualform.agikeys.keycap-git-commit": {
     "Name": "Keycap · Commit or push",
     "Tooltip": "Opens the native Codex Git commit action."
   },
-  "io.local.codexdeck.microplus.keycap-branch": {
+  "com.dualform.agikeys.keycap-branch": {
     "Name": "Keycap · Create draft PR",
     "Tooltip": "Opens the draft PR creation flow in Codex."
   },
-  "io.local.codexdeck.microplus.keycap-merge": {
+  "com.dualform.agikeys.keycap-merge": {
     "Name": "Keycap · Merge PR",
     "Tooltip": "Opens the PR merge flow in Codex."
   },
-  "io.local.codexdeck.microplus.keycap-pull-request": {
+  "com.dualform.agikeys.keycap-pull-request": {
     "Name": "Keycap · Create PR",
     "Tooltip": "Opens the native Codex PR creation flow."
   },
-  "io.local.codexdeck.microplus.keycap-add-photos": {
+  "com.dualform.agikeys.keycap-add-photos": {
     "Name": "Keycap · Add photos",
     "Tooltip": "Adds photos to the current Composer."
   },
-  "io.local.codexdeck.microplus.keycap-lab": {
+  "com.dualform.agikeys.keycap-lab": {
     "Name": "Keycap · Codex Micro settings",
     "Tooltip": "Opens Codex Micro settings."
   },
-  "io.local.codexdeck.microplus.keycap-side-chat": {
+  "com.dualform.agikeys.keycap-side-chat": {
     "Name": "Keycap · Side chat",
     "Tooltip": "Opens Codex side chat."
   },
-  "io.local.codexdeck.microplus.keycap-tasks": {
+  "com.dualform.agikeys.keycap-tasks": {
     "Name": "Keycap · Task management",
     "Tooltip": "Opens Codex task management."
   },
-  "io.local.codexdeck.microplus.keycap-settings": {
+  "com.dualform.agikeys.keycap-settings": {
     "Name": "Keycap · Settings",
     "Tooltip": "Opens Codex settings."
   },
-  "io.local.codexdeck.microplus.keycap-open-folder": {
+  "com.dualform.agikeys.keycap-open-folder": {
     "Name": "Keycap · Open folder",
     "Tooltip": "Opens a folder in Codex."
   },
-  "io.local.codexdeck.microplus.keycap-add-files": {
+  "com.dualform.agikeys.keycap-add-files": {
     "Name": "Keycap · Attach files",
     "Tooltip": "Attaches files or folders to the current Composer."
   },
-  "io.local.codexdeck.microplus.keycap-skills": {
+  "com.dualform.agikeys.keycap-skills": {
     "Name": "Keycap · Plugins",
     "Tooltip": "Opens the Codex plugin list."
   },
-  "io.local.codexdeck.microplus.keycap-mic": {
+  "com.dualform.agikeys.keycap-mic": {
     "Name": "Keycap · Push to talk (large)",
     "Tooltip": "Starts Codex voice input while pressed."
   },
-  "io.local.codexdeck.microplus.keycap-mic-single": {
+  "com.dualform.agikeys.keycap-mic-single": {
     "Name": "Keycap · Push to talk",
     "Tooltip": "Starts Codex voice input."
   },
-  "io.local.codexdeck.microplus.keycap-create-branch": {
+  "com.dualform.agikeys.keycap-create-branch": {
     "Name": "Keycap · Create branch",
     "Tooltip": "Opens the branch creation flow in Codex."
   },
-  "io.local.codexdeck.microplus.keycap-yolo": {
+  "com.dualform.agikeys.keycap-yolo": {
     "Name": "Keycap · Enter :yolo:",
     "Tooltip": "Enters :yolo: into the Composer."
   },
-  "io.local.codexdeck.microplus.keycap-yeet": {
+  "com.dualform.agikeys.keycap-yeet": {
     "Name": "Keycap · Enter :yeet:",
     "Tooltip": "Enters :yeet: into the Composer."
   },
-  "io.local.codexdeck.microplus.dial-commands": {
+  "com.dualform.agikeys.dial-commands": {
     "Name": "Dial · Select action",
     "Tooltip": "Rotate to choose an action and press to run it.",
     "Encoder": {
@@ -281,7 +281,7 @@
       }
     }
   },
-  "io.local.codexdeck.microplus.dial-usage": {
+  "com.dualform.agikeys.dial-usage": {
     "Name": "Dial · Usage",
     "Tooltip": "Rotate to switch between five-hour and weekly remaining usage, then press to refresh.",
     "Encoder": {
@@ -293,7 +293,7 @@
       }
     }
   },
-  "io.local.codexdeck.microplus.dial-model": {
+  "com.dualform.agikeys.dial-model": {
     "Name": "Dial · Model",
     "Tooltip": "Rotate to change the model. The current model is shown on the display.",
     "Encoder": {
@@ -305,15 +305,15 @@
       }
     }
   },
-  "io.local.codexdeck.microplus.context-compaction": {
+  "com.dualform.agikeys.context-compaction": {
     "Name": "Context compaction",
     "Tooltip": "Shows observed context usage for the current Codex task and requests native compaction on press."
   },
-  "io.local.codexdeck.microplus.side-to-main": {
+  "com.dualform.agikeys.side-to-main": {
     "Name": "Move side input to main",
     "Tooltip": "Moves unsent side-chat text into an empty main input field without sending it."
   },
-  "io.local.codexdeck.microplus.global-dictation": {
+  "com.dualform.agikeys.global-dictation": {
     "Name": "Voice input · Shortcut PTT",
     "Tooltip": "Records the shortcut used to toggle recording in settings. Sends once on press and once on release. Use while recording is stopped."
   }

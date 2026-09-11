@@ -3,7 +3,7 @@ import { beginActionFeedback, safeActionFailureCode, showAlertIfCurrent } from '
 import { PreferenceAction } from './action-preferences.js';
 import type { DeckController } from './controller.js';
 
-@action({ UUID: 'io.local.codexdeck.microplus.side-to-main' })
+@action({ UUID: 'com.dualform.agikeys.side-to-main' })
 export class SideToMainAction extends PreferenceAction {
   constructor(private readonly controller: DeckController) { super(controller); }
   override onWillAppear(ev: WillAppearEvent): void {

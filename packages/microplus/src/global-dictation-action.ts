@@ -53,9 +53,9 @@ type VisibleKey = {
   shortcut: GlobalDictationShortcut | undefined;
 };
 
-@action({ UUID: "io.local.codexdeck.microplus.global-dictation" })
+@action({ UUID: "com.dualform.agikeys.global-dictation" })
 export class GlobalDictationAction extends PreferenceAction {
-  override readonly manifestId = "io.local.codexdeck.microplus.global-dictation";
+  override readonly manifestId = "com.dualform.agikeys.global-dictation";
   private readonly keys = new Map<string, VisibleKey>();
   private holdSequence = 0;
 

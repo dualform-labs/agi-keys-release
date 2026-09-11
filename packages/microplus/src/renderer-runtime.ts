@@ -302,7 +302,8 @@ export function selectNativeCommandScope(
   appScopeToken: unknown,
   accessAtom: unknown,
   capabilityAtom: unknown,
-  requireCapabilities = false
+  requireCapabilities = false,
+  allowReadOnlyFallback = false
 ): NativeCommandScope | undefined {
   let fiber: any = null;
   if (composerRoot) {
@@ -348,7 +349,7 @@ export function selectNativeCommandScope(
   // Commands that are not composer-scoped can run on routes without a
   // composer. Retain that support only when the renderer exposes one unique
   // scope with the exact native access/capability shape.
-  if (composerRoot) return undefined;
+  if (composerRoot && !allowReadOnlyFallback) return undefined;
   const container = doc.getElementById('root');
   let containerFiber: any = null;
   if (container) {
@@ -635,8 +636,10 @@ export function readAgentSlotMetadata(
 ): AgentSlotMetadata {
   if (!slot.threadKey) return { metadataAvailability: "unavailable" };
   try {
-    const requiredSelectors = ['I4', 'jCt', 'gCt', 'uCt', 'vCt', 'LCt'];
-    if (requiredSelectors.some((name) => appInitial[name] == null)) return { metadataAvailability: 'unavailable' };
+    // The thread lookup is the identity contract. Other selectors are detail
+    // sources and are version/feature dependent, so one missing export must not
+    // hide an otherwise resolvable local slot.
+    if (appInitial.I4 == null) return { metadataAvailability: 'unavailable' };
     // I4 is the same thread-key lookup atom used by native Micro's slot signal.
     const task = store.get(appInitial.I4, slot.threadKey) as {
       kind?: unknown;
@@ -647,30 +650,56 @@ export function readAgentSlotMetadata(
       : null;
     if (!conversationId) return { metadataAvailability: 'unavailable' };
 
+    let detailSourceRead = false;
+    const readDetail = {
+      get(name: string): { ok: boolean; value?: unknown } {
+        const selector = appInitial[name];
+        if (selector == null) return { ok: false };
+        try {
+          const value = store.get(selector, conversationId);
+          // A mounted selector returning undefined cannot establish an empty
+          // state. Preserve that distinction so callers do not display a false
+          // negative while the native store is between snapshots.
+          if (value === undefined) return { ok: false };
+          detailSourceRead = true;
+          return { ok: true, value };
+        } catch {
+          return { ok: false };
+        }
+      },
+    }.get;
+
     // These pinned app-initial exports are passive selectors over conversation
     // metadata: threadGoal, requests, runtime status, pending type, resume state.
-    const goal = store.get(appInitial.jCt, conversationId) as { status?: unknown } | null;
+    const goalRead = readDetail('jCt');
+    const goal = goalRead.ok ? goalRead.value as { status?: unknown } | null : null;
     const allowedGoalStatuses = ['active', 'paused', 'blocked', 'usageLimited', 'budgetLimited', 'complete'];
     const goalStatus = typeof goal?.status === 'string' && allowedGoalStatuses.includes(goal.status)
       ? goal.status as AgentSlotMetadata['goalStatus']
       : undefined;
-    const requests = store.get(appInitial.gCt, conversationId);
+    const requestsRead = readDetail('gCt');
     let pendingQuestion = false;
-    if (Array.isArray(requests)) {
-      for (const request of requests) {
+    let questionSourcesReady = requestsRead.ok && Array.isArray(requestsRead.value);
+    if (Array.isArray(requestsRead.value)) {
+      for (const request of requestsRead.value) {
         if (request?.method === 'item/tool/requestUserInput') {
           pendingQuestion = true;
           break;
         }
       }
     }
-    if (!pendingQuestion) {
-      const pending = store.get(appInitial.uCt, conversationId) as { type?: unknown } | null;
+    const pendingRead = readDetail('uCt');
+    if (!pendingRead.ok) questionSourcesReady = false;
+    if (!pendingQuestion && pendingRead.ok) {
+      const pending = pendingRead.value as { type?: unknown } | null;
       if (pending?.type === 'userInput') pendingQuestion = true;
     }
-    if (!pendingQuestion) {
-      const resumeState = store.get(appInitial.vCt, conversationId);
-      const runtime = store.get(appInitial.LCt, conversationId) as { type?: unknown; activeFlags?: unknown } | null;
+    const resumeRead = readDetail('vCt');
+    const runtimeRead = readDetail('LCt');
+    if (!resumeRead.ok || !runtimeRead.ok) questionSourcesReady = false;
+    if (!pendingQuestion && resumeRead.ok && runtimeRead.ok) {
+      const resumeState = resumeRead.value;
+      const runtime = runtimeRead.value as { type?: unknown; activeFlags?: unknown } | null;
       if (
         resumeState === 'needs_resume' && runtime?.type === 'active' &&
         Array.isArray(runtime.activeFlags) && runtime.activeFlags.includes('waitingOnUserInput')
@@ -684,7 +713,10 @@ export function readAgentSlotMetadata(
     const pendingChipSelector = appInitial.v3;
     let pendingChip: unknown;
     if (pendingChipSelector != null) {
-      try { pendingChip = store.get(pendingChipSelector, conversationId); } catch {}
+      try {
+        pendingChip = store.get(pendingChipSelector, conversationId);
+        if (pendingChip !== undefined) detailSourceRead = true;
+      } catch {}
     }
     const approvalPending = pendingChip === undefined
       ? undefined
@@ -692,13 +724,17 @@ export function readAgentSlotMetadata(
     const pinSelector = appInitial.F2;
     let pinValue: unknown;
     if (pinSelector != null) {
-      try { pinValue = store.get(pinSelector, slot.threadKey); } catch {}
+      try {
+        pinValue = store.get(pinSelector, slot.threadKey);
+        if (pinValue !== undefined) detailSourceRead = true;
+      } catch {}
     }
     const threadPinned = typeof pinValue === 'boolean' ? pinValue : undefined;
+    if (!detailSourceRead) return { metadataAvailability: 'unavailable' };
     return {
       metadataAvailability: 'available',
       ...(goalStatus ? { goalStatus } : {}),
-      pendingQuestion,
+      ...(pendingQuestion || questionSourcesReady ? { pendingQuestion } : {}),
       ...(approvalPending === undefined ? {} : { approvalPending }),
       ...(threadPinned === undefined ? {} : { threadPinned }),
     };

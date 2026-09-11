@@ -1,6 +1,6 @@
 {
   "$schema": "https://schemas.elgato.com/streamdeck/plugins/layout.json",
-  "id": "io.local.codexdeck.microplus.dial-status-normal-light",
+  "id": "com.dualform.agikeys.dial-status-normal-light",
   "items": [
     {
       "key": "surface",
@@ -40,7 +40,7 @@
         "weight": 500
       },
       "text-overflow": "ellipsis",
-      "value": "Codex Keys",
+      "value": "AGI Keys",
       "color": "#64717D",
       "zOrder": 20
     },

@@ -72,12 +72,80 @@ test("slot metadata recognizes the native pending request object", () => {
   );
 });
 
-test("slot metadata omits question state when pinned selectors are incomplete", () => {
+test("slot metadata remains available when optional selectors are incomplete", () => {
   const incomplete = { ...atoms } as Record<string, unknown>;
   delete incomplete.uCt;
   assert.deepEqual(
-    generatedReader()({ threadKey: "local:conversation-1" }, metadataStore(new Map()), incomplete),
+    generatedReader()(
+      { threadKey: "local:conversation-1" },
+      metadataStore(new Map([
+        [atoms.I4, { kind: "local", conversation: { id: "conversation-1" } }],
+        [atoms.jCt, null],
+      ])),
+      incomplete,
+    ),
+    { metadataAvailability: "available" },
+  );
+});
+
+test("slot metadata stays unavailable when no detail selector can be read", () => {
+  const onlyIdentity = { I4: atoms.I4 };
+  assert.deepEqual(
+    generatedReader()(
+      { threadKey: "local:conversation-no-details" },
+      metadataStore(new Map([[atoms.I4, { kind: "local", conversation: { id: "conversation-no-details" } }]])),
+      onlyIdentity,
+    ),
     { metadataAvailability: "unavailable" },
+  );
+});
+
+test("slot metadata accepts passive approval and pin details without goal selectors", () => {
+  const nativeDetails = { I4: atoms.I4, v3: atoms.v3, F2: atoms.F2 };
+  const values = new Map<unknown, unknown>([
+    [atoms.I4, { kind: "local", conversation: { id: "conversation-native-only" } }],
+    [atoms.v3, null],
+    [atoms.F2, true],
+  ]);
+  assert.deepEqual(
+    generatedReader()({ threadKey: "local:conversation-native-only" }, metadataStore(values), nativeDetails),
+    { metadataAvailability: "available", approvalPending: false, threadPinned: true },
+  );
+});
+
+test("slot metadata omits a false question state when a detail read is transiently unavailable", () => {
+  const values = new Map<unknown, unknown>([
+    [atoms.I4, { kind: "local", conversation: { id: "conversation-transient" } }],
+    [atoms.gCt, []],
+    [atoms.uCt, null],
+    [atoms.vCt, "resumed"],
+  ]);
+  const store = {
+    get(atom: unknown, parameter?: unknown) {
+      if (atom === atoms.LCt) throw new Error("store is between snapshots");
+      return values.get(`${String(atom)}:${String(parameter)}`) ?? values.get(atom);
+    },
+  };
+  assert.deepEqual(
+    generatedReader()({ threadKey: "local:conversation-transient" }, store, atoms),
+    { metadataAvailability: "available" },
+  );
+});
+
+test("slot metadata preserves a positive question signal when an unrelated detail read throws", () => {
+  const values = new Map<unknown, unknown>([
+    [atoms.I4, { kind: "local", conversation: { id: "conversation-question" } }],
+    [atoms.gCt, [{ method: "item/tool/requestUserInput" }]],
+  ]);
+  const store = {
+    get(atom: unknown, parameter?: unknown) {
+      if (atom === atoms.jCt) throw new Error("goal selector changed");
+      return values.get(`${String(atom)}:${String(parameter)}`) ?? values.get(atom);
+    },
+  };
+  assert.deepEqual(
+    generatedReader()({ threadKey: "local:conversation-question" }, store, atoms),
+    { metadataAvailability: "available", pendingQuestion: true },
   );
 });
 

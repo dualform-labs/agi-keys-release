@@ -1,6 +1,6 @@
 # Security status
 
-Codex Keys is a preview. It has not passed an exhaustive security or hardware certification. The supported deployment is a local macOS account using Stream Deck and Codex on the same machine.
+AGI Keys is a preview. It has not passed an exhaustive security or hardware certification. The supported deployment is a local macOS account using Stream Deck and Codex on the same machine.
 
 ## Known transport limitation
 

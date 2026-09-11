@@ -48,7 +48,7 @@ class FakeWebSocket {
 
 for (const inspector of ["common.html", "agent.html", "usage-limit.html", "context-compaction.html"]) {
   test(`${inspector} sends settings with the registered PI context and isolates action responses`, async () => {
-    const actionId = inspector === "common.html" ? "io.local.codexdeck.microplus.rate-limit-reset" : "io.local.codexdeck.microplus.test-action";
+    const actionId = inspector === "common.html" ? "com.dualform.agikeys.rate-limit-reset" : "com.dualform.agikeys.test-action";
     const html = await readFile(new URL(`../static/property-inspector/${inspector}`, import.meta.url), "utf8");
     const shared = await readFile(new URL("../static/property-inspector/shared.js", import.meta.url), "utf8");
     const script = html.match(/<script>([\s\S]*?)<\/script>/u)?.[1];
@@ -323,7 +323,7 @@ for (const inspector of ["common.html", "agent.html", "usage-limit.html", "conte
 
     if (inspector === "usage-limit.html") {
       connect("12345", "overview-property-inspector-uuid", "registerPropertyInspector", "{}", JSON.stringify({
-        action: "io.local.codexdeck.microplus.usage-overview",
+        action: "com.dualform.agikeys.usage-overview",
         context: "overview-action-instance-context",
         payload: { settings: { mode: "weekly", language: "en" } },
       }));
@@ -332,11 +332,11 @@ for (const inspector of ["common.html", "agent.html", "usage-limit.html", "conte
     }
     if (inspector === "common.html") {
       connect("12345", "ordinary-pi", "registerPropertyInspector", "{}", JSON.stringify({
-        action: "io.local.codexdeck.microplus.test-action", context: "ordinary-context", payload: { settings: {} },
+        action: "com.dualform.agikeys.test-action", context: "ordinary-context", payload: { settings: {} },
       }));
       assert.equal(elements.get("press-options")?.hidden, true, "non-display common actions must hide display press controls");
       connect("12345", "reset-property-inspector-uuid", "registerPropertyInspector", "{}", JSON.stringify({
-        action: "io.local.codexdeck.microplus.rate-limit-reset",
+        action: "com.dualform.agikeys.rate-limit-reset",
         context: "reset-action-instance-context",
         payload: { settings: { language: "ja" } },
       }));
@@ -359,7 +359,7 @@ test('recorded shortcut reaches instance settings and survives reread', async ()
   }}, WebSocket:class extends FakeWebSocket {constructor(url:string){super(url);sockets.push(this);}}};
   for(const file of ['shortcut-recorder.js','shared.js']) runInNewContext(await readFile(new URL(`../static/property-inspector/${file}`,import.meta.url),'utf8'),context);
   window.CodexPropertyInspector.common();
-  window.connectElgatoStreamDeckSocket('12345','pi-id','registerPropertyInspector','{}',JSON.stringify({action:'io.local.codexdeck.microplus.global-dictation',context:'voice-key',payload:{settings:{label:'Keep me'}}}));
+  window.connectElgatoStreamDeckSocket('12345','pi-id','registerPropertyInspector','{}',JSON.stringify({action:'com.dualform.agikeys.global-dictation',context:'voice-key',payload:{settings:{label:'Keep me'}}}));
   elements.get('shortcut-record')!.dispatch('click');
   const event={code:'AltRight',altKey:true,preventDefault(){},stopPropagation(){}};
   listeners.get('keydown')!(event);listeners.get('keyup')!({...event,altKey:false});

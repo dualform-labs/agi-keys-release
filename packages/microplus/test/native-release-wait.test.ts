@@ -9,7 +9,7 @@ import test from "node:test";
 
 const run = promisify(execFile);
 test("native release waits for delivery and bounds an uncleared modifier", { skip: process.platform !== "darwin" }, async () => {
-  const directory = await mkdtemp(join(tmpdir(), "codex-keys-native-wait-"));
+  const directory = await mkdtemp(join(tmpdir(), "agi-keys-native-wait-"));
   const executable = join(directory, "helper");
   await run("/usr/bin/xcrun", ["swiftc", "-O", fileURLToPath(new URL("../native/global-dictation-helper.swift", import.meta.url)), "-o", executable], { timeout: 30_000 });
   // This explicit mode exits before permission checks or any posted events.

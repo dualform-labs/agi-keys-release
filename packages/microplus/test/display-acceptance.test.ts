@@ -240,7 +240,12 @@ test("unavailable goal and question metadata is visible on an assigned agent", (
   });
 
   assert.match(svg, /data-agent-attention="metadata-unavailable"/);
-  assert.match(svg, />SIGNALS UNKNOWN</);
+  assert.match(svg, />DETAILS N\/A</);
+  const japanese = renderAgentSvg(0, "Task", "idle", false, 0, "light", undefined, "ready", undefined, true, "ja", { metadataAvailability: "unavailable" });
+  assert.match(japanese, />詳細未取得</);
+  assert.doesNotMatch(japanese, /状態不明/);
+  assert.doesNotMatch(svg, /SIGNALS UNKNOWN|状態不明/);
+  assert.match(svg, /data-agent-status-frame="idle"/);
 });
 
 test("combined microphone ACT11 fallback is readable in a 144px light keycap", () => {

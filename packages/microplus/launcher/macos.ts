@@ -11,10 +11,10 @@ import { applyRuntimeOverride, fetchRuntimeTargetSetSignature, verifyMicroRuntim
 import { enumerateCodexMainTargets, processOwnsListener, type DebugTarget } from "../src/codex-debug-discovery.js";
 
 const CODEX_BUNDLE_ID = "com.openai.codex";
-const AGENT_LABEL = "io.local.codexdeck.microplus.watcher";
+const AGENT_LABEL = "com.dualform.agikeys.watcher";
 const STATE_ROOT = join(homedir(), "Library", "Application Support", "CodexMicroPlus");
 const BRIDGE_STATE_PATH = join(STATE_ROOT, "codex-micro-bridge.json");
-const INSTALLED_RUNTIME_PATH = join(STATE_ROOT, "codex-micro-plus-macos.mjs");
+const INSTALLED_RUNTIME_PATH = join(STATE_ROOT, "agi-keys-macos.mjs");
 const WATCHER_LAUNCHER_PATH = join(STATE_ROOT, "watcher-launch.sh");
 const WATCHER_LOG_PATH = join(STATE_ROOT, "watcher.log");
 const WATCHER_STDERR_PATH = join(STATE_ROOT, "watcher.stderr.log");
@@ -170,10 +170,10 @@ export async function ensureSafeDirectoryPath(path: string, mode = 0o700): Promi
       metadata = await lstat(current);
     }
     if (metadata.isSymbolicLink()) {
-      throw new Error("E_CODEX_KEYS_PATH_UNSAFE");
+      throw new Error("E_AGI_KEYS_PATH_UNSAFE");
     }
     if (!metadata.isDirectory()) {
-      throw new Error("E_CODEX_KEYS_PATH_UNSAFE");
+      throw new Error("E_AGI_KEYS_PATH_UNSAFE");
     }
   }
 }
@@ -226,7 +226,7 @@ export async function safeInstallRuntime(source: string, destination: string, mo
     await rename(temporary, destination);
     installed = true;
     const metadata = await lstat(destination);
-    if (!metadata.isFile()) throw new Error("E_CODEX_KEYS_RUNTIME_PATH_UNSAFE");
+    if (!metadata.isFile()) throw new Error("E_AGI_KEYS_RUNTIME_PATH_UNSAFE");
   } finally {
     if (handle) await handle.close().catch(() => undefined);
     if (!installed) await rm(temporary, { force: true }).catch(() => undefined);
@@ -309,7 +309,7 @@ export function safeErrorMessage(error: unknown): string {
     case "codex-installation-invalid": return "The configured Codex installation could not be verified.";
     case "runtime-unavailable": return "A supported Node.js runtime was not found.";
     case "invalid-launch-argument": return "The launcher arguments are invalid.";
-    default: return "Codex Keys could not complete the requested operation.";
+    default: return "AGI Keys could not complete the requested operation.";
   }
 }
 
@@ -355,7 +355,7 @@ async function start(allowRestart: boolean): Promise<number> {
   }
   assert.ok(port);
   const verification = await enableBridge(installation, port);
-  console.log(`Codex Keys ready on 127.0.0.1:${port}.`);
+  console.log(`AGI Keys ready on 127.0.0.1:${port}.`);
   console.log(JSON.stringify(verification, null, 2));
   return 0;
 }
@@ -407,7 +407,7 @@ async function uninstall(): Promise<void> {
   for (const path of [LAUNCH_AGENT_PATH, INSTALLED_RUNTIME_PATH, WATCHER_LAUNCHER_PATH, WATCHER_LOG_PATH, WATCHER_STDERR_PATH, BRIDGE_STATE_PATH]) {
     await rm(path, { force: true });
   }
-  console.log("Codex Keys observer removed. Codex and its application bundle were unchanged.");
+  console.log("AGI Keys observer removed. Codex and its application bundle were unchanged.");
 }
 
 async function selfTest(): Promise<void> {
@@ -449,7 +449,7 @@ async function main(): Promise<number> {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main().then((code) => { process.exitCode = code; }).catch((error) => {
-    console.error(`Codex Keys: ${safeErrorMessage(error)}`);
+    console.error(`AGI Keys: ${safeErrorMessage(error)}`);
     process.exitCode = 1;
   });
 }

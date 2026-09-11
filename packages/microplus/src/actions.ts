@@ -56,12 +56,12 @@ abstract class AgentAction extends PreferenceAction {
   }
 }
 
-@action({ UUID: "io.local.codexdeck.microplus.agent-1" }) export class Agent1 extends AgentAction { constructor(c: DeckController) { super(c, 0); } }
-@action({ UUID: "io.local.codexdeck.microplus.agent-2" }) export class Agent2 extends AgentAction { constructor(c: DeckController) { super(c, 1); } }
-@action({ UUID: "io.local.codexdeck.microplus.agent-3" }) export class Agent3 extends AgentAction { constructor(c: DeckController) { super(c, 2); } }
-@action({ UUID: "io.local.codexdeck.microplus.agent-4" }) export class Agent4 extends AgentAction { constructor(c: DeckController) { super(c, 3); } }
-@action({ UUID: "io.local.codexdeck.microplus.agent-5" }) export class Agent5 extends AgentAction { constructor(c: DeckController) { super(c, 4); } }
-@action({ UUID: "io.local.codexdeck.microplus.agent-6" }) export class Agent6 extends AgentAction { constructor(c: DeckController) { super(c, 5); } }
+@action({ UUID: "com.dualform.agikeys.agent-1" }) export class Agent1 extends AgentAction { constructor(c: DeckController) { super(c, 0); } }
+@action({ UUID: "com.dualform.agikeys.agent-2" }) export class Agent2 extends AgentAction { constructor(c: DeckController) { super(c, 1); } }
+@action({ UUID: "com.dualform.agikeys.agent-3" }) export class Agent3 extends AgentAction { constructor(c: DeckController) { super(c, 2); } }
+@action({ UUID: "com.dualform.agikeys.agent-4" }) export class Agent4 extends AgentAction { constructor(c: DeckController) { super(c, 3); } }
+@action({ UUID: "com.dualform.agikeys.agent-5" }) export class Agent5 extends AgentAction { constructor(c: DeckController) { super(c, 4); } }
+@action({ UUID: "com.dualform.agikeys.agent-6" }) export class Agent6 extends AgentAction { constructor(c: DeckController) { super(c, 5); } }
 
 abstract class MicroKeyAction extends PreferenceAction {
   constructor(private readonly controller: DeckController, private readonly slot: MicroActionSlot) { super(controller); }
@@ -313,57 +313,57 @@ abstract class VoiceKeycapAction extends PreferenceAction {
   }
 }
 
-@action({ UUID: "io.local.codexdeck.microplus.fast" }) export class Fast extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT06"); } }
-@action({ UUID: "io.local.codexdeck.microplus.approve" }) export class Approve extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT07"); } }
-@action({ UUID: "io.local.codexdeck.microplus.decline" }) export class Decline extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT08"); } }
-@action({ UUID: "io.local.codexdeck.microplus.fork" }) export class Fork extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT09"); } }
-@action({ UUID: "io.local.codexdeck.microplus.dictation" }) export class Dictation extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT10"); } }
-@action({ UUID: "io.local.codexdeck.microplus.act11" }) export class Act11 extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT11"); } }
-@action({ UUID: "io.local.codexdeck.microplus.send" }) export class Send extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT12"); } }
-@action({ UUID: "io.local.codexdeck.microplus.plan" }) export class Plan extends JoystickAction { constructor(c: DeckController) { super(c, "up", { kind: "builtin", name: "up" }); } }
-@action({ UUID: "io.local.codexdeck.microplus.back" }) export class Back extends JoystickAction { constructor(c: DeckController) { super(c, "left", { kind: "builtin", name: "back" }); } }
-@action({ UUID: "io.local.codexdeck.microplus.forward" }) export class Forward extends JoystickAction { constructor(c: DeckController) { super(c, "right", { kind: "builtin", name: "forward" }); } }
-@action({ UUID: "io.local.codexdeck.microplus.sidebar" }) export class Sidebar extends JoystickAction { constructor(c: DeckController) { super(c, "down", { kind: "builtin", name: "sidebar" }); } }
-@action({ UUID: "io.local.codexdeck.microplus.reasoning" }) export class Reasoning extends EncoderAction {}
-@action({ UUID: "io.local.codexdeck.microplus.reasoning-down" }) export class ReasoningDown extends ReasoningAdjustmentAction { constructor(c: DeckController) { super(c, "decrease"); } }
-@action({ UUID: "io.local.codexdeck.microplus.reasoning-up" }) export class ReasoningUp extends ReasoningAdjustmentAction { constructor(c: DeckController) { super(c, "increase"); } }
+@action({ UUID: "com.dualform.agikeys.fast" }) export class Fast extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT06"); } }
+@action({ UUID: "com.dualform.agikeys.approve" }) export class Approve extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT07"); } }
+@action({ UUID: "com.dualform.agikeys.decline" }) export class Decline extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT08"); } }
+@action({ UUID: "com.dualform.agikeys.fork" }) export class Fork extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT09"); } }
+@action({ UUID: "com.dualform.agikeys.dictation" }) export class Dictation extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT10"); } }
+@action({ UUID: "com.dualform.agikeys.act11" }) export class Act11 extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT11"); } }
+@action({ UUID: "com.dualform.agikeys.send" }) export class Send extends MicroKeyAction { constructor(c: DeckController) { super(c, "ACT12"); } }
+@action({ UUID: "com.dualform.agikeys.plan" }) export class Plan extends JoystickAction { constructor(c: DeckController) { super(c, "up", { kind: "builtin", name: "up" }); } }
+@action({ UUID: "com.dualform.agikeys.back" }) export class Back extends JoystickAction { constructor(c: DeckController) { super(c, "left", { kind: "builtin", name: "back" }); } }
+@action({ UUID: "com.dualform.agikeys.forward" }) export class Forward extends JoystickAction { constructor(c: DeckController) { super(c, "right", { kind: "builtin", name: "forward" }); } }
+@action({ UUID: "com.dualform.agikeys.sidebar" }) export class Sidebar extends JoystickAction { constructor(c: DeckController) { super(c, "down", { kind: "builtin", name: "sidebar" }); } }
+@action({ UUID: "com.dualform.agikeys.reasoning" }) export class Reasoning extends EncoderAction {}
+@action({ UUID: "com.dualform.agikeys.reasoning-down" }) export class ReasoningDown extends ReasoningAdjustmentAction { constructor(c: DeckController) { super(c, "decrease"); } }
+@action({ UUID: "com.dualform.agikeys.reasoning-up" }) export class ReasoningUp extends ReasoningAdjustmentAction { constructor(c: DeckController) { super(c, "increase"); } }
 
-@action({ UUID: "io.local.codexdeck.microplus.keycap-fast" }) export class KeycapFast extends DirectKeycapAction { constructor(c: DeckController) { super(c, "FAST"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-approve" }) export class KeycapApprove extends DirectKeycapAction { constructor(c: DeckController) { super(c, "APPR"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-reject" }) export class KeycapReject extends DirectKeycapAction { constructor(c: DeckController) { super(c, "REJ"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-split" }) export class KeycapSplit extends DirectKeycapAction { constructor(c: DeckController) { super(c, "SPLIT"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-mic" }) export class KeycapMic extends VoiceKeycapAction { constructor(c: DeckController) { super(c, "MIC"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-mic-single" }) export class KeycapMicSingle extends VoiceKeycapAction { constructor(c: DeckController) { super(c, "MIC1"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-new-task" }) export class KeycapNewTask extends DirectKeycapAction { constructor(c: DeckController) { super(c, "NEW"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-reasoning-up" }) export class KeycapReasoningUp extends DirectKeycapAction { constructor(c: DeckController) { super(c, "MIND+"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-reasoning-down" }) export class KeycapReasoningDown extends DirectKeycapAction { constructor(c: DeckController) { super(c, "MIND-"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-codex" }) export class KeycapCodex extends DirectKeycapAction { constructor(c: DeckController) { super(c, "CODEX"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-bug" }) export class KeycapBug extends DirectKeycapAction { constructor(c: DeckController) { super(c, "BUG"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-openai-docs" }) export class KeycapOpenAiDocs extends DirectKeycapAction { constructor(c: DeckController) { super(c, "OAI"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-terminal" }) export class KeycapTerminal extends DirectKeycapAction { constructor(c: DeckController) { super(c, "TERM"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-download" }) export class KeycapDownload extends DirectKeycapAction { constructor(c: DeckController) { super(c, "DWN"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-archive" }) export class KeycapArchive extends DirectKeycapAction { constructor(c: DeckController) { super(c, "DEL"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-browser" }) export class KeycapBrowser extends DirectKeycapAction { constructor(c: DeckController) { super(c, "NAV"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-pin" }) export class KeycapPin extends DirectKeycapAction { constructor(c: DeckController) { super(c, "MAGIC"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-diff" }) export class KeycapDiff extends DirectKeycapAction { constructor(c: DeckController) { super(c, "DIFF"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-play" }) export class KeycapPlay extends DirectKeycapAction { constructor(c: DeckController) { super(c, "PLAY"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-git-commit" }) export class KeycapGitCommit extends DirectKeycapAction { constructor(c: DeckController) { super(c, "GIT"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-branch" }) export class KeycapBranch extends DirectKeycapAction { constructor(c: DeckController) { super(c, "BRCH"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-create-branch" }) export class KeycapCreateBranch extends DirectKeycapAction { constructor(c: DeckController) { super(c, "BRANCH"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-merge" }) export class KeycapMerge extends DirectKeycapAction { constructor(c: DeckController) { super(c, "MRG"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-pull-request" }) export class KeycapPullRequest extends DirectKeycapAction { constructor(c: DeckController) { super(c, "PR"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-add-photos" }) export class KeycapAddPhotos extends DirectKeycapAction { constructor(c: DeckController) { super(c, "PAINT"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-lab" }) export class KeycapLab extends DirectKeycapAction { constructor(c: DeckController) { super(c, "LAB"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-side-chat" }) export class KeycapSideChat extends DirectKeycapAction { constructor(c: DeckController) { super(c, "PARTY"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-tasks" }) export class KeycapTasks extends DirectKeycapAction { constructor(c: DeckController) { super(c, "TIME"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-settings" }) export class KeycapSettings extends DirectKeycapAction { constructor(c: DeckController) { super(c, "SETUP"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-open-folder" }) export class KeycapOpenFolder extends DirectKeycapAction { constructor(c: DeckController) { super(c, "FOLD"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-add-files" }) export class KeycapAddFiles extends DirectKeycapAction { constructor(c: DeckController) { super(c, "UPL"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-skills" }) export class KeycapSkills extends DirectKeycapAction { constructor(c: DeckController) { super(c, "APPS"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-yolo" }) export class KeycapYolo extends DirectKeycapAction { constructor(c: DeckController) { super(c, "YOLO"); } }
-@action({ UUID: "io.local.codexdeck.microplus.keycap-yeet" }) export class KeycapYeet extends DirectKeycapAction { constructor(c: DeckController) { super(c, "YEET"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-fast" }) export class KeycapFast extends DirectKeycapAction { constructor(c: DeckController) { super(c, "FAST"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-approve" }) export class KeycapApprove extends DirectKeycapAction { constructor(c: DeckController) { super(c, "APPR"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-reject" }) export class KeycapReject extends DirectKeycapAction { constructor(c: DeckController) { super(c, "REJ"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-split" }) export class KeycapSplit extends DirectKeycapAction { constructor(c: DeckController) { super(c, "SPLIT"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-mic" }) export class KeycapMic extends VoiceKeycapAction { constructor(c: DeckController) { super(c, "MIC"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-mic-single" }) export class KeycapMicSingle extends VoiceKeycapAction { constructor(c: DeckController) { super(c, "MIC1"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-new-task" }) export class KeycapNewTask extends DirectKeycapAction { constructor(c: DeckController) { super(c, "NEW"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-reasoning-up" }) export class KeycapReasoningUp extends DirectKeycapAction { constructor(c: DeckController) { super(c, "MIND+"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-reasoning-down" }) export class KeycapReasoningDown extends DirectKeycapAction { constructor(c: DeckController) { super(c, "MIND-"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-codex" }) export class KeycapCodex extends DirectKeycapAction { constructor(c: DeckController) { super(c, "CODEX"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-bug" }) export class KeycapBug extends DirectKeycapAction { constructor(c: DeckController) { super(c, "BUG"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-openai-docs" }) export class KeycapOpenAiDocs extends DirectKeycapAction { constructor(c: DeckController) { super(c, "OAI"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-terminal" }) export class KeycapTerminal extends DirectKeycapAction { constructor(c: DeckController) { super(c, "TERM"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-download" }) export class KeycapDownload extends DirectKeycapAction { constructor(c: DeckController) { super(c, "DWN"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-archive" }) export class KeycapArchive extends DirectKeycapAction { constructor(c: DeckController) { super(c, "DEL"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-browser" }) export class KeycapBrowser extends DirectKeycapAction { constructor(c: DeckController) { super(c, "NAV"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-pin" }) export class KeycapPin extends DirectKeycapAction { constructor(c: DeckController) { super(c, "MAGIC"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-diff" }) export class KeycapDiff extends DirectKeycapAction { constructor(c: DeckController) { super(c, "DIFF"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-play" }) export class KeycapPlay extends DirectKeycapAction { constructor(c: DeckController) { super(c, "PLAY"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-git-commit" }) export class KeycapGitCommit extends DirectKeycapAction { constructor(c: DeckController) { super(c, "GIT"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-branch" }) export class KeycapBranch extends DirectKeycapAction { constructor(c: DeckController) { super(c, "BRCH"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-create-branch" }) export class KeycapCreateBranch extends DirectKeycapAction { constructor(c: DeckController) { super(c, "BRANCH"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-merge" }) export class KeycapMerge extends DirectKeycapAction { constructor(c: DeckController) { super(c, "MRG"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-pull-request" }) export class KeycapPullRequest extends DirectKeycapAction { constructor(c: DeckController) { super(c, "PR"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-add-photos" }) export class KeycapAddPhotos extends DirectKeycapAction { constructor(c: DeckController) { super(c, "PAINT"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-lab" }) export class KeycapLab extends DirectKeycapAction { constructor(c: DeckController) { super(c, "LAB"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-side-chat" }) export class KeycapSideChat extends DirectKeycapAction { constructor(c: DeckController) { super(c, "PARTY"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-tasks" }) export class KeycapTasks extends DirectKeycapAction { constructor(c: DeckController) { super(c, "TIME"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-settings" }) export class KeycapSettings extends DirectKeycapAction { constructor(c: DeckController) { super(c, "SETUP"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-open-folder" }) export class KeycapOpenFolder extends DirectKeycapAction { constructor(c: DeckController) { super(c, "FOLD"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-add-files" }) export class KeycapAddFiles extends DirectKeycapAction { constructor(c: DeckController) { super(c, "UPL"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-skills" }) export class KeycapSkills extends DirectKeycapAction { constructor(c: DeckController) { super(c, "APPS"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-yolo" }) export class KeycapYolo extends DirectKeycapAction { constructor(c: DeckController) { super(c, "YOLO"); } }
+@action({ UUID: "com.dualform.agikeys.keycap-yeet" }) export class KeycapYeet extends DirectKeycapAction { constructor(c: DeckController) { super(c, "YEET"); } }
 
-@action({ UUID: "io.local.codexdeck.microplus.new-task" })
+@action({ UUID: "com.dualform.agikeys.new-task" })
 export class NewTask extends PreferenceAction {
   constructor(private readonly controller: DeckController) { super(controller); }
 
@@ -386,7 +386,7 @@ export class NewTask extends PreferenceAction {
   }
 }
 
-@action({ UUID: "io.local.codexdeck.microplus.usage-limit" })
+@action({ UUID: "com.dualform.agikeys.usage-limit" })
 export class UsageLimit extends PreferenceAction {
   constructor(private readonly controller: DeckController) { super(controller); }
 
@@ -435,7 +435,7 @@ export class UsageLimit extends PreferenceAction {
   }
 }
 
-@action({ UUID: "io.local.codexdeck.microplus.usage-overview" })
+@action({ UUID: "com.dualform.agikeys.usage-overview" })
 export class UsageOverview extends PreferenceAction {
   constructor(private readonly controller: DeckController) { super(controller); }
 
@@ -479,7 +479,7 @@ export class UsageOverview extends PreferenceAction {
   }
 }
 
-@action({ UUID: "io.local.codexdeck.microplus.rate-limit-reset" })
+@action({ UUID: "com.dualform.agikeys.rate-limit-reset" })
 export class RateLimitReset extends PreferenceAction {
   constructor(private readonly controller: DeckController) { super(controller); }
 

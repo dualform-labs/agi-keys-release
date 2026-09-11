@@ -6,7 +6,7 @@ script_dir="${0:A:h}"
 result=$?
 
 if [[ $result -eq 2 ]]; then
-  if /usr/bin/osascript -e 'display dialog "Codex will restart to connect to Codex Keys. Save any unsent input, then choose Restart and Connect." with title "Codex Keys" buttons {"Cancel", "Restart and Connect"} default button "Restart and Connect" cancel button "Cancel"' >/dev/null 2>&1; then
+  if /usr/bin/osascript -e 'display dialog "Codex will restart to connect to AGI Keys. Save any unsent input, then choose Restart and Connect." with title "AGI Keys" buttons {"Cancel", "Restart and Connect"} default button "Restart and Connect" cancel button "Cancel"' >/dev/null 2>&1; then
     "$script_dir/start-microplus.sh" start --restart
     result=$?
   else

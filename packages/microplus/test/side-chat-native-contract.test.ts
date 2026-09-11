@@ -159,3 +159,16 @@ test("route-wide fallback accepts only one native AppScope identity", () => {
     capabilityAtom,
   ), undefined);
 });
+
+
+test("passive metadata can use a unique window scope without composer focus", () => {
+  const target = scope("window", false);
+  const container = { __reactContainer$test: { memoizedState: hookRef(target) } };
+  const doc = { getElementById: () => container, hasFocus: () => false } as unknown as Document;
+  const composer = { __reactFiber$test: { memoizedState: null } } as unknown as Element;
+  const read = generatedSelector();
+  assert.equal(read(doc, composer, appScopeToken, accessAtom, capabilityAtom), undefined);
+  assert.equal(read(doc, composer, appScopeToken, accessAtom, capabilityAtom, false, true), target);
+  Object.assign(container.__reactContainer$test, { sibling: { memoizedState: hookRef(scope("other", false)) } });
+  assert.equal(read(doc, composer, appScopeToken, accessAtom, capabilityAtom, false, true), undefined);
+});

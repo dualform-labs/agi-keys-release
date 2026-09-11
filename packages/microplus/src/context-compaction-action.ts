@@ -14,7 +14,7 @@ import type { DeckController } from "./controller.js";
  * compaction on press. The controller owns lifecycle feedback and the native
  * postcondition; this action only handles Stream Deck lifecycle/events.
  */
-@action({ UUID: "io.local.codexdeck.microplus.context-compaction" })
+@action({ UUID: "com.dualform.agikeys.context-compaction" })
 export class ContextCompactionAction extends PreferenceAction {
   constructor(private readonly controller: DeckController) {
     super(controller);

@@ -250,7 +250,7 @@ async function mountInspector(inspector: "common.html" | "agent.html" | "usage-l
   runInNewContext(script, context);
   const connect = window.connectElgatoStreamDeckSocket as (port: string, uuid: string, register: string, info: string, actionInfo: string) => void;
   connect("12345", "pi-test", "registerPropertyInspector", info, JSON.stringify({
-    action: "io.local.codexdeck.microplus.test-action",
+    action: "com.dualform.agikeys.test-action",
     context: "action-context",
     payload: { controller: inspector === "common.html" ? "Encoder" : "Keypad", settings },
   }));

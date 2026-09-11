@@ -2,10 +2,10 @@
 set -euo pipefail
 
 script_dir="${0:A:h}"
-runtime="$script_dir/codex-micro-plus-macos.mjs"
+runtime="$script_dir/agi-keys-macos.mjs"
 
 if [[ ! -f "$runtime" ]]; then
-  print -u2 "Codex Keys runtime is missing. Run npm run build first."
+  print -u2 "AGI Keys runtime is missing. Run npm run build first."
   exit 1
 fi
 

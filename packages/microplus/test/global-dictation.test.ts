@@ -51,7 +51,7 @@ test("a new press waits for the previous native release to finish", async () => 
 });
 
 test("materializes a non-executable packaged helper as an exact private executable", async (t) => {
-  const directory = await mkdtemp(join(await realpath(tmpdir()), "codex-keys-dictation-"));
+  const directory = await mkdtemp(join(await realpath(tmpdir()), "agi-keys-dictation-"));
   t.after(async () => { await rm(directory, { recursive: true, force: true }); });
   const bundled = join(directory, "package", "global-dictation-helper");
   const stateRoot = join(directory, "state");
@@ -68,7 +68,7 @@ test("materializes a non-executable packaged helper as an exact private executab
 });
 
 test("repairs permissions only after cached helper content is verified", async (t) => {
-  const directory = await mkdtemp(join(await realpath(tmpdir()), "codex-keys-dictation-cache-"));
+  const directory = await mkdtemp(join(await realpath(tmpdir()), "agi-keys-dictation-cache-"));
   t.after(async () => { await rm(directory, { recursive: true, force: true }); });
   const bundled = join(directory, "global-dictation-helper");
   const stateRoot = join(directory, "state");
@@ -89,7 +89,7 @@ test("repairs permissions only after cached helper content is verified", async (
 });
 
 test("refuses to chmod a cached helper with another hard link", async (t) => {
-  const directory = await mkdtemp(join(await realpath(tmpdir()), "codex-keys-dictation-link-"));
+  const directory = await mkdtemp(join(await realpath(tmpdir()), "agi-keys-dictation-link-"));
   t.after(async () => { await rm(directory, { recursive: true, force: true }); });
   const bundled = join(directory, "global-dictation-helper");
   const stateRoot = join(directory, "state");
@@ -106,7 +106,7 @@ test("refuses to chmod a cached helper with another hard link", async (t) => {
 });
 
 test("rejects a state directory with a symlinked ancestor", async (t) => {
-  const directory = await mkdtemp(join(await realpath(tmpdir()), "codex-keys-dictation-ancestor-"));
+  const directory = await mkdtemp(join(await realpath(tmpdir()), "agi-keys-dictation-ancestor-"));
   t.after(async () => { await rm(directory, { recursive: true, force: true }); });
   const bundled = join(directory, "global-dictation-helper");
   const realState = join(directory, "real-state");
@@ -123,7 +123,7 @@ test("rejects a state directory with a symlinked ancestor", async (t) => {
 });
 
 test("rejects a packaged helper below a symlinked ancestor", async (t) => {
-  const directory = await mkdtemp(join(await realpath(tmpdir()), "codex-keys-dictation-helper-ancestor-"));
+  const directory = await mkdtemp(join(await realpath(tmpdir()), "agi-keys-dictation-helper-ancestor-"));
   t.after(async () => { await rm(directory, { recursive: true, force: true }); });
   const realPackage = join(directory, "real-package");
   const symlinkedPackage = join(directory, "package-link");
@@ -139,7 +139,7 @@ test("rejects a packaged helper below a symlinked ancestor", async (t) => {
 });
 
 test("a packaged-helper replacement after verification cannot change the staged executable", async (t) => {
-  const directory = await mkdtemp(join(await realpath(tmpdir()), "codex-keys-dictation-stage-race-"));
+  const directory = await mkdtemp(join(await realpath(tmpdir()), "agi-keys-dictation-stage-race-"));
   t.after(async () => { await rm(directory, { recursive: true, force: true }); });
   const bundled = join(directory, "package", "global-dictation-helper");
   const stateRoot = join(directory, "state");
@@ -164,7 +164,7 @@ test("a packaged-helper replacement after verification cannot change the staged 
 });
 
 test("native preflight materializes the helper without executing its key-down path", async (t) => {
-  const directory = await mkdtemp(join(await realpath(tmpdir()), "codex-keys-dictation-preflight-"));
+  const directory = await mkdtemp(join(await realpath(tmpdir()), "agi-keys-dictation-preflight-"));
   t.after(async () => { await rm(directory, { recursive: true, force: true }); });
   const bundled = join(directory, "package", "global-dictation-helper");
   const stateRoot = join(directory, "state");
@@ -668,7 +668,7 @@ test("failed native spawn cleans its staged executable without an exit event", a
   const directory = await realpath(await mkdtemp(join(tmpdir(), "dictation-spawn-failure-")));
   const helper = join(directory, "helper");
   const runtime = join(directory, "runtime");
-  await writeFile(helper, "#!/codex-keys-nonexistent-interpreter\n", { mode: 0o700 });
+  await writeFile(helper, "#!/agi-keys-nonexistent-interpreter\n", { mode: 0o700 });
   await assert.rejects(launchNativeRightCommand(helper, runtime), { code: "ENOENT" });
   assert.deepEqual(await readdir(runtime), []);
 });

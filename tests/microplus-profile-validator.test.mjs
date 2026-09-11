@@ -7,7 +7,7 @@ import test from "node:test";
 import { validateMicroplusProfile } from "../scripts/validate-microplus-profile.mjs";
 
 const root = process.cwd();
-const pluginUuid = "io.local.codexdeck.microplus";
+const pluginUuid = "com.dualform.agikeys";
 
 test("profile validator accepts the complete generated/live contract", async () => {
   const workspace = await mkdtemp(join(tmpdir(), "microplus-profile-valid-"));
@@ -65,7 +65,7 @@ async function createProfileFixture(workspace) {
   const defaultPageId = randomUUID();
   await mkdir(join(profile, "Profiles"), { recursive: true });
   await writeJson(join(profile, "manifest.json"), {
-    Name: "Codex Micro Plus",
+    Name: "AGI Keys",
     AppIdentifier: "/Applications/ChatGPT.app",
     Pages: { Current: pageIds[0], Default: defaultPageId, Pages: pageIds },
   });

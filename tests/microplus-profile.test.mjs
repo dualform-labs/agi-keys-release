@@ -18,7 +18,7 @@ const execFile = promisify(execFileCallback);
 const root = process.cwd();
 const script = resolve(root, "scripts/configure-microplus-profile.mjs");
 const switchUuid = "com.elgato.streamdeck.keys.adaptor";
-const pluginUuid = "io.local.codexdeck.microplus";
+const pluginUuid = "com.dualform.agikeys";
 
 test("dry-run validates a source profile without writing a clone or backup", async () => {
   const workspace = await mkdtemp(join(tmpdir(), "codex-microplus-dry-run-"));
@@ -64,7 +64,7 @@ test("build creates five MicroPlus pages, preserves the fixed page switch, and l
   assert.equal(manifestActionUuids.size, pluginManifest.Actions.length, "manifest contains duplicate Action UUIDs");
 
   assert.equal(output.created, true);
-  assert.equal(rootManifest.Name, "Codex Micro Plus");
+  assert.equal(rootManifest.Name, "AGI Keys");
   assert.equal(rootManifest.AppIdentifier, "/Applications/ChatGPT.app");
   assert.equal(rootManifest.Pages.Pages.length, 5);
   assert.equal(new Set(rootManifest.Pages.Pages).size, 5);
@@ -176,7 +176,7 @@ test("rerunning over an existing clone backs it up before replacing it", async (
   assert.notEqual(second.backupPath, null);
   assert.equal(await readFile(join(second.backupPath, "manifest.json"), "utf8"), previousCloneManifest);
   const nextManifest = await readJson(join(destination, "manifest.json"));
-  assert.equal(nextManifest.Name, "Codex Micro Plus");
+  assert.equal(nextManifest.Name, "AGI Keys");
   assert.equal(nextManifest.Pages.Pages.length, 5);
   assert.equal(nextManifest.Pages.Pages.every((id) => !previousPageIds.has(id)), true, "rerun must allocate fresh page IDs");
   assert.equal(nextManifest.Pages.Pages.includes(nextManifest.Pages.Default), false);

@@ -38,8 +38,8 @@ async function bundle(entryPoint, outfile, options = {}) {
 async function copyLauncherAssets(destination) {
   const assets = [
     ["launcher/start-microplus.sh", "start-microplus.sh", 0o755],
-    ["launcher/Start Codex Micro Plus.command", "Start Codex Micro Plus.command", 0o755],
-    ["launcher/Start Codex Micro Plus.command", "Codex Keys.command", 0o755],
+    ["launcher/Start AGI Keys.command", "Start AGI Keys.command", 0o755],
+    ["launcher/Start AGI Keys.command", "AGI Keys.command", 0o755],
     ["LICENSE", "LICENSE"],
     ["THIRD_PARTY_NOTICE.md", "THIRD_PARTY_NOTICE.md"],
   ];
@@ -50,7 +50,7 @@ async function copyLauncherAssets(destination) {
   }
 }
 
-const output = resolve("dist/io.local.codexdeck.microplus.sdPlugin");
+const output = resolve("dist/com.dualform.agikeys.sdPlugin");
 await preservePrevious(resolve("dist"), "dist");
 await mkdir(output, { recursive: true });
 await mkdir(resolve(output, "bin"), { recursive: true });
@@ -67,8 +67,8 @@ await cp(resolve("THIRD_PARTY_NOTICE.md"), resolve(output, "THIRD_PARTY_NOTICE.m
 
 await bundle("src/plugin.ts", resolve(output, "bin/plugin.mjs"), { sourcemap: true });
 
-const launcher = resolve("release/codex-micro-plus-launcher-macos");
+const launcher = resolve("release/agi-keys-launcher-macos");
 await preservePrevious(launcher, "launcher");
 await mkdir(launcher, { recursive: true });
-await bundle("launcher/macos.ts", resolve(launcher, "codex-micro-plus-macos.mjs"));
+await bundle("launcher/macos.ts", resolve(launcher, "agi-keys-macos.mjs"));
 await copyLauncherAssets(launcher);

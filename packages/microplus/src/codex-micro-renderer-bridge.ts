@@ -816,7 +816,8 @@ const SNAPSHOT_EXPRESSION = `(async () => {
     metadataCurrentRuntime ? appInitial.t3t : appInitial.V1t,
     metadataCurrentRuntime ? appInitial.iKt : appInitial.QHt,
     metadataCurrentRuntime ? appInitial.pR : appInitial.AL,
-    false
+    false,
+    true
   ) : null;
   const metadataNamespace = appInitial ? (${agentSlotMetadataNamespace.toString()})(appInitial, metadataCurrentRuntime) : null;
   const slots = found.slots.map((slot) => {

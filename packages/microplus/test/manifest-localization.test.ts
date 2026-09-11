@@ -36,7 +36,7 @@ test("native localization files use direct UUID action entries for all 67 action
     assert.equal(typeof locale.Description, "string");
     assert.equal("Actions" in locale, false, "SDK localization uses UUID keys at the resource root");
 
-    const localeIds = new Set(Object.keys(locale).filter((key) => key.startsWith("io.local.codexdeck.microplus.")));
+    const localeIds = new Set(Object.keys(locale).filter((key) => key.startsWith("com.dualform.agikeys.")));
     assert.deepEqual(localeIds, ids);
     for (const action of manifest.Actions) {
       const localized = locale[action.UUID] as LocalizedAction | undefined;

@@ -1,9 +1,9 @@
 import { readFile, readdir, stat } from "node:fs/promises";
 import { join } from "node:path";
 
-export const PROFILE_NAME = "Codex Micro Plus";
+export const PROFILE_NAME = "AGI Keys";
 export const CODEX_APP_IDENTIFIER = "/Applications/ChatGPT.app";
-export const PLUGIN_UUID = "io.local.codexdeck.microplus";
+export const PLUGIN_UUID = "com.dualform.agikeys";
 export const HOST_ADAPTOR_UUID = "com.elgato.streamdeck.keys.adaptor";
 export const HOST_ADAPTOR_POSITION = "3,0";
 export const PLUGIN_MANIFEST_URL = new URL("../packages/microplus/static/manifest.json", import.meta.url);

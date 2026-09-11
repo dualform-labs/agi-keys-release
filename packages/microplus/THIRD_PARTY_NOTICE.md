@@ -1,6 +1,6 @@
 # Third-party notices
 
-Codex Micro Plus incorporates and adapts source from **Codex Deck** at commit
+AGI Keys incorporates and adapts source from **Codex Deck** at commit
 `6d7d14b9c966de305617a43a7ac22c7034ac075e`, authored by Dazer and distributed
 under the MIT License. The complete license text is included in `LICENSE`.
 

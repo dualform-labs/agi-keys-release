@@ -1,11 +1,11 @@
 {
   "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
-  "Name": "Codex Keys",
-  "Version": "0.1.0.64",
-  "Author": "Codex Keys contributors",
+  "Name": "AGI Keys",
+  "Version": "0.1.0.66",
+  "Author": "AGI Keys contributors",
   "Description": "Mac-only Codex Micro compatible controls for Stream Deck, with live task status and usage.",
-  "UUID": "io.local.codexdeck.microplus",
-  "Category": "Codex Keys",
+  "UUID": "com.dualform.agikeys",
+  "Category": "AGI Keys",
   "CategoryIcon": "static/imgs/category-icon",
   "Icon": "static/imgs/plugin-icon",
   "CodePath": "bin/plugin.mjs",
@@ -29,7 +29,7 @@
   },
   "Actions": [
     {
-      "UUID": "io.local.codexdeck.microplus.agent-1",
+      "UUID": "com.dualform.agikeys.agent-1",
       "Name": "Agent 1 (Slot 1)",
       "Tooltip": "Selects Codex Micro agent slot 1 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-1",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "UUID": "io.local.codexdeck.microplus.agent-2",
+      "UUID": "com.dualform.agikeys.agent-2",
       "Name": "Agent 2 (Slot 2)",
       "Tooltip": "Selects Codex Micro agent slot 2 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-2",
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "UUID": "io.local.codexdeck.microplus.agent-3",
+      "UUID": "com.dualform.agikeys.agent-3",
       "Name": "Agent 3 (Slot 3)",
       "Tooltip": "Selects Codex Micro agent slot 3 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-3",
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "UUID": "io.local.codexdeck.microplus.agent-4",
+      "UUID": "com.dualform.agikeys.agent-4",
       "Name": "Agent 4 (Slot 4)",
       "Tooltip": "Selects Codex Micro agent slot 4 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-4",
@@ -93,7 +93,7 @@
       ]
     },
     {
-      "UUID": "io.local.codexdeck.microplus.agent-5",
+      "UUID": "com.dualform.agikeys.agent-5",
       "Name": "Agent 5 (Slot 5)",
       "Tooltip": "Selects Codex Micro agent slot 5 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-5",
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "UUID": "io.local.codexdeck.microplus.agent-6",
+      "UUID": "com.dualform.agikeys.agent-6",
       "Name": "Agent 6 (Slot 6)",
       "Tooltip": "Selects Codex Micro agent slot 6 and brings Codex to the foreground.",
       "Icon": "static/imgs/action-agent-6",
@@ -125,7 +125,7 @@
       ]
     },
     {
-      "UUID": "io.local.codexdeck.microplus.dial-agent",
+      "UUID": "com.dualform.agikeys.dial-agent",
       "Name": "Dial · Agent selection",
       "Tooltip": "Use the Stream Deck+ dial to move through Codex Micro agent candidates, then press or touch to bring the selected agent to the foreground. Touch-and-hold behavior can be configured.",
       "Icon": "static/imgs/action-dial-agent",
@@ -151,7 +151,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.dial-reasoning",
+      "UUID": "com.dualform.agikeys.dial-reasoning",
       "Name": "Dial · Reasoning level",
       "Tooltip": "Adjust the Codex Micro reasoning level by rotating the Stream Deck+ dial. Press or touch to send an encoder click; long-touch behavior can be configured.",
       "Icon": "static/imgs/action-dial-reasoning",
@@ -177,7 +177,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.dial-conversation",
+      "UUID": "com.dualform.agikeys.dial-conversation",
       "Name": "Dial · Left/right control",
       "Tooltip": "Sends the native left/right control configured in Codex Micro. Press or touch to send an encoder click; long-touch behavior can be configured.",
       "Icon": "static/imgs/action-dial-conversation",
@@ -203,7 +203,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.fast",
+      "UUID": "com.dualform.agikeys.fast",
       "Name": "ACT06 · Physical key",
       "Tooltip": "Sends physical position ACT06 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-fast",
@@ -219,7 +219,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.approve",
+      "UUID": "com.dualform.agikeys.approve",
       "Name": "ACT07 · Physical key",
       "Tooltip": "Sends physical position ACT07 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-approve",
@@ -235,7 +235,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.decline",
+      "UUID": "com.dualform.agikeys.decline",
       "Name": "ACT08 · Physical key",
       "Tooltip": "Sends physical position ACT08 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-decline",
@@ -251,7 +251,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.fork",
+      "UUID": "com.dualform.agikeys.fork",
       "Name": "ACT09 · Physical key",
       "Tooltip": "Sends physical position ACT09 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-fork",
@@ -267,7 +267,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.dictation",
+      "UUID": "com.dualform.agikeys.dictation",
       "Name": "ACT10 · Physical key",
       "Tooltip": "Sends key-down and key-up to physical position ACT10 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-dictation",
@@ -283,7 +283,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.act11",
+      "UUID": "com.dualform.agikeys.act11",
       "Name": "ACT11 · Physical key",
       "Tooltip": "Sends key-down and key-up to physical position ACT11 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-act11",
@@ -299,7 +299,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.send",
+      "UUID": "com.dualform.agikeys.send",
       "Name": "ACT12 · Physical key",
       "Tooltip": "Sends physical position ACT12 in Codex Micro. The action and key image follow the current assignment in Codex.",
       "Icon": "static/imgs/action-send",
@@ -315,7 +315,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.plan",
+      "UUID": "com.dualform.agikeys.plan",
       "Name": "JOY_UP · Physical direction",
       "Tooltip": "Sends physical direction JOY_UP in Codex Micro. The action follows the current assignment in Codex.",
       "Icon": "static/imgs/action-plan",
@@ -331,7 +331,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.back",
+      "UUID": "com.dualform.agikeys.back",
       "Name": "JOY_LEFT · Physical direction",
       "Tooltip": "Sends physical direction JOY_LEFT in Codex Micro. The action follows the current assignment in Codex.",
       "Icon": "static/imgs/action-back",
@@ -347,7 +347,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.forward",
+      "UUID": "com.dualform.agikeys.forward",
       "Name": "JOY_RIGHT · Physical direction",
       "Tooltip": "Sends physical direction JOY_RIGHT in Codex Micro. The action follows the current assignment in Codex.",
       "Icon": "static/imgs/action-forward",
@@ -363,7 +363,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.sidebar",
+      "UUID": "com.dualform.agikeys.sidebar",
       "Name": "JOY_DOWN · Physical direction",
       "Tooltip": "Sends physical direction JOY_DOWN in Codex Micro. The action follows the current assignment in Codex.",
       "Icon": "static/imgs/action-sidebar",
@@ -379,7 +379,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.reasoning",
+      "UUID": "com.dualform.agikeys.reasoning",
       "Name": "ENC_CLK · Physical press",
       "Tooltip": "Sends physical position ENC_CLK in Codex Micro. The action follows the current encoder assignment in Codex.",
       "Icon": "static/imgs/action-reasoning",
@@ -395,7 +395,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.reasoning-down",
+      "UUID": "com.dualform.agikeys.reasoning-down",
       "Name": "Action · Lower reasoning level",
       "Tooltip": "Lowers the Codex Composer reasoning level by one step.",
       "Icon": "static/imgs/action-reasoning-down",
@@ -411,7 +411,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.reasoning-up",
+      "UUID": "com.dualform.agikeys.reasoning-up",
       "Name": "Action · Raise reasoning level",
       "Tooltip": "Raises the Codex Composer reasoning level by one step.",
       "Icon": "static/imgs/action-reasoning-up",
@@ -427,7 +427,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.new-task",
+      "UUID": "com.dualform.agikeys.new-task",
       "Name": "Action · New task",
       "Tooltip": "Opens a new task in Codex.",
       "Icon": "static/imgs/action-new-task",
@@ -443,7 +443,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.usage-limit",
+      "UUID": "com.dualform.agikeys.usage-limit",
       "Name": "Usage · Remaining",
       "Tooltip": "Shows the remaining Codex usage. Five-hour and weekly views can be configured. The Codex action on press can be configured per key.",
       "Icon": "static/imgs/action-usage-limit",
@@ -459,7 +459,7 @@
       ]
     },
     {
-      "UUID": "io.local.codexdeck.microplus.usage-overview",
+      "UUID": "com.dualform.agikeys.usage-overview",
       "Name": "Usage · Five-hour / weekly",
       "Tooltip": "Shows five-hour and weekly Codex usage at the same time. The Codex action on press can be configured per key.",
       "Icon": "static/imgs/action-usage-overview",
@@ -475,7 +475,7 @@
       "PropertyInspectorPath": "static/property-inspector/usage-limit.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.rate-limit-reset",
+      "UUID": "com.dualform.agikeys.rate-limit-reset",
       "Name": "Usage · Reset",
       "Tooltip": "Shows available usage reset credits. Hold for 1.2 seconds when eligible to consume one credit.",
       "Icon": "static/imgs/action-rate-limit-reset",
@@ -491,7 +491,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-fast",
+      "UUID": "com.dualform.agikeys.keycap-fast",
       "Name": "Keycap · Fast mode",
       "Tooltip": "Toggles Codex Micro fast mode.",
       "Icon": "static/imgs/action-keycap-fast",
@@ -507,7 +507,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-approve",
+      "UUID": "com.dualform.agikeys.keycap-approve",
       "Name": "Keycap · Approve",
       "Tooltip": "Approves the current Codex request.",
       "Icon": "static/imgs/action-keycap-approve",
@@ -523,7 +523,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-reject",
+      "UUID": "com.dualform.agikeys.keycap-reject",
       "Name": "Keycap · Reject",
       "Tooltip": "Rejects the current Codex request.",
       "Icon": "static/imgs/action-keycap-reject",
@@ -539,7 +539,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-split",
+      "UUID": "com.dualform.agikeys.keycap-split",
       "Name": "Keycap · Split chat",
       "Tooltip": "Splits the current Codex chat.",
       "Icon": "static/imgs/action-keycap-split",
@@ -555,7 +555,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-new-task",
+      "UUID": "com.dualform.agikeys.keycap-new-task",
       "Name": "Keycap · New chat",
       "Tooltip": "Opens a new chat in native Codex Micro.",
       "Icon": "static/imgs/action-keycap-new-task",
@@ -571,7 +571,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-reasoning-up",
+      "UUID": "com.dualform.agikeys.keycap-reasoning-up",
       "Name": "Keycap · Increase reasoning",
       "Tooltip": "Increases the current Composer reasoning level.",
       "Icon": "static/imgs/action-keycap-reasoning-up",
@@ -587,7 +587,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-reasoning-down",
+      "UUID": "com.dualform.agikeys.keycap-reasoning-down",
       "Name": "Keycap · Decrease reasoning",
       "Tooltip": "Decreases the current Composer reasoning level.",
       "Icon": "static/imgs/action-keycap-reasoning-down",
@@ -603,7 +603,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-codex",
+      "UUID": "com.dualform.agikeys.keycap-codex",
       "Name": "Send to Codex",
       "Tooltip": "Sends the current Composer message.",
       "Icon": "static/imgs/action-keycap-codex",
@@ -619,7 +619,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-bug",
+      "UUID": "com.dualform.agikeys.keycap-bug",
       "Name": "Keycap · Feedback",
       "Tooltip": "Opens the Codex feedback screen.",
       "Icon": "static/imgs/action-keycap-bug",
@@ -635,7 +635,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-openai-docs",
+      "UUID": "com.dualform.agikeys.keycap-openai-docs",
       "Name": "Keycap · OpenAI docs",
       "Tooltip": "Opens the official OpenAI developer documentation.",
       "Icon": "static/imgs/action-keycap-openai-docs",
@@ -651,7 +651,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-terminal",
+      "UUID": "com.dualform.agikeys.keycap-terminal",
       "Name": "Keycap · Terminal",
       "Tooltip": "Toggles the Codex terminal view.",
       "Icon": "static/imgs/action-keycap-terminal",
@@ -667,7 +667,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-download",
+      "UUID": "com.dualform.agikeys.keycap-download",
       "Name": "Keycap · Copy chat as Markdown",
       "Tooltip": "Copies the current conversation as Markdown.",
       "Icon": "static/imgs/action-keycap-download",
@@ -683,7 +683,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-archive",
+      "UUID": "com.dualform.agikeys.keycap-archive",
       "Name": "Keycap · Archive chat",
       "Tooltip": "Archives the current Codex chat.",
       "Icon": "static/imgs/action-keycap-archive",
@@ -699,7 +699,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-browser",
+      "UUID": "com.dualform.agikeys.keycap-browser",
       "Name": "Keycap · Browser tab",
       "Tooltip": "Opens the Codex browser tab.",
       "Icon": "static/imgs/action-keycap-browser",
@@ -715,7 +715,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-pin",
+      "UUID": "com.dualform.agikeys.keycap-pin",
       "Name": "Keycap · Pin chat",
       "Tooltip": "Toggles pinning for the current chat.",
       "Icon": "static/imgs/action-keycap-pin",
@@ -731,7 +731,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-diff",
+      "UUID": "com.dualform.agikeys.keycap-diff",
       "Name": "Keycap · Review view",
       "Tooltip": "Toggles the Codex review view.",
       "Icon": "static/imgs/action-keycap-diff",
@@ -747,7 +747,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-play",
+      "UUID": "com.dualform.agikeys.keycap-play",
       "Name": "Keycap · Run primary action",
       "Tooltip": "Runs the first configured environment action.",
       "Icon": "static/imgs/action-keycap-play",
@@ -763,7 +763,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-git-commit",
+      "UUID": "com.dualform.agikeys.keycap-git-commit",
       "Name": "Keycap · Commit or push",
       "Tooltip": "Opens the native Codex Git commit action.",
       "Icon": "static/imgs/action-keycap-git-commit",
@@ -779,7 +779,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-branch",
+      "UUID": "com.dualform.agikeys.keycap-branch",
       "Name": "Keycap · Create draft PR",
       "Tooltip": "Opens the draft PR creation flow in Codex.",
       "Icon": "static/imgs/action-keycap-branch",
@@ -795,7 +795,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-merge",
+      "UUID": "com.dualform.agikeys.keycap-merge",
       "Name": "Keycap · Merge PR",
       "Tooltip": "Opens the PR merge flow in Codex.",
       "Icon": "static/imgs/action-keycap-merge",
@@ -811,7 +811,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-pull-request",
+      "UUID": "com.dualform.agikeys.keycap-pull-request",
       "Name": "Keycap · Create PR",
       "Tooltip": "Opens the native Codex PR creation flow.",
       "Icon": "static/imgs/action-keycap-pull-request",
@@ -827,7 +827,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-add-photos",
+      "UUID": "com.dualform.agikeys.keycap-add-photos",
       "Name": "Keycap · Add photos",
       "Tooltip": "Adds photos to the current Composer.",
       "Icon": "static/imgs/action-keycap-add-photos",
@@ -843,7 +843,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-lab",
+      "UUID": "com.dualform.agikeys.keycap-lab",
       "Name": "Keycap · Codex Micro settings",
       "Tooltip": "Opens Codex Micro settings.",
       "Icon": "static/imgs/action-keycap-lab",
@@ -859,7 +859,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-side-chat",
+      "UUID": "com.dualform.agikeys.keycap-side-chat",
       "Name": "Keycap · Side chat",
       "Tooltip": "Opens Codex side chat.",
       "Icon": "static/imgs/action-keycap-side-chat",
@@ -875,7 +875,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-tasks",
+      "UUID": "com.dualform.agikeys.keycap-tasks",
       "Name": "Keycap · Task management",
       "Tooltip": "Opens Codex task management.",
       "Icon": "static/imgs/action-keycap-tasks",
@@ -891,7 +891,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-settings",
+      "UUID": "com.dualform.agikeys.keycap-settings",
       "Name": "Keycap · Settings",
       "Tooltip": "Opens Codex settings.",
       "Icon": "static/imgs/action-keycap-settings",
@@ -907,7 +907,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-open-folder",
+      "UUID": "com.dualform.agikeys.keycap-open-folder",
       "Name": "Keycap · Open folder",
       "Tooltip": "Opens a folder in Codex.",
       "Icon": "static/imgs/action-keycap-open-folder",
@@ -923,7 +923,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-add-files",
+      "UUID": "com.dualform.agikeys.keycap-add-files",
       "Name": "Keycap · Attach files",
       "Tooltip": "Attaches files or folders to the current Composer.",
       "Icon": "static/imgs/action-keycap-add-files",
@@ -939,7 +939,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-skills",
+      "UUID": "com.dualform.agikeys.keycap-skills",
       "Name": "Keycap · Plugins",
       "Tooltip": "Opens the Codex plugin list.",
       "Icon": "static/imgs/action-keycap-skills",
@@ -955,7 +955,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-mic",
+      "UUID": "com.dualform.agikeys.keycap-mic",
       "Name": "Keycap · Push to talk (large)",
       "Tooltip": "Starts Codex voice input while pressed.",
       "Icon": "static/imgs/action-keycap-mic",
@@ -971,7 +971,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-mic-single",
+      "UUID": "com.dualform.agikeys.keycap-mic-single",
       "Name": "Keycap · Push to talk",
       "Tooltip": "Starts Codex voice input.",
       "Icon": "static/imgs/action-keycap-mic-single",
@@ -987,7 +987,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-create-branch",
+      "UUID": "com.dualform.agikeys.keycap-create-branch",
       "Name": "Keycap · Create branch",
       "Tooltip": "Opens the branch creation flow in Codex.",
       "Icon": "static/imgs/action-keycap-create-branch",
@@ -1003,7 +1003,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-yolo",
+      "UUID": "com.dualform.agikeys.keycap-yolo",
       "Name": "Keycap · Enter :yolo:",
       "Tooltip": "Enters :yolo: into the Composer.",
       "Icon": "static/imgs/action-keycap-yolo",
@@ -1019,7 +1019,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.keycap-yeet",
+      "UUID": "com.dualform.agikeys.keycap-yeet",
       "Name": "Keycap · Enter :yeet:",
       "Tooltip": "Enters :yeet: into the Composer.",
       "Icon": "static/imgs/action-keycap-yeet",
@@ -1035,7 +1035,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.dial-commands",
+      "UUID": "com.dualform.agikeys.dial-commands",
       "Name": "Dial · Select action",
       "Tooltip": "Rotate to choose an action and press to run it.",
       "Icon": "static/imgs/action-keycap-terminal",
@@ -1061,7 +1061,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.dial-usage",
+      "UUID": "com.dualform.agikeys.dial-usage",
       "Name": "Dial · Usage",
       "Tooltip": "Rotate to switch between five-hour and weekly remaining usage, then press to refresh.",
       "Icon": "static/imgs/action-usage-overview",
@@ -1087,7 +1087,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.dial-model",
+      "UUID": "com.dualform.agikeys.dial-model",
       "Name": "Dial · Model",
       "Tooltip": "Rotate to change the model. The current model is shown on the display.",
       "Icon": "static/imgs/action-keycap-codex",
@@ -1113,7 +1113,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.context-compaction",
+      "UUID": "com.dualform.agikeys.context-compaction",
       "Name": "Context compaction",
       "Tooltip": "Shows observed context usage for the current Codex task and requests native compaction on press.",
       "Icon": "static/imgs/action-usage-overview",
@@ -1129,7 +1129,7 @@
       "PropertyInspectorPath": "static/property-inspector/context-compaction.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.side-to-main",
+      "UUID": "com.dualform.agikeys.side-to-main",
       "Name": "Move side input to main",
       "Tooltip": "Moves unsent side-chat text into an empty main input field without sending it.",
       "Icon": "static/imgs/action-keycap-split",
@@ -1145,7 +1145,7 @@
       "PropertyInspectorPath": "static/property-inspector/common.html"
     },
     {
-      "UUID": "io.local.codexdeck.microplus.global-dictation",
+      "UUID": "com.dualform.agikeys.global-dictation",
       "Name": "Voice input · Shortcut PTT",
       "Tooltip": "Records the shortcut used to toggle recording in settings. Sends once on press and once on release. Use while recording is stopped.",
       "Icon": "static/imgs/action-keycap-mic",

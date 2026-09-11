@@ -75,7 +75,7 @@ test("plugin registers exactly the manifest actions, including one context compa
   assert.equal(new Set(registeredIds).size, registrations.length, "plugin must register each action UUID once");
   assert.deepEqual(new Set(registeredIds), expectedIdSet, "runtime registrations must equal manifest UUIDs");
 
-  const contextCompactionId = "io.local.codexdeck.microplus.context-compaction";
+  const contextCompactionId = "com.dualform.agikeys.context-compaction";
   const contextCompactionRegistrations = registrations.filter(({ manifestId }) => manifestId === contextCompactionId);
   assert.equal(contextCompactionRegistrations.length, 1, "context compaction must be registered exactly once");
   assert.equal(typeof contextCompactionRegistrations[0]?.onKeyDown, "function", "context compaction must be executable");

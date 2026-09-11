@@ -283,7 +283,7 @@
     function renderShortcut() {
       const en = inspectorLanguage() === "en";
       const section = element("dictation-shortcut-options");
-      if (section) section.hidden = actionUUID !== "io.local.codexdeck.microplus.global-dictation";
+      if (section) section.hidden = actionUUID !== "com.dualform.agikeys.global-dictation";
       const shortcut = settings.globalDictationShortcut ?? { code: "AltRight", modifiers: [] };
       setText("shortcut-title", en ? "Dictation toggle shortcut" : "音声入力の切替キー");
       const labels = { AltRight: en ? "Right Option" : "右Option", AltLeft: en ? "Left Option" : "左Option", MetaRight: en ? "Right Command" : "右Command", MetaLeft: en ? "Left Command" : "左Command" };
@@ -444,7 +444,7 @@
           const dialOptions = element("dial-options");
           const pressOptions = element("press-options");
           if (dialOptions) dialOptions.hidden = action.payload?.controller !== "Encoder";
-          if (pressOptions) pressOptions.hidden = action.action !== "io.local.codexdeck.microplus.rate-limit-reset";
+          if (pressOptions) pressOptions.hidden = action.action !== "com.dualform.agikeys.rate-limit-reset";
         },
         ...options,
       });
@@ -471,7 +471,7 @@
         defaults: COMMON_DEFAULTS,
         mode: true,
         configureAction(action) {
-          const isOverview = action.action === "io.local.codexdeck.microplus.usage-overview";
+          const isOverview = action.action === "com.dualform.agikeys.usage-overview";
           const modeRow = element("mode-row");
           const modeHelp = element("mode-help");
           if (modeRow) modeRow.hidden = isOverview;

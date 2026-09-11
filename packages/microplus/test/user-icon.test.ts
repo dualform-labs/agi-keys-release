@@ -14,7 +14,7 @@ async function makeIconRoot(prefix: string): Promise<string> {
 }
 
 test("reads a simple custom SVG id with hyphens and underscores", async (t) => {
-  const root = await makeIconRoot("codex-keys-user-icon-valid-");
+  const root = await makeIconRoot("agi-keys-user-icon-valid-");
   t.after(() => rm(root, { recursive: true, force: true }));
   const svg = "<svg xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0\"/></svg>";
   await writeFile(join(root, "custom-icon_v2.svg"), svg, "utf8");
@@ -23,7 +23,7 @@ test("reads a simple custom SVG id with hyphens and underscores", async (t) => {
 });
 
 test("rejects traversal, absolute, null, and oversized ids before opening a path", async (t) => {
-  const root = await makeIconRoot("codex-keys-user-icon-id-");
+  const root = await makeIconRoot("agi-keys-user-icon-id-");
   t.after(() => rm(root, { recursive: true, force: true }));
 
   for (const id of [
@@ -42,7 +42,7 @@ test("rejects traversal, absolute, null, and oversized ids before opening a path
 });
 
 test("rejects a symlinked icon root instead of reading outside it", async (t) => {
-  const parent = await makeIconRoot("codex-keys-user-icon-root-");
+  const parent = await makeIconRoot("agi-keys-user-icon-root-");
   t.after(() => rm(parent, { recursive: true, force: true }));
   const outside = join(parent, "outside");
   const linkedRoot = join(parent, "icons");
@@ -54,7 +54,7 @@ test("rejects a symlinked icon root instead of reading outside it", async (t) =>
 });
 
 test("rejects a final icon symlink and non-regular files", async (t) => {
-  const root = await makeIconRoot("codex-keys-user-icon-entry-");
+  const root = await makeIconRoot("agi-keys-user-icon-entry-");
   t.after(() => rm(root, { recursive: true, force: true }));
   const outside = join(root, "outside.svg");
   await writeFile(outside, "outside", "utf8");
@@ -66,7 +66,7 @@ test("rejects a final icon symlink and non-regular files", async (t) => {
 });
 
 test("rejects oversized SVG content after checking the actual file size", async (t) => {
-  const root = await makeIconRoot("codex-keys-user-icon-size-");
+  const root = await makeIconRoot("agi-keys-user-icon-size-");
   t.after(() => rm(root, { recursive: true, force: true }));
   await writeFile(join(root, "large.svg"), Buffer.alloc(MAX_USER_ICON_BYTES + 1, 0x61));
 
@@ -74,7 +74,7 @@ test("rejects oversized SVG content after checking the actual file size", async 
 });
 
 test("rejects a FIFO without waiting for a writer", async (t) => {
-  const root = await makeIconRoot("codex-keys-user-icon-fifo-");
+  const root = await makeIconRoot("agi-keys-user-icon-fifo-");
   t.after(() => rm(root, { recursive: true, force: true }));
   const fifo = join(root, "pipe.svg");
   await execFile("mkfifo", [fifo]);

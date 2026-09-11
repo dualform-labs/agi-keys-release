@@ -1497,7 +1497,7 @@ function renderAgentAttention(
   if (question) rows.push(renderBadge("pending-question", questionLabel, goalLabel ? 79 : 87, alertColor));
   if (goalLabel) rows.push(renderBadge("goal", goalLabel, question ? 102 : 87, goalColor));
   if (metadataUnavailable && rows.length === 0) {
-    rows.push(renderBadge("metadata-unavailable", language === "en" ? "SIGNALS UNKNOWN" : "状態不明", 87, SIGNAL_COLORS[theme].unknown));
+    rows.push(renderBadge("metadata-unavailable", language === "en" ? "DETAILS N/A" : "詳細未取得", 87, SIGNAL_COLORS[theme].unknown));
   }
   return `<g data-agent-attention-priority="question-first">${rows.join("")}</g>`;
 }

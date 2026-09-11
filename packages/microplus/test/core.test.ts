@@ -21,8 +21,8 @@ type Manifest = {
 
 test("manifest is an independent Mac-only plugin with no remote-host action", async () => {
   const manifest = JSON.parse(await readFile(new URL("../static/manifest.json", import.meta.url), "utf8")) as Manifest;
-  assert.equal(manifest.UUID, "io.local.codexdeck.microplus");
-  assert.equal(manifest.Name, "Codex Keys");
+  assert.equal(manifest.UUID, "com.dualform.agikeys");
+  assert.equal(manifest.Name, "AGI Keys");
   assert.deepEqual(manifest.OS, [{ Platform: "mac", MinimumVersion: "13" }]);
   assert.equal(manifest.Actions.some(({ UUID }) => UUID.endsWith(".host-toggle")), false);
   assert.equal(new Set(manifest.Actions.map(({ UUID }) => UUID)).size, manifest.Actions.length);
@@ -31,7 +31,7 @@ test("manifest is an independent Mac-only plugin with no remote-host action", as
 test("ACT11 manifest entry is backed by a registered runtime action", async () => {
   const plugin = await readFile(new URL("../src/plugin.ts", import.meta.url), "utf8");
   const actions = await readFile(new URL("../src/actions.ts", import.meta.url), "utf8");
-  assert.match(actions, /UUID: "io\.local\.codexdeck\.microplus\.act11"/);
+  assert.match(actions, /UUID: "com\.dualform\.agikeys\.act11"/);
   assert.match(plugin, /new Act11\(controller\)/);
 });
 
@@ -52,7 +52,7 @@ test("raw Micro actions advertise physical IDs and defer meaning to Codex settin
     reasoning: "ENC_CLK",
   } as const;
   for (const [suffix, physicalId] of Object.entries(expected)) {
-    const action = manifest.Actions.find(({ UUID }) => UUID === `io.local.codexdeck.microplus.${suffix}`);
+    const action = manifest.Actions.find(({ UUID }) => UUID === `com.dualform.agikeys.${suffix}`);
     assert.ok(action, `${suffix} is missing from the manifest`);
     assert.match(action.Name, new RegExp(`^${physicalId} · `));
     assert.match(action.Tooltip ?? "", new RegExp(`${physicalId}`));
@@ -78,7 +78,7 @@ test("raw Micro action icons identify physical positions without fixed semantics
   } as const;
   for (const [suffix, [iconName, physicalId]] of Object.entries(expected)) {
     const action = JSON.parse(await readFile(new URL("../static/manifest.json", import.meta.url), "utf8")) as Manifest;
-    const manifestAction = action.Actions.find(({ UUID }) => UUID === `io.local.codexdeck.microplus.${suffix}`);
+    const manifestAction = action.Actions.find(({ UUID }) => UUID === `com.dualform.agikeys.${suffix}`);
     assert.equal(manifestAction?.Icon, `static/imgs/${iconName}`, suffix);
     const svg = await readFile(new URL(`../static/imgs/${iconName}.svg`, import.meta.url), "utf8");
     const svg2x = await readFile(new URL(`../static/imgs/${iconName}@2x.svg`, import.meta.url), "utf8");
@@ -92,11 +92,11 @@ test("raw Micro action icons identify physical positions without fixed semantics
 test("six agents, Micro controls, and 34 executable keycaps are exposed from the 39-entry catalog", async () => {
   const manifest = JSON.parse(await readFile(new URL("../static/manifest.json", import.meta.url), "utf8")) as Manifest;
   const ids = new Set(manifest.Actions.map(({ UUID }) => UUID));
-  for (let slot = 1; slot <= 6; slot += 1) assert.ok(ids.has(`io.local.codexdeck.microplus.agent-${slot}`));
+  for (let slot = 1; slot <= 6; slot += 1) assert.ok(ids.has(`com.dualform.agikeys.agent-${slot}`));
   for (const id of ["fast", "approve", "decline", "fork", "dictation", "act11", "send", "plan", "back", "forward", "sidebar"]) {
-    assert.ok(ids.has(`io.local.codexdeck.microplus.${id}`), id);
+    assert.ok(ids.has(`com.dualform.agikeys.${id}`), id);
   }
-  const act11 = manifest.Actions.find(({ UUID }) => UUID === "io.local.codexdeck.microplus.act11");
+  const act11 = manifest.Actions.find(({ UUID }) => UUID === "com.dualform.agikeys.act11");
   assert.deepEqual(
     { name: act11?.Name, icon: act11?.Icon },
     { name: "ACT11 · Physical key", icon: "static/imgs/action-act11" }
@@ -107,7 +107,7 @@ test("six agents, Micro controls, and 34 executable keycaps are exposed from the
   assert.match(act11Icon2x, />11<\/text>/);
   const excluded = new Set(EXCLUDED_KEYCAP_IDS);
   for (const keycap of ADDITIONAL_KEYCAPS) {
-    const actionId = `io.local.codexdeck.microplus.keycap-${keycap.slug}`;
+    const actionId = `com.dualform.agikeys.keycap-${keycap.slug}`;
     if (excluded.has(keycap.id as (typeof EXCLUDED_KEYCAP_IDS)[number])) assert.equal(ids.has(actionId), false, keycap.id);
     else assert.ok(ids.has(actionId), keycap.id);
   }
@@ -139,7 +139,7 @@ test("all six encoder actions advertise touch and long-touch semantics", async (
     "dial-model",
   ];
   for (const id of encoderIds) {
-    const action = manifest.Actions.find(({ UUID }) => UUID === `io.local.codexdeck.microplus.${id}`);
+    const action = manifest.Actions.find(({ UUID }) => UUID === `com.dualform.agikeys.${id}`);
     assert.ok(action, `${id} is missing from the manifest`);
     assert.ok(action.Controllers?.includes("Encoder"), `${id} is not registered as an Encoder action`);
     assert.equal(typeof action.Encoder?.TriggerDescription?.Touch, "string", `${id} lacks Touch description`);
