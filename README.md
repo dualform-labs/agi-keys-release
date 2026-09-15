@@ -1,50 +1,54 @@
 <div align="center">
 
-# Codex Keys
-### A physical interface for the agentic era.
-**Less reaching. More creating. AI at your fingertips.**
+# AGI Keys
+### Run Codex from your Stream Deck+.
+**Speak. Turn. See waiting state on the keys.**
 
 English · [日本語](README.ja.md)
 
-[![Verify](https://github.com/dualform-labs/codex-keys-release/actions/workflows/verify.yml/badge.svg)](https://github.com/dualform-labs/codex-keys-release/actions/workflows/verify.yml) · **macOS** · **Stream Deck+** · **MIT** · **Preview**
+[![Verify](https://github.com/dualform-labs/agi-keys-release/actions/workflows/verify.yml/badge.svg)](https://github.com/dualform-labs/agi-keys-release/actions/workflows/verify.yml) · **macOS** · **Stream Deck+** · **MIT** · **Preview**
 
-[Explore the controls](#your-next-action-within-reach) · [Get started](#get-started) · [Build](#build-it) · [Security](SECURITY.md)
+[Product page](https://dualformai.com/agi-keys/) · [Explore the controls](#stop-hunting-the-chat-window) · [Get started](#get-started) · [Build](#build-it) · [Security](SECURITY.md)
 
 </div>
 
-![Codex Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product-v2.png)
+![AGI Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product-v2.png)
 
-AI can do more. The way we work with it should move forward, too.
+The keyboard-only Codex era ends here—not with another chat tab, but with a surface your hands already understand.
 
-**Codex Keys turns your Stream Deck+ into a personal control surface for Codex.** Speak an idea, switch your focus, adjust a model, send the next instruction. Keep the actions you repeat in places your hands remember.
+**Multiple AI tasks. One control surface.**
 
-Our vision is a tactile interface for increasingly capable AI—including a future shaped by AGI and ASI. Today's product is a focused Codex controller, built around real tasks, real input and visible feedback.
+For years, working with AI meant typing into a window, waiting, scrolling, switching threads, hunting status. AGI Keys moves that loop onto Stream Deck+: speak the next move, turn model and reasoning on dials, send when ready, and keep task state and waiting cues where your eyes land without leaving the desk.
 
-## Your next action, within reach
+This is not a thicker prompt box. It is a physical control deck for Codex on macOS—unofficial, focused, and honest about being Preview. When the boundaries are clear, trust compounds.
 
-| | The experience | What it gives you |
+## Stop hunting the chat window
+
+| | The moment | What lands under your fingers |
 |:--:|---|---|
-| <img src="packages/microplus/static/imgs/action-agent-1.svg" width="36" alt=""> | **Find your focus** | Switch tasks and see their state. |
-| <img src="packages/microplus/static/imgs/action-keycap-mic.svg" width="36" alt=""> | **Speak your next move** | Register your dictation shortcut per key. |
-| <img src="packages/microplus/static/imgs/action-keycap-codex.svg" width="36" alt=""> | **Keep the conversation moving** | Put send within fingertip reach. |
-| <img src="packages/microplus/static/imgs/action-keycap-side-chat.svg" width="36" alt=""> | **Explore a side thought** | Bring side chat into your physical workflow. |
-| <img src="packages/microplus/static/imgs/action-plus-reasoning.svg" width="36" alt=""> | **Set the pace** | Adjust model and reasoning with dial controls. |
-| <img src="packages/microplus/static/imgs/action-usage-overview.svg" width="36" alt=""> | **Know where you stand** | Keep usage visible; choose the press action. |
-| <img src="packages/microplus/static/imgs/action-keycap-diff.svg" width="36" alt=""> | **Stay close to the code** | Place development controls beside the conversation. |
-| <img src="packages/microplus/static/imgs/action-keycap-skills.svg" width="36" alt=""> | **Make it yours** | Arrange the actions you use around your workflow. |
+| <img src="packages/microplus/static/imgs/action-agent-1.svg" width="36" alt=""> | **Find your focus** | Switch tasks and read their state at a glance. |
+| <img src="packages/microplus/static/imgs/action-keycap-mic.svg" width="36" alt=""> | **Speak your next move** | Dictation on a key you press—your shortcut, per key. |
+| <img src="packages/microplus/static/imgs/action-keycap-codex.svg" width="36" alt=""> | **Keep the conversation moving** | Send stays at fingertip reach. |
+| <img src="packages/microplus/static/imgs/action-keycap-side-chat.svg" width="36" alt=""> | **Open a side thought** | Side chat enters the same physical rhythm. |
+| <img src="packages/microplus/static/imgs/action-plus-reasoning.svg" width="36" alt=""> | **Set the pace** | Model and reasoning turn on dials. |
+| <img src="packages/microplus/static/imgs/action-usage-overview.svg" width="36" alt=""> | **Know where you stand** | Usage stays visible; press behavior is yours. |
+| <img src="packages/microplus/static/imgs/action-keycap-diff.svg" width="36" alt=""> | **Stay close to the code** | Development controls sit beside the conversation. |
+| <img src="packages/microplus/static/imgs/action-keycap-skills.svg" width="36" alt=""> | **Make the deck yours** | Arrange the actions you actually repeat. |
 
-*The hero is a CG product visualization based on the running plugin UI. It shows an example layout with four Codex Keys dials, including usage on the right. Task names are examples; fine details may differ from the hardware. Icons in this table are the plugin’s action-list assets, not screenshots of its dynamic key displays.*
+*The hero is a CG product visualization based on the running plugin UI. It shows an example layout with four AGI Keys dials, including usage on the right. Task names are examples; fine details may differ from the hardware. Icons in this table are the plugin’s action-list assets, not screenshots of its dynamic key displays.*
 
-## Talk. Turn. Keep moving.
+## Speak. Turn. See.
 
-| **Talk** | **Turn** | **See** |
+Three verbs. One loop.
+
+| **Speak** | **Turn** | **See** |
 |---|---|---|
-| Dictation at a key press. Send when you're ready. | Model, reasoning, task and conversation controls on dials. | Task state, current values and usage without hunting through menus. |
+| An idea becomes voice at a key press. Send when the thought is ready. | Model, reasoning, task, and conversation controls live on dials—twist, don't dig. | Task state, current values, usage, and waiting cues stay in view. No menu safari. |
 
 ```mermaid
 flowchart LR
     A["✋ Stream Deck+
-Keys · Dials · Touch"] --> B["Codex Keys
+Keys · Dials · Touch"] --> B["AGI Keys
 Your assignments"]
     B --> C["Codex
 Tasks · Input · Controls"]
@@ -53,29 +57,31 @@ State · Model · Usage"]
     D --> A
 ```
 
-The connector uses Codex's native Micro operation path over local CDP. Some actions expose only dispatch acceptance rather than complete downstream confirmation. See [connection and security limits](SECURITY.md).
+Less reaching. More creating. The connector uses Codex's native Micro path over local CDP. Some actions expose only dispatch acceptance rather than complete downstream confirmation—we say so up front. See [connection and security limits](SECURITY.md).
 
 ## Your keys. Your rhythm.
 
-- **67 actions to arrange** in Stream Deck's native action list.
-- **Per-key English or Japanese**, labels, appearance and feedback options.
+- **67 actions to arrange** in Stream Deck's native action list—build the deck you work, not a fixed grid someone else imagined.
+- **Per-key English or Japanese**, labels, appearance, and feedback.
 - **Custom press behavior** for display actions such as usage.
 - **Record your own dictation shortcut**, including left/right modifiers.
-- **Dial settings** for direction, steps and supported touch/press gestures.
-- **Everything in Stream Deck.** No separate web settings app.
+- **Dial settings** for direction, steps, and supported touch/press gestures.
+- **Everything in Stream Deck.** No separate web settings app to babysit.
 
-Task slots follow the recent Codex window. ACT06–ACT12 are compatibility key identifiers whose behavior follows Codex's mapping. The internal UUID stays `io.local.codexdeck.microplus` to preserve existing profile compatibility.
+Task slots follow the recent Codex window. ACT06–ACT12 are compatibility key identifiers whose behavior follows Codex's mapping. The plugin UUID namespace is `com.dualform.agikeys`. Pre-release profiles that used the former development UUID must assign AGI Keys actions again.
 
 ## Get started
 
-> **Preview, with honest boundaries.** Hardware success has been reported for dictation on 0.1.0.60 and compaction on 0.1.0.62. All 67 actions and restart recovery have not passed exhaustive hardware acceptance. The connector's local CDP authentication limitation remains open.
+> **Preview, with honest boundaries—and that honesty is part of the product.** Hardware success has been reported for dictation on 0.1.0.60 and compaction on 0.1.0.62. All 67 actions and restart recovery have not passed exhaustive hardware acceptance. The connector's local CDP authentication limitation remains open. We would rather earn trust than oversell a finish line.
 
 1. **Back up your Stream Deck profiles.**
-2. **Get a preview package** from [Releases](https://github.com/dualform-labs/codex-keys-release/releases) when one is published. Draft releases are visible only to maintainers; you can also build from source.
+2. **Get a preview package** from [Releases](https://github.com/dualform-labs/agi-keys-release/releases) when one is published. Draft releases are visible only to maintainers; you can also build from source.
 3. **Open the `.streamDeckPlugin` file**, then arrange actions in Stream Deck.
 4. **Configure your keys** and verify the Codex connection. Installing the plugin alone does not establish it; read [installation notes](RELEASE_NOTES.md) and the [connector guide](packages/microplus/README.md).
 
-Requires macOS, Stream Deck+ and a compatible Codex desktop version. Codex updates can change compatibility because this is not a public operation API.
+Requires macOS, Stream Deck+, and a compatible Codex desktop version. Codex updates can change compatibility because this is not a public operation API.
+
+Start at the product page: [https://dualformai.com/agi-keys/](https://dualformai.com/agi-keys/)
 
 <details>
 <summary><strong>Voice input: choose the right shortcut</strong></summary>
@@ -110,14 +116,14 @@ Build on macOS with a Swift compiler. The plugin package is generated in `packag
 | `packages/discovery/`, `packages/desktop/` | Investigation and verification adapters |
 | `scripts/` | Build checks and profile tools |
 
-The public source export excludes private work records and development history. The retired web manager, managed-agent orchestration, scheduling and remote relay are outside the product scope.
+The public source export excludes private work records and development history. The retired web manager, managed-agent orchestration, scheduling and remote relay are outside the product scope—on purpose. The deck is the product.
 
 </details>
 
 ## Built with respect
 
-[MIT license](LICENSE) · [Third-party notices](packages/microplus/THIRD_PARTY_NOTICE.md) · [Security](SECURITY.md)
+[MIT license](LICENSE) · [Third-party notices](packages/microplus/THIRD_PARTY_NOTICE.md) · [Security](SECURITY.md) · [Product page](https://dualformai.com/agi-keys/)
 
 The Micro-compatible connection baseline uses MIT-licensed [dazer1234/codex-stream-deck](https://github.com/dazer1234/codex-stream-deck). Original license and attribution are preserved.
 
-**Codex Keys is an independent, unofficial project.** It is not an OpenAI, Elgato or Work Louder product.
+**AGI Keys is an independent, unofficial Preview.** Not OpenAI. Not Elgato. Not Work Louder. A quieter way to run Codex—with your hands on the work.
