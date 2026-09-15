@@ -16,7 +16,7 @@
 
 </div>
 
-![AGI Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme/readme-hero-v3-ja.png)
+![AGI Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme/readme-hero-v4-ja.png)
 
 Codexをキーボードだけで使う時代は、ここで終わる——別のチャットタブではなく、手がすでに知っている操作面へ。
 
