@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144" viewBox="0 0 144 144" role="img" aria-label="THINK +">
+    <defs><linearGradient id="keycap" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1B232B"/><stop offset=".52" stop-color="#171E25"/><stop offset="1" stop-color="#141A20"/></linearGradient></defs>
+    <rect data-theme="dark" x="4" y="4" width="136" height="136" rx="18" fill="#0E1318"/>
+    <rect x="9" y="9" width="126" height="126" rx="13" fill="url(#keycap)" stroke="#39444D" stroke-width="1"/>
+    
+    <rect data-accent="#303A44" data-selected="false" x="7" y="7" width="130" height="130" rx="16" fill="none" stroke="#303A44" stroke-width="2" stroke-opacity=".94"/><!--key-content-->
+    <g data-icon-source="microplus-original-catalog" data-keycap-id="MIND+" transform="translate(38 27) scale(2.8333)" color="#F1F5F7" fill="none" stroke="#F1F5F7" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M8 18H5V8l7-5 7 5v10h-3M8 18v3h8v-3M12 8v7M8.5 11.5h7"/></g>
+    <text data-key-label="true" x="72" y="111" text-anchor="middle" font-family="Hiragino Sans, Yu Gothic, Noto Sans CJK JP, Bahnschrift, Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#AEBBC4">THINK +</text>
+  </svg>
