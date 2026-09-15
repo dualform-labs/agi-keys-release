@@ -16,7 +16,7 @@ English · [日本語](README.ja.md)
 
 </div>
 
-![AGI Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme/readme-hero-v3.png)
+![AGI Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme/readme-hero-v4.png)
 
 The keyboard-only Codex era ends here—not with another chat tab, but with a surface your hands already understand.
 
