@@ -28,7 +28,7 @@ Codexをキーボードだけで使う時代は、ここで終わる——別の
 
 
 <p align="center">
-  <img src="docs/assets/readme/readme-speak-turn-see.png" alt="話す · 回す · 見る — プラグインのキーキャップ表示" width="720">
+  <img src="docs/assets/readme/readme-speak-turn-see-ja.png" alt="話す · 回す · 見る — プラグインのキーキャップ表示" width="720">
 </p>
 
 <p align="center"><sub>話す · 回す · 見る — 稼働中プラグインUIからのレンダ（デモ状態）。</sub></p>
