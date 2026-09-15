@@ -44,6 +44,36 @@ This is not a thicker prompt box. It is a physical control deck for Codex on mac
 
 *Hero is a product visualization based on the running plugin UI (example AGI Keys layout). Task names are samples; fine details may differ from hardware. Table icons are plugin keycap/dial renders at demonstration states—not live Codex status.*
 
+
+### From the running UI
+
+<p align="center">
+  <img src="docs/assets/readme/gallery-keys.png" alt="Keycap grid — voice, tasks, send, usage" width="720"><br>
+  <sub>Key surfaces — dictation, task state, send, usage (demonstration).</sub>
+</p>
+
+<p align="center">
+  <img src="docs/assets/readme/gallery-turn-dials.png" alt="Dial and LCD states for model, reasoning, usage" width="720"><br>
+  <sub>Turn — model, reasoning, usage and task dial feedback.</sub>
+</p>
+
+<p align="center">
+  <img src="docs/assets/readme/gallery-see-dials.png" alt="Quiet dial LCD preview" width="720"><br>
+  <sub>See — values stay on the dial strip without hunting menus.</sub>
+</p>
+
+<p align="center">
+  <img src="docs/assets/readme/strip-tasks.png" alt="Task keycaps Build Review Done Ready" width="720">
+  &nbsp;
+  <img src="docs/assets/readme/strip-waiting.png" alt="Waiting and thinking keycap states" width="720"><br>
+  <sub>Task slots and waiting cues — the loop you keep in view.</sub>
+</p>
+
+<p align="center">
+  <img src="docs/assets/readme/strip-dials-lcd.png" alt="LCD task model usage and dial renders" width="720"><br>
+  <sub>LCD + dial renders from the plugin (not live Codex status).</sub>
+</p>
+
 ## Speak. Turn. See.
 
 Three verbs. One loop.
