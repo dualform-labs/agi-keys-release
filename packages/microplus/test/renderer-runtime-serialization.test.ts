@@ -95,7 +95,7 @@ test("metadata, picker, and command helpers execute as standalone injected funct
       metadata: readMetadata({ threadKey: null }, { get() {} }, {}),
       picker: selectPicker({ querySelectorAll: () => [] }, null),
       focused: readFocused(null, null),
-      runnerSelected: selectRunner({ I5: runner }, "a", "b", "a", "b") === runner,
+      runnerSelected: selectRunner({ Wat: runner }, "a", "b", "a", "b") === runner,
     };
   `);
   assert.deepEqual(result, {

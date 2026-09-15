@@ -209,7 +209,7 @@ test("legacy new-window behavior still rejects a remapped native slot before dis
   assert.equal(bridge.heldNativeInputOperations.size, 0);
 });
 
-test("private unused new-window helper retains its pinned host-message contract", async () => {
+test("new-window helper retains its pinned current message-bus contract", async () => {
   const sourceTarget: DebugTarget = {
     id: "source",
     type: "page",
@@ -231,7 +231,9 @@ test("private unused new-window helper retains its pinned host-message contract"
   await bridge.openAgentInNewWindow(sourceTarget, 9222, "/local/task-a");
 
   assert.match(expression, new RegExp(CURRENT_APP_INITIAL_SHA256));
-  assert.match(expression, /appInitial\.Kun/);
+  assert.match(expression, /message-bus-/);
+  assert.match(expression, /messageBus\.r/);
+  assert.doesNotMatch(expression, /appInitial\.Kun/);
   assert.match(expression, /dispatchMessage\('open-in-new-window'/);
   assert.match(expression, /path: "\/local\/task-a"/);
   assert.match(expression, /assertMutationForeground\(document\)/);

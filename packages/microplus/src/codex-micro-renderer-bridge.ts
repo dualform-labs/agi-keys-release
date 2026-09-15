@@ -1,4 +1,46 @@
-import { createHash, randomUUID } from "node:crypto";
+
+import {
+  CURRENT_NATIVE_BRIDGE_SHA256,
+  CURRENT_APP_INITIAL_SHA256,
+  CURRENT_APP_PRIMARY_SHA256,
+  CURRENT_MICRO_COMMANDS_SHA256,
+  CURRENT_MICRO_LAYOUT_ASSET,
+  CURRENT_MICRO_LAYOUT_SHA256,
+  CURRENT_MESSAGE_BUS_ASSET,
+  CURRENT_MESSAGE_BUS_SHA256,
+  DIAL_RUNTIME_26903,
+  REVIEWED_STANDALONE_KEYCAPS_26903,
+  REVIEWED_KEYCAP_COMMANDS_26903,
+  REVIEWED_STANDALONE_KEYCAPS_26908,
+  REVIEWED_KEYCAP_COMMANDS_26908,
+  ALLOWED_NATIVE_EXTERNAL_URLS,
+} from './native-runtime-contract.js';
+export {
+  CURRENT_NATIVE_BRIDGE_SHA256,
+  CURRENT_APP_INITIAL_SHA256,
+  CURRENT_APP_PRIMARY_SHA256,
+  CURRENT_MICRO_COMMANDS_SHA256,
+  CURRENT_MICRO_LAYOUT_ASSET,
+  CURRENT_MICRO_LAYOUT_SHA256,
+  CURRENT_MICRO_SLOT_SIGNALS_ASSET,
+  CURRENT_MICRO_SLOT_SIGNALS_SHA256,
+  CURRENT_MESSAGE_BUS_ASSET,
+  CURRENT_MESSAGE_BUS_SHA256,
+  DIAL_RUNTIME_26903,
+  REVIEWED_STANDALONE_KEYCAPS_26903,
+  REVIEWED_KEYCAP_COMMANDS_26903,
+  REVIEWED_STANDALONE_KEYCAPS_26908,
+  REVIEWED_KEYCAP_COMMANDS_26908,
+  ALLOWED_NATIVE_EXTERNAL_URLS,
+} from './native-runtime-contract.js';
+import { createRendererObservationExpression } from './renderer-observation.js';
+export {
+  verifiedUsageObservedAt,
+} from './renderer-observation.js';
+import {
+  createHash,
+  randomUUID,
+} from "node:crypto";
 import WebSocket from "ws";
 import {
   codexDebugTargetKey,
@@ -22,7 +64,9 @@ export {
   type CodexDebugProcess,
   type RendererFocusState,
 } from "./codex-debug-discovery.js";
-import { resolveEffectivePhysicalSlot } from "./effective-layout.js";
+import {
+  resolveEffectivePhysicalSlot,
+} from "./effective-layout.js";
 import {
   AgentWindowCreationGuard,
   assertAgentSourceUnchanged,
@@ -33,11 +77,15 @@ import {
 import {
   AGENT_WINDOW_PROBE_EXPRESSION,
   CANONICAL_ACTIVE_COMPOSER_RESOLVER_EXPRESSION,
-  readAgentWindowProbe,
   type AgentWindowProbe,
 } from "./agent-window-probe.js";
-import type { UnopenedTaskBehavior } from "./action-preferences.js";
-import { OFFICIAL_KEYCAP_IDS, type OfficialKeycapId } from "./keycaps.js";
+import type {
+  UnopenedTaskBehavior,
+} from "./action-preferences.js";
+import {
+  OFFICIAL_KEYCAP_IDS,
+  type OfficialKeycapId,
+} from "./keycaps.js";
 import {
   CONTENT_FREE_COMMANDS,
   contentFreeSurface,
@@ -50,20 +98,19 @@ import {
   type NativeUiKeycap,
   type NativeUiSurface,
 } from "./command-result-observer.js";
-import { CodexSessionOwnershipIndex } from "./session-ownership.js";
-import { trustedRendererAssetUrls, validateLoopbackWebSocketUrl } from "./renderer-security.js";
 import {
-  DRAFT_TRANSFER_FAILURE_CODES,
+  CodexSessionOwnershipIndex,
+} from "./session-ownership.js";
+import {
+  trustedRendererAssetUrls,
+  validateLoopbackWebSocketUrl,
+} from "./renderer-security.js";
+import {
   focusSelectedComposerForPtt,
-  MODEL_PICKER_FAILURE_CODES,
   matchesActiveThreadSelection,
   moveSideDraftToMainInDocument,
-  readAgentSlotMetadata,
-  agentSlotMetadataNamespace,
-  readFocusedModelCandidate,
   readNativeUiSurface,
   readNativeCurrentModel,
-  selectActiveComposerState,
   selectBoundModelPicker,
   selectNativeCommandRunner,
   selectNativeCommandScope,
@@ -94,8 +141,13 @@ export {
   type NativeUiRoute,
   type NativeUiSurface,
 } from "./renderer-runtime.js";
-import { readResetAttempt, writeResetAttempt } from "./reset-outcome-store.js";
-import type { PersistedResetAttempt } from "./reset-outcome-store.js";
+import {
+  readResetAttempt,
+  writeResetAttempt,
+} from "./reset-outcome-store.js";
+import type {
+  PersistedResetAttempt,
+} from "./reset-outcome-store.js";
 import type {
   MicroActionSlot,
   MicroDirection,
@@ -112,7 +164,11 @@ import {
   assertFreshOperationTarget,
   integrityError,
 } from "./operation-integrity.js";
-export { OperationIntegrityGuard, assertFreshActiveThread, assertFreshOperationTarget } from "./operation-integrity.js";
+export {
+  OperationIntegrityGuard,
+  assertFreshActiveThread,
+  assertFreshOperationTarget,
+} from "./operation-integrity.js";
 
 type CdpResponse = {
   id?: number;
@@ -128,6 +184,14 @@ type OperationTargetLease = {
 
 const AGENT_ACTIVATION_TIMEOUT_MS = 1500;
 const AGENT_ACTIVATION_POLL_MS = 25;
+const MUTATION_RENDERER_PROBE_EXPRESSION = `({
+  hasFocus: document.hasFocus(),
+  visibilityState: document.visibilityState,
+  composerPresent: [...document.querySelectorAll('[data-codex-composer-root]')].some((root) =>
+    !root.closest('[hidden], [aria-hidden="true"], [inert]')
+    && (root.querySelector('[data-composer-navigation-target]') || root.querySelector('[data-codex-composer]'))
+  )
+})`;
 const AGENT_ACTIVATION_TARGET_TRANSITION_CODES = new Set([
   "E_CONNECTION_STALE",
   "E_FOREGROUND_TARGET_STALE",
@@ -156,10 +220,13 @@ function agentActivationExpression(threadKey: string, alreadyActive: boolean, ti
       return waitForActive(${Math.max(1, Math.floor(timeoutMs))});
     })()`;
 }
-
-
-import { RENDERER_FAILURE_CODES, RESET_FAILURE_CODES } from "./failure-codes.js";
-export { RENDERER_FAILURE_CODES, RESET_FAILURE_CODES } from "./failure-codes.js";
+import {
+  RENDERER_FAILURE_CODES,
+} from "./failure-codes.js";
+export {
+  RENDERER_FAILURE_CODES,
+  RESET_FAILURE_CODES,
+} from "./failure-codes.js";
 
 const RENDERER_FAILURE_CODE_SET: ReadonlySet<string> = new Set(RENDERER_FAILURE_CODES);
 
@@ -311,6 +378,15 @@ export function selectBridgeObservationTarget(
   return selectCodexObservationTarget(targets, foreground, lastTargetKey);
 }
 
+/** Select a background Composer only when the complete renderer scan is unambiguous. */
+export function selectUniqueComposerMutationTarget(
+  observations: ReadonlyArray<{ target: DebugTarget; composerPresent: boolean; visibilityState: string }>,
+): DebugTarget | undefined {
+  const candidates = observations.filter(({ composerPresent, visibilityState }) =>
+    composerPresent && visibilityState === "visible");
+  return candidates.length === 1 ? candidates[0]!.target : undefined;
+}
+
 
 export type AgentDispatchPlan = { kind: "native"; slot: number; threadKey: string };
 
@@ -342,61 +418,6 @@ export function resolveAgentDispatch(
   return { kind: "native", slot: requestedSlot, threadKey: requested.threadKey };
 }
 
-export const CURRENT_NATIVE_BRIDGE_SHA256 = "e1d0c6735f800771786f74cc358709fae55ebcf2df497389945d8ea821dc7cb5";
-export const CURRENT_APP_INITIAL_SHA256 = "73594359b28d81b6fcc9a52aac808f6a2e9fc32ced661adb3e23d297827b9285";
-export const CURRENT_APP_PRIMARY_SHA256 = "35d81a22c75f5a44b58baee0c0045ba6bb36cc9b387f43fab82178b4a2236849";
-export const CURRENT_MICRO_COMMANDS_SHA256 = "04ba51ff62ad90c744b4870ee8308fb1f1375cceb37ae2ffc9158cbe07cedde9";
-export const CURRENT_MICRO_LAYOUT_ASSET = "codex-micro-layout-aced36735c61.js";
-export const CURRENT_MICRO_LAYOUT_SHA256 = "7ee5d329de13768e246e99193bb4813ecf54b512ebf6f0a9ccfda38fe53f334c";
-// Audited against installed Codex 26.903.61454. Only model UI and explicitly listed keycaps
-// use this contract; other operations retain their separately audited pins.
-export const DIAL_RUNTIME_26903 = {
-  primary: "0aa689053d9e32d7286dfb1d85ac62cadc3858086335518f15b1f97604eb61e9",
-  bridge: "453a1b06114708bc37b5a889c583dc2b5b19887cd9d95d42e82a1dd15ce9a3ce",
-  initial: "c87b94027faefdc31cc165975dc0f14b28e3f6d922f6a5188756c8f570f2b3d7",
-  commands: "7ab9684b8daf493552e08e9be7db0ed235b17c6e9d1dec49f6b339e0f1421e84",
-  layoutAsset: "codex-micro-layout-7db62f4a0fe5.js",
-  layout: "b639ace41c685a334271a5a27f3d426cd639993bfb166f4c43825ecb06abd9b7",
-} as const;
-export const REVIEWED_STANDALONE_KEYCAPS_26903: Partial<Record<OfficialKeycapId, { type: string; url?: string; text?: string }>> = {
-  OAI: { type: "external-url", url: "https://developers.openai.com" },
-  YOLO: { type: "composer-text", text: ":yolo:" },
-  YEET: { type: "composer-text", text: ":yeet:" },
-};
-
-export const REVIEWED_KEYCAP_COMMANDS_26903: Partial<Record<OfficialKeycapId, { command: string; requiredAccess: string | null }>> = {
-  FAST: { command: "composer.toggleFastMode", requiredAccess: null },
-  "MIND+": { command: "composer.increaseReasoningEffort", requiredAccess: null },
-  "MIND-": { command: "composer.decreaseReasoningEffort", requiredAccess: null },
-  TERM: { command: "toggleTerminal", requiredAccess: "codexLocal" },
-  DIFF: { command: "toggleReviewTab", requiredAccess: "codexLocal" },
-  NAV: { command: "openBrowserTab", requiredAccess: null },
-  SETUP: { command: "settings", requiredAccess: null },
-  APPS: { command: "openSkills", requiredAccess: "codexLocal" },
-  NEW: { command: "newTask", requiredAccess: null },
-  SPLIT: { command: "forkThread", requiredAccess: null },
-  DEL: { command: "archiveThread", requiredAccess: null },
-  LAB: { command: "settings", requiredAccess: null },
-  DWN: { command: "copyConversationMarkdown", requiredAccess: null },
-  PARTY: { command: "openSideChat", requiredAccess: "codexLocal" },
-  TIME: { command: "manageTasks", requiredAccess: null },
-  FOLD: { command: "openFolder", requiredAccess: "codexOrWorkLocal" },
-  GIT: { command: "git.commit", requiredAccess: "codexLocal" },
-  APPR: { command: "approval.approve", requiredAccess: null },
-  REJ: { command: "approval.decline", requiredAccess: null },
-  CODEX: { command: "composer.submit", requiredAccess: null },
-  BUG: { command: "feedback", requiredAccess: null },
-  MAGIC: { command: "toggleThreadPin", requiredAccess: null },
-  PLAY: { command: "environmentAction1", requiredAccess: null },
-  BRCH: { command: "git.createDraftPullRequest", requiredAccess: null },
-  BRANCH: { command: "git.createBranch", requiredAccess: null },
-  MRG: { command: "git.mergePullRequest", requiredAccess: null },
-  PR: { command: "git.createPullRequest", requiredAccess: "codexLocal" },
-  PAINT: { command: "composer.addPhotos", requiredAccess: null },
-  UPL: { command: "composer.addFiles", requiredAccess: null },
-};
-export const ALLOWED_NATIVE_EXTERNAL_URLS = ["https://developers.openai.com/"] as const;
-
 /**
  * Format a renderer URL for local diagnostics without copying URL credentials
  * or opaque query/hash data into the plugin log. The original URL remains
@@ -419,6 +440,8 @@ const INPUT_ONLY_DEVICE_STATE = {
   state: { status: "connected", error: null, controlPlaneStatus: "unavailable", battery: null }
 };
 
+const SNAPSHOT_EXPRESSION = createRendererObservationExpression(INPUT_ONLY_DEVICE_STATE);
+
 export const REASONING_KEYCAP_IDS: Record<ReasoningAdjustment, "MIND+" | "MIND-"> = {
   decrease: "MIND-",
   increase: "MIND+"
@@ -426,11 +449,6 @@ export const REASONING_KEYCAP_IDS: Record<ReasoningAdjustment, "MIND+" | "MIND-"
 
 /** Native Micro's physical encoder click key. ENC is not a valid click event. */
 export const NATIVE_ENCODER_CLICK_KEY = "ENC_CLK" as const;
-
-/** Accept only an observed native query update time; absence must stay unknown. */
-export function verifiedUsageObservedAt(value: unknown): number | undefined {
-  return typeof value === "number" && Number.isFinite(value) && value > 0 ? value : undefined;
-}
 
 type NativeMicroHostBus = {
   dispatchHostMessage(message: unknown): unknown;
@@ -455,7 +473,7 @@ export function selectNativeMicroHostBus(
   expectedAppInitialSha256: string,
 ): NativeMicroHostBus | undefined {
   if (observedAppInitialSha256 !== expectedAppInitialSha256) return undefined;
-  const candidate = namespace.Kun as Partial<NativeMicroHostBus> | undefined;
+  const candidate = namespace.r as Partial<NativeMicroHostBus> | undefined;
   return candidate && typeof candidate.dispatchHostMessage === "function"
     ? candidate as NativeMicroHostBus
     : undefined;
@@ -468,7 +486,7 @@ export function selectNativeExternalUrlOpener(
   expectedAppInitialSha256: string,
 ): NativeExternalUrlOpener | undefined {
   if (observedAppInitialSha256 !== expectedAppInitialSha256) return undefined;
-  const candidate = namespace.d2t;
+  const candidate = namespace.k8t;
   return typeof candidate === "function" ? candidate as NativeExternalUrlOpener : undefined;
 }
 
@@ -615,377 +633,6 @@ const KEYCAP_ACTIVE_VIEW_TRANSITIONS: Partial<Record<OfficialKeycapId, {
   DEL: { command: "archiveThread", transition: "archived" },
   NEW: { command: "newTask", transition: "new-task" },
 };
-
-const SNAPSHOT_EXPRESSION = `(async () => {
-  const verifiedUsageObservedAt = (${verifiedUsageObservedAt.toString()});
-  const discoveredUrls = [...new Set([
-    ...[...document.querySelectorAll('link[href], script[src]')].map((element) => element.href || element.src),
-    ...performance.getEntriesByType('resource').map((entry) => entry.name)
-  ])];
-  const urls = (${trustedRendererAssetUrls.toString()})(discoveredUrls, location.href);
-  const slotSignalsUrl = urls.find((url) => url.includes('/assets/codex-micro-slot-signals-'));
-  if (!slotSignalsUrl) throw new Error('Codex Micro slot signals are not loaded.');
-
-  const namespaces = [];
-  for (const url of urls) {
-    try { namespaces.push(await import(url)); } catch {}
-  }
-  const exportedValues = namespaces.flatMap((namespace) => Object.values(namespace));
-  const definitions = exportedValues.find((candidate) =>
-    candidate && typeof candidate === 'object' &&
-    candidate.layout?.key === 'codex-micro-layout' &&
-    candidate.agentSource?.key === 'codex-micro-agent-source'
-  );
-  if (!definitions) throw new Error('Codex Micro settings definitions were not found.');
-
-  const bus = exportedValues.find((candidate) => candidate && typeof candidate === 'object' && candidate.handlers instanceof Map && (typeof candidate.dispatchHostMessage === 'function' || typeof candidate.dispatchMessage === 'function'));
-  if (!bus) throw new Error('Codex VS Code event bus was not found.');
-  const dispatch = bus.dispatchHostMessage ?? bus.dispatchMessage;
-  if ((bus.handlers.get('codex-micro-hid-event')?.size ?? 0) === 0) {
-    dispatch.call(bus, ${JSON.stringify(INPUT_ONLY_DEVICE_STATE)});
-  }
-  const root = document.getElementById('root');
-  const reactKey = root && Object.getOwnPropertyNames(root).find((key) => key.startsWith('__reactContainer$'));
-  if (!root || !reactKey) throw new Error('Codex React root was not found.');
-
-  const slotSignals = await import(slotSignalsUrl);
-  const resolvers = Object.values(slotSignals).filter((candidate) =>
-    candidate && typeof candidate === 'object' &&
-    typeof candidate.resolve === 'function' &&
-    typeof candidate.createSubscriberAtom === 'function'
-  );
-  if (resolvers.length === 0) throw new Error('Codex Micro slot resolver was not found.');
-
-  let queue = [root[reactKey]];
-  const seen = new Set();
-  const queryClients = new Set();
-  let found = null;
-  while (queue.length && seen.size < 30000 && !found) {
-    const fiber = queue.pop();
-    if (!fiber || seen.has(fiber)) continue;
-    seen.add(fiber);
-    const maps = [];
-    const contextValues = [fiber.memoizedProps?.value];
-    let dependency = fiber.dependencies?.firstContext;
-    while (dependency) {
-      contextValues.push(dependency.memoizedValue);
-      dependency = dependency.next;
-    }
-    for (const value of contextValues) {
-      if (value instanceof Map) maps.push(value);
-      if (value && typeof value.getQueryCache === 'function' && typeof value.getQueryData === 'function') queryClients.add(value);
-    }
-    for (const chain of maps) {
-      for (const node of chain.values()) {
-        if (!node?.store || typeof node.store.get !== 'function') continue;
-        for (const resolver of resolvers) {
-          try {
-            const atom = resolver.resolve(node, chain);
-            const slots = node.store.get(atom);
-            if (Array.isArray(slots) && slots.length === 6 && slots.every((slot, index) => slot?.id === index)) {
-              found = { chain, node, slots };
-              break;
-            }
-          } catch {}
-        }
-        if (found) break;
-      }
-      if (found) break;
-    }
-    queue.push(fiber.child, fiber.sibling);
-  }
-  if (!found) throw new Error('Codex Micro slot store was not found.');
-
-  let layout = definitions.layout.default;
-  let agentSource = definitions.agentSource.default;
-  let lightingAutoOff = definitions.lightingAutoOff?.default ?? '3-minutes';
-
-  let settingsResolved = false;
-  const directSettingReader = exportedValues.find((candidate) => {
-    if (typeof candidate !== 'function' || candidate.length !== 1) return false;
-    const source = Function.prototype.toString.call(candidate);
-    return source.includes('get-setting') && source.includes('.default');
-  });
-  if (directSettingReader) {
-    try {
-      const candidateLayout = await directSettingReader(definitions.layout);
-      const candidateAgentSource = await directSettingReader(definitions.agentSource);
-      const candidateLightingAutoOff = definitions.lightingAutoOff
-        ? await directSettingReader(definitions.lightingAutoOff)
-        : lightingAutoOff;
-      if (
-        candidateLayout?.version === 1 &&
-        typeof candidateLayout.slots === 'object' &&
-        ['pinned', 'recent', 'priority', 'custom'].includes(candidateAgentSource)
-      ) {
-        layout = candidateLayout;
-        agentSource = candidateAgentSource;
-        if (typeof candidateLightingAutoOff === 'string') lightingAutoOff = candidateLightingAutoOff;
-        settingsResolved = true;
-      }
-    } catch {}
-  }
-
-  if (!settingsResolved) {
-    const settingReaders = exportedValues.filter((candidate) => {
-      if (typeof candidate !== 'function' || candidate.length !== 2) return false;
-      const source = Function.prototype.toString.call(candidate);
-      return source.includes('.key') && source.includes('.default');
-    });
-    const getStoreValue = found.node.store.get.bind(found.node.store);
-    for (const readSetting of settingReaders) {
-      try {
-        const candidateLayout = await readSetting(getStoreValue, definitions.layout);
-        const candidateAgentSource = await readSetting(getStoreValue, definitions.agentSource);
-        const candidateLightingAutoOff = definitions.lightingAutoOff
-          ? await readSetting(getStoreValue, definitions.lightingAutoOff)
-          : lightingAutoOff;
-        if (candidateLayout?.version !== 1 || typeof candidateLayout.slots !== 'object') continue;
-        if (!['pinned', 'recent', 'priority', 'custom'].includes(candidateAgentSource)) continue;
-        layout = candidateLayout;
-        agentSource = candidateAgentSource;
-        if (typeof candidateLightingAutoOff === 'string') lightingAutoOff = candidateLightingAutoOff;
-        break;
-      } catch {}
-    }
-  }
-  const toEpoch = (value) => {
-    if (typeof value === 'number' && Number.isFinite(value) && value > 0) return value < 100000000000 ? value * 1000 : value;
-    if (typeof value === 'string') {
-      const parsed = Date.parse(value);
-      if (Number.isFinite(parsed)) return parsed;
-    }
-    return undefined;
-  };
-  const appInitialUrls = urls.filter((url) => new URL(url).pathname.slice('/assets/'.length).startsWith('app-initial-'));
-  let appInitial = null;
-  let metadataCurrentRuntime = false;
-  if (appInitialUrls.length === 1) {
-    try {
-      const appInitialUrl = appInitialUrls[0];
-      const verificationCache = globalThis.__codexDeckVerifiedMetadataInitial26903 ??= new Map();
-      let sha256 = verificationCache.get(appInitialUrl);
-      if (sha256 == null) {
-        const source = await fetch(appInitialUrl).then((response) => response.text());
-        const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(source));
-        sha256 = [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
-        verificationCache.set(appInitialUrl, sha256);
-      }
-      metadataCurrentRuntime = sha256 === ${JSON.stringify(DIAL_RUNTIME_26903.initial)};
-      if (metadataCurrentRuntime) {
-        const signalUrls = urls.filter((url) => new URL(url).pathname.startsWith('/assets/codex-micro-slot-signals-'));
-        if (signalUrls.length !== 1) metadataCurrentRuntime = false;
-        else {
-          let signalHash = verificationCache.get(signalUrls[0]);
-          if (signalHash == null) {
-            const signalSource = await fetch(signalUrls[0]).then((response) => response.text());
-            const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(signalSource));
-            signalHash = [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
-            verificationCache.set(signalUrls[0], signalHash);
-          }
-          metadataCurrentRuntime = signalHash === 'e8089d7f8ebbc4dd76e38913c3d28ded0beb934c02e4c97f8930f1adacbf3c4d';
-        }
-      }
-      if (metadataCurrentRuntime || sha256 === ${JSON.stringify(CURRENT_APP_INITIAL_SHA256)}) appInitial = await import(appInitialUrl);
-    } catch {}
-  }
-  const appPrimaryUrls = urls.filter((url) => new URL(url).pathname.slice('/assets/'.length).startsWith('app-primary-'));
-  let appPrimaryVerified = false;
-  if (appPrimaryUrls.length === 1) {
-    try {
-      const appPrimaryUrl = appPrimaryUrls[0];
-      const verificationCache = globalThis.__codexDeckVerifiedAppPrimary26903 ??= new Map();
-      let verified = verificationCache.get(appPrimaryUrl);
-      if (verified == null) {
-        const source = await fetch(appPrimaryUrl).then((response) => response.text());
-        const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(source));
-        const sha256 = [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
-        verified = ${JSON.stringify([CURRENT_APP_PRIMARY_SHA256, DIAL_RUNTIME_26903.primary])}.includes(sha256);
-        verificationCache.set(appPrimaryUrl, verified);
-      }
-      appPrimaryVerified = verified === true;
-    } catch {}
-  }
-  const readSlotMetadata = (${readAgentSlotMetadata.toString()});
-  const resolveMetadataComposer = ${CANONICAL_ACTIVE_COMPOSER_RESOLVER_EXPRESSION};
-  const selectMetadataScope = (${selectNativeCommandScope.toString()});
-  const metadataComposer = resolveMetadataComposer(document);
-  const metadataScope = appInitial ? selectMetadataScope(
-    document,
-    metadataComposer.root,
-    metadataCurrentRuntime ? appInitial.t3t : appInitial.V1t,
-    metadataCurrentRuntime ? appInitial.iKt : appInitial.QHt,
-    metadataCurrentRuntime ? appInitial.pR : appInitial.AL,
-    false,
-    true
-  ) : null;
-  const metadataNamespace = appInitial ? (${agentSlotMetadataNamespace.toString()})(appInitial, metadataCurrentRuntime) : null;
-  const slots = found.slots.map((slot) => {
-    const metadata = appInitial && metadataScope
-      ? readSlotMetadata(slot, metadataScope, metadataNamespace)
-      : { metadataAvailability: 'unavailable' };
-    return {
-      ...slot,
-      ...metadata,
-      activityAt: toEpoch(slot.activityAt) ?? toEpoch(slot.updatedAt) ?? toEpoch(slot.lastActivityAt) ??
-        toEpoch(slot.thread?.updatedAt) ?? toEpoch(slot.task?.updatedAt)
-    };
-  });
-
-  let usage;
-  for (const client of queryClients) {
-    try {
-      const query = client.getQueryCache().getAll().find((candidate) =>
-        JSON.stringify(candidate.queryKey) === '["rate-limit-status"]'
-      );
-      const refreshKey = Symbol.for('codex-deck-rate-limit-refresh-at');
-      const now = Date.now();
-      const dataUpdatedAt = Number(query?.state?.dataUpdatedAt) || 0;
-      const lastRefreshAttempt = Number(globalThis[refreshKey]) || 0;
-      if (query && typeof query.fetch === 'function' && now - dataUpdatedAt >= 15000 && now - lastRefreshAttempt >= 15000) {
-        globalThis[refreshKey] = now;
-        // Rate-limit refresh is network-backed and must never hold agent status,
-        // selection, or lighting behind its response. A later snapshot reads
-        // the refreshed query cache once this best-effort request completes.
-        try { Promise.resolve(query.fetch()).catch(() => {}); } catch {}
-      }
-      const data = query?.state?.data;
-      const rateLimit = data?.rate_limit;
-      if (!rateLimit || typeof rateLimit !== 'object') continue;
-      const normalizeWindow = (window, role) => {
-        if (!window || typeof window !== 'object') return null;
-        const used = Number(window.used_percent);
-        if (!Number.isFinite(used)) return null;
-        const seconds = Number(window.limit_window_seconds);
-        const minutes = Number.isFinite(seconds) && seconds > 0 ? seconds / 60 : null;
-        const kind = minutes != null && Math.abs(minutes - 300) <= 1 ? 'five-hour'
-          : minutes != null && Math.abs(minutes - 10080) <= 1 ? 'weekly'
-            : 'other';
-        const usedPercent = Math.min(100, Math.max(0, used));
-        return {
-          id: kind === 'other' ? role + '-' + String(minutes ?? 'unknown') : kind,
-          kind,
-          usedPercent,
-          remainingPercent: 100 - usedPercent,
-          windowDurationMins: minutes,
-          resetsAt: toEpoch(window.reset_at) ?? null
-        };
-      };
-      const windows = [
-        normalizeWindow(rateLimit.primary_window, 'primary'),
-        normalizeWindow(rateLimit.secondary_window, 'secondary')
-      ].filter(Boolean);
-      const available = Number(data.rate_limit_reset_credits?.available_count);
-      const applicable = Number(data.rate_limit_reset_credits?.applicable_available_count);
-      const observedAt = verifiedUsageObservedAt(query.state?.dataUpdatedAt);
-      usage = {
-        windows,
-        ...(observedAt == null ? {} : { observedAt }),
-        resetCreditsAvailable: Number.isFinite(available) ? Math.max(0, Math.floor(available)) : null,
-        resetCreditsApplicable: Number.isFinite(applicable) ? Math.max(0, Math.floor(applicable)) : null
-      };
-      break;
-    } catch {}
-  }
-
-  const html = document.documentElement;
-  const body = document.body;
-  const themeWords = [
-    html.dataset.theme,
-    html.dataset.colorScheme,
-    html.className,
-    body?.dataset?.theme,
-    body?.className,
-    getComputedStyle(html).colorScheme
-  ].filter(Boolean).join(' ').toLowerCase();
-  const explicitDark = /(^|[\\s_-])dark($|[\\s_-])/.test(themeWords);
-  const explicitLight = /(^|[\\s_-])light($|[\\s_-])/.test(themeWords);
-  const backgrounds = [body, document.getElementById('root'), html]
-    .filter(Boolean)
-    .map((element) => getComputedStyle(element).backgroundColor)
-    .map((value) => value.match(/rgba?\\(([^)]+)\\)/)?.[1]?.split(',').map(Number))
-    .filter((channels) => channels?.length >= 3 && (channels.length < 4 || channels[3] > 0));
-  const background = backgrounds[0];
-  const luminance = background
-    ? (0.2126 * background[0] + 0.7152 * background[1] + 0.0722 * background[2]) / 255
-    : null;
-  const theme = explicitDark || (!explicitLight && (luminance != null ? luminance < 0.42 : matchMedia('(prefers-color-scheme: dark)').matches))
-    ? 'dark'
-    : 'light';
-  const activeThreadElement = document.querySelector('[data-app-action-sidebar-thread-id][data-app-action-sidebar-thread-active="true"]')
-    ?? document.querySelector('[data-app-action-sidebar-thread-id][aria-current="page"]');
-  const resolveActiveComposer = ${CANONICAL_ACTIVE_COMPOSER_RESOLVER_EXPRESSION};
-  const activeComposer = resolveActiveComposer(document);
-  const rawActiveThreadKey = activeComposer.activeThreadKey;
-  const readWindowProbe = (${readAgentWindowProbe.toString()});
-  const windowProbe = readWindowProbe(document, resolveActiveComposer, activeComposer);
-  const activeThreadKey = windowProbe.identityAvailable
-    ? windowProbe.activeThreadKey
-    : rawActiveThreadKey;
-  const activeMetadata = appInitial && metadataScope && activeThreadKey
-    ? readSlotMetadata({ threadKey: activeThreadKey }, metadataScope, metadataNamespace)
-    : { metadataAvailability: 'unavailable' };
-  const activeThreadTitle = activeThreadElement
-    ? (activeThreadElement.getAttribute('aria-label') ?? activeThreadElement.textContent ?? '').trim().slice(0, 240) || undefined
-    : undefined;
-  const composerRoot = activeComposer.root;
-  const composerIds = globalThis.__codexDeckComposerIds ??= { ids: new WeakMap(), next: 0 };
-  if (composerRoot && !composerIds.ids.has(composerRoot)) composerIds.ids.set(composerRoot, 'composer-' + (++composerIds.next));
-  const activeComposerKey = composerRoot ? composerIds.ids.get(composerRoot) : undefined;
-  const markdownCopyTracker = globalThis[Symbol.for('codexDeckMarkdownCopyTracker')];
-  const markdownCopyRevision = activeThreadKey
-    && markdownCopyTracker?.threadKey === activeThreadKey
-    && typeof markdownCopyTracker.revision === 'number'
-    && Number.isFinite(markdownCopyTracker.revision)
-    ? markdownCopyTracker.revision
-    : undefined;
-  const reasoningTriggers = composerRoot ? [...composerRoot.querySelectorAll(
-    '[data-codex-intelligence-trigger][data-composer-navigation-target="reasoning"]'
-  )] : [];
-  const reasoningTrigger = reasoningTriggers.length === 1 ? reasoningTriggers[0] : null;
-  const rawReasoningEffort = reasoningTrigger?.getAttribute('data-selected-reasoning-effort') ?? null;
-  const reasoningEffort = rawReasoningEffort && /^[a-z][a-z0-9_-]{0,32}$/.test(rawReasoningEffort)
-    ? rawReasoningEffort
-    : null;
-  const selectModelOwner = (${selectNativeModelPickerOwner.toString()});
-  const readCurrentModel = (${readNativeCurrentModel.toString()});
-  const currentModel = readCurrentModel(composerRoot, reasoningTrigger, appPrimaryVerified, selectModelOwner);
-  const modelLabel = currentModel?.modelLabel ?? null;
-  const selectPicker = (${selectBoundModelPicker.toString()});
-  const boundModelPicker = selectPicker(document, composerRoot);
-  const modelPickerOpen = boundModelPicker != null;
-  const modelCandidateLabel = (${readFocusedModelCandidate.toString()})(boundModelPicker, document.activeElement);
-  const composerReadback = activeComposerKey && reasoningTrigger
-    ? {
-        ...(activeThreadKey ? { activeThreadKey } : {}),
-        currentModelId: currentModel?.modelId ?? null,
-        modelLabel,
-        modelSelectionMode: currentModel?.selectionMode ?? null,
-        modelPickerOpen,
-        modelCandidateLabel,
-        reasoningEffort,
-        fastEnabled: null,
-        dictationPhase: 'unavailable',
-        observedAt: Date.now()
-      }
-    : undefined;
-
-  return {
-    slots,
-    activeThreadKey,
-    activeThreadTitle,
-    activeComposerKey,
-    ...(activeMetadata.approvalPending === undefined ? {} : { approvalPending: activeMetadata.approvalPending }),
-    ...(activeMetadata.threadPinned === undefined ? {} : { threadPinned: activeMetadata.threadPinned }),
-    ...(composerReadback ? { composerReadback } : {}),
-    ...(markdownCopyRevision === undefined ? {} : { markdownCopyRevision }),
-    layout,
-    agentSource,
-    lightingAutoOff,
-    theme,
-    ...(usage ? { usage } : {})
-  };
-})()`;
 
 export class CodexMicroRendererBridge {
   private socket: WebSocket | undefined;
@@ -1502,14 +1149,20 @@ export class CodexMicroRendererBridge {
       ])];
       const urls = (${trustedRendererAssetUrls.toString()})(discoveredUrls, location.href);
       const appInitialUrls = urls.filter((url) => new URL(url).pathname.slice('/assets/'.length).startsWith('app-initial-'));
-      if (appInitialUrls.length !== 1) throw new Error('E_MICRO_EVENT_BUS_UNAVAILABLE');
+      const messageBusUrls = urls.filter((url) => new URL(url).pathname.slice('/assets/'.length).startsWith('message-bus-'));
+      if (appInitialUrls.length !== 1 || messageBusUrls.length !== 1) throw new Error('E_MICRO_EVENT_BUS_UNAVAILABLE');
       const appInitialUrl = appInitialUrls[0];
+      const messageBusUrl = messageBusUrls[0];
       const source = await fetch(appInitialUrl).then((response) => response.text());
       const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(source));
       const sha256 = [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
       if (sha256 !== ${JSON.stringify(CURRENT_APP_INITIAL_SHA256)}) throw new Error('E_MICRO_STANDALONE_RUNTIME_CHANGED');
-      const appInitial = await import(appInitialUrl);
-      const bus = appInitial.Kun;
+      const messageBusSource = await fetch(messageBusUrl).then((response) => response.text());
+      const messageBusDigest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(messageBusSource));
+      const messageBusSha256 = [...new Uint8Array(messageBusDigest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+      if (messageBusSha256 !== ${JSON.stringify(CURRENT_MESSAGE_BUS_SHA256)}) throw new Error('E_MICRO_STANDALONE_RUNTIME_CHANGED');
+      const messageBus = await import(messageBusUrl);
+      const bus = messageBus.r;
       if (!bus || (typeof bus.dispatchMessage !== 'function' && typeof bus.dispatchHostMessage !== 'function')) {
         throw new Error('E_MICRO_EVENT_BUS_UNAVAILABLE');
       }
@@ -1755,7 +1408,99 @@ export class CodexMicroRendererBridge {
   }
 
   async adjustReasoning(direction: ReasoningAdjustment): Promise<MutationConfirmation> {
-    return await this.runKeycap(REASONING_KEYCAP_IDS[direction]);
+    const keycapId = REASONING_KEYCAP_IDS[direction];
+    const operation = await this.beginOperation(`KEYCAP_${keycapId}`, "invoke", undefined, false, true);
+    return await this.withOperationTargetLease(operation, async () => {
+      const expression = `(async () => {
+        const assertMutationForeground = (${assertFocusedVisibleRendererForMutation.toString()});
+        const resolveActiveComposer = ${CANONICAL_ACTIVE_COMPOSER_RESOLVER_EXPRESSION};
+        const selectModelOwner = (${selectNativeModelPickerOwner.toString()});
+        const expectedActiveThreadKey = ${JSON.stringify(operation.activeThreadKey ?? null)};
+        const expectedActiveComposerKey = ${JSON.stringify(operation.activeComposerKey ?? null)};
+        const assertBoundOwner = () => {
+          const active = resolveActiveComposer(document);
+          if (expectedActiveThreadKey && active.activeThreadKey !== expectedActiveThreadKey) {
+            throw new Error('E_ACTIVE_THREAD_STALE');
+          }
+          const composerIds = globalThis.__codexDeckComposerIds ??= { ids: new WeakMap(), next: 0 };
+          if (active.root && !composerIds.ids.has(active.root)) composerIds.ids.set(active.root, 'composer-' + (++composerIds.next));
+          if (!active.root || (expectedActiveComposerKey && composerIds.ids.get(active.root) !== expectedActiveComposerKey)) {
+            throw new Error('E_ACTIVE_COMPOSER_STALE');
+          }
+          const triggers = [...active.root.querySelectorAll(
+            '[data-codex-intelligence-trigger][data-composer-navigation-target="reasoning"]'
+          )];
+          if (triggers.length !== 1) throw new Error('E_MODEL_PICKER_NO_TRIGGER');
+          const owner = selectModelOwner(active.root, triggers[0], true);
+          if (!owner || typeof owner.onSelectReasoningEffort !== 'function') {
+            throw new Error('E_REASONING_CONTROL_UNAVAILABLE');
+          }
+          return owner;
+        };
+        const discoveredUrls = [...new Set([
+          ...[...document.querySelectorAll('link[href], script[src]')].map((element) => element.href || element.src),
+          ...performance.getEntriesByType('resource').map((entry) => entry.name)
+        ])];
+        const urls = (${trustedRendererAssetUrls.toString()})(discoveredUrls, location.href);
+        const primaryUrls = urls.filter((value) =>
+          new URL(value).pathname.slice('/assets/'.length).startsWith('app-primary-'));
+        if (primaryUrls.length !== 1) throw new Error('E_MODEL_PICKER_PRIMARY_ASSET');
+        const primaryUrl = primaryUrls[0];
+        const verificationCache = globalThis.__agiKeysVerifiedAppPrimary26908 ??= new Map();
+        let primaryVerified = verificationCache.get(primaryUrl);
+        if (primaryVerified == null) {
+          const source = await fetch(primaryUrl).then((response) => response.text());
+          const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(source));
+          const sha256 = [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+          primaryVerified = sha256 === ${JSON.stringify(CURRENT_APP_PRIMARY_SHA256)};
+          verificationCache.set(primaryUrl, primaryVerified);
+        }
+        if (primaryVerified !== true) throw new Error('E_MODEL_PICKER_PRIMARY_ASSET');
+
+        const initial = assertBoundOwner();
+        const currentEffort = initial.reasoningEffort;
+        if (typeof currentEffort !== 'string' || !/^[a-z][a-z0-9_-]{0,32}$/.test(currentEffort)) {
+          throw new Error('E_REASONING_CONTROL_UNAVAILABLE');
+        }
+        const selectedModel = Array.isArray(initial.modelOptions)
+          ? initial.modelOptions.find((option) => option?.model?.model === initial.model)?.model
+          : null;
+        const efforts = Array.isArray(selectedModel?.supportedReasoningEfforts)
+          ? selectedModel.supportedReasoningEfforts.flatMap((entry) => {
+              const value = entry?.reasoningEffort;
+              return typeof value === 'string' && /^[a-z][a-z0-9_-]{0,32}$/.test(value) ? [value] : [];
+            })
+          : [];
+        if (efforts.length === 0 || new Set(efforts).size !== efforts.length) {
+          throw new Error('E_REASONING_CONTROL_UNAVAILABLE');
+        }
+        const currentIndex = efforts.indexOf(currentEffort);
+        if (currentIndex < 0) throw new Error('E_REASONING_CONTROL_UNAVAILABLE');
+        const offset = ${JSON.stringify(direction)} === 'increase' ? 1 : -1;
+        const nextIndex = Math.max(0, Math.min(efforts.length - 1, currentIndex + offset));
+        const nextEffort = efforts[nextIndex];
+        if (!nextEffort || nextEffort === currentEffort) return ${JSON.stringify(operation.operationId)};
+
+        const fresh = assertBoundOwner();
+        if (fresh.reasoningEffort !== currentEffort || typeof fresh.onSelectReasoningEffort !== 'function') {
+          throw new Error('E_REASONING_CONTROL_STALE');
+        }
+        assertMutationForeground(document);
+        const result = fresh.onSelectReasoningEffort(nextEffort);
+        if (result && typeof result.then === 'function') await result;
+        const deadline = Date.now() + 800;
+        while (true) {
+          const observed = assertBoundOwner();
+          if (observed.reasoningEffort === nextEffort) break;
+          if (Date.now() >= deadline) throw new Error('E_REASONING_COMMIT_UNCHANGED');
+          await new Promise((resolve) => setTimeout(resolve, 10));
+        }
+        return ${JSON.stringify(operation.operationId)};
+      })()`;
+      const observedOperationId = await this.evaluate<string>(expression);
+      if (observedOperationId !== operation.operationId) throw integrityError("E_OPERATION_UNOBSERVED");
+      return await this.observeOperation(operation, direction);
+    });
   }
 
   async rotateModelPicker(direction: ReasoningAdjustment): Promise<MutationConfirmation> {
@@ -1794,8 +1539,8 @@ export class CodexMicroRendererBridge {
       const [appInitialSha256, appPrimarySha256] = await Promise.all([
         sha256(appInitialSource), sha256(appPrimarySource)
       ]);
-      if (appInitialSha256 !== ${JSON.stringify(DIAL_RUNTIME_26903.initial)}
-        || appPrimarySha256 !== ${JSON.stringify(DIAL_RUNTIME_26903.primary)}) {
+      if (appInitialSha256 !== ${JSON.stringify(CURRENT_APP_INITIAL_SHA256)}
+        || appPrimarySha256 !== ${JSON.stringify(CURRENT_APP_PRIMARY_SHA256)}) {
         throw new Error('E_DRAFT_TRANSFER_ASSET_CHANGED');
       }
       const appInitial = await import(appInitialUrl);
@@ -1805,9 +1550,9 @@ export class CodexMicroRendererBridge {
       const outcome = moveDraft(
         document,
         selectScope,
-        appInitial.t3t,
-        appInitial.iKt,
-        appInitial.pR
+        appInitial.e6t,
+        appInitial.mqt,
+        appInitial.hU
       );
       if (outcome !== 'moved') throw new Error('E_DRAFT_TRANSFER_UNOBSERVED');
       return ${JSON.stringify(operation.operationId)};
@@ -1885,8 +1630,8 @@ export class CodexMicroRendererBridge {
       const [appInitialSha256, appPrimarySha256] = await Promise.all([
         sha256(appInitialSource), sha256(appPrimarySource)
       ]);
-      if (appInitialSha256 !== ${JSON.stringify(DIAL_RUNTIME_26903.initial)}
-        || appPrimarySha256 !== ${JSON.stringify(DIAL_RUNTIME_26903.primary)}) {
+      if (appInitialSha256 !== ${JSON.stringify(CURRENT_APP_INITIAL_SHA256)}
+        || appPrimarySha256 !== ${JSON.stringify(CURRENT_APP_PRIMARY_SHA256)}) {
         throw new Error('E_CONTEXT_COMPACTION_UNAVAILABLE');
       }
       const appInitial = await import(appInitialUrl);
@@ -1908,10 +1653,10 @@ export class CodexMicroRendererBridge {
       if (!composerController) throw new Error('E_MICRO_COMPOSER_CONTROLLER_UNAVAILABLE');
       if (composerController.getPersistedText().length !== 0) throw new Error('E_CONTEXT_COMPACTION_DRAFT_NOT_EMPTY');
       const selectScope = (${selectNativeCommandScope.toString()});
-      const scope = selectScope(document, active.root, appInitial.t3t, appInitial.iKt, appInitial.pR, false);
+      const scope = selectScope(document, active.root, appInitial.e6t, appInitial.mqt, appInitial.hU, false);
       if (!scope) throw new Error('E_CONTEXT_COMPACTION_SCOPE_UNAVAILABLE');
-      const managerBinding = scope.get(appInitial.VTt, rawConversationId);
-      const manager = typeof appInitial.$4t === 'function' ? appInitial.$4t(scope, managerBinding) : null;
+      const managerBinding = scope.get(appInitial.gOt, rawConversationId);
+      const manager = typeof appInitial.Q3t === 'function' ? appInitial.Q3t(scope, managerBinding) : null;
       if (!manager || typeof manager.compactThread !== 'function') {
         throw new Error('E_CONTEXT_COMPACTION_MANAGER_UNAVAILABLE');
       }
@@ -1986,7 +1731,7 @@ export class CodexMicroRendererBridge {
           new URL(value).pathname.slice('/assets/'.length).startsWith('app-primary-'));
         if (primaryUrls.length !== 1) throw new Error('E_MODEL_PICKER_PRIMARY_ASSET');
         const primaryUrl = primaryUrls[0];
-        const verificationCache = globalThis.__codexDeckVerifiedAppPrimary26903 ??= new Map();
+        const verificationCache = globalThis.__agiKeysVerifiedAppPrimary26908 ??= new Map();
         let primaryVerified = verificationCache.get(primaryUrl);
         if (primaryVerified == null) {
           const source = await fetch(primaryUrl).then((response) => response.text());
@@ -2322,6 +2067,7 @@ export class CodexMicroRendererBridge {
       false,
       viewScoped,
       activeViewTransition?.transition === "new-task",
+      keycapId === "CODEX",
     );
     return await this.withOperationTargetLease(operation, async () => {
     const contentFreeCommand = (CONTENT_FREE_COMMANDS as readonly OfficialKeycapId[]).includes(keycapId)
@@ -2353,6 +2099,7 @@ export class CodexMicroRendererBridge {
       const bridgeUrl = moduleUrl('codex-micro-bridge-');
       const appInitialUrl = moduleUrl('app-initial-');
       const commandsUrl = moduleUrl('codex-micro-commands-');
+      const messageBusUrl = moduleUrl('message-bus-');
       const reviewedKeycapRuntime = ${JSON.stringify((REVIEWED_KEYCAP_COMMANDS_26903[keycapId] || REVIEWED_STANDALONE_KEYCAPS_26903[keycapId]) ? DIAL_RUNTIME_26903 : null)};
       const currentKeycapLayout = !!reviewedKeycapRuntime && !!layoutUrl
         && new URL(layoutUrl).pathname === '/assets/' + reviewedKeycapRuntime.layoutAsset;
@@ -2375,12 +2122,17 @@ export class CodexMicroRendererBridge {
       const keycap = keycapGetter(${JSON.stringify(keycapId)});
       const action = keycap?.action;
       if (!action) throw new Error('E_MICRO_KEYCAP_ACTION_UNAVAILABLE');
-      const reviewedStandalone = ${JSON.stringify(REVIEWED_STANDALONE_KEYCAPS_26903[keycapId] ?? null)};
+      const reviewedCommand = currentKeycapLayout
+        ? ${JSON.stringify(REVIEWED_KEYCAP_COMMANDS_26903[keycapId] ?? null)}
+        : ${JSON.stringify(REVIEWED_KEYCAP_COMMANDS_26908[keycapId] ?? null)};
+      const reviewedStandalone = currentKeycapLayout
+        ? ${JSON.stringify(REVIEWED_STANDALONE_KEYCAPS_26903[keycapId] ?? null)}
+        : ${JSON.stringify(REVIEWED_STANDALONE_KEYCAPS_26908[keycapId] ?? null)};
       const currentActionMatches = reviewedStandalone
         ? action.type === reviewedStandalone.type && (reviewedStandalone.type === 'external-url'
           ? action.url === reviewedStandalone.url : action.text === reviewedStandalone.text)
-        : action.type === 'command' && action.command === ${JSON.stringify(REVIEWED_KEYCAP_COMMANDS_26903[keycapId]?.command ?? null)};
-      if (currentKeycapLayout && !currentActionMatches) {
+        : action.type === 'command' && action.command === reviewedCommand?.command;
+      if (!currentActionMatches) {
         throw new Error('E_MICRO_KEYCAP_ACTION_UNAVAILABLE');
       }
       const expectedTransitionCommand = ${JSON.stringify(activeViewTransition?.command ?? null)};
@@ -2455,11 +2207,11 @@ export class CodexMicroRendererBridge {
           if (commandRunner) {
             const scopeReferences = currentKeycapLayout
               ? { appScope: appInitial.t3t, access: appInitial.iKt, capability: appInitial.pR }
-              : { appScope: appInitial.V1t, access: appInitial.QHt, capability: appInitial.AL };
+              : { appScope: appInitial.e6t, access: appInitial.mqt, capability: appInitial.hU };
             commandRuntime = { selectScope, scopeReferences };
             const metadata = typeof commands.n === 'function' ? commands.n(dispatchCommand) : null;
             if (!metadata || metadata.id !== dispatchCommand) throw new Error('E_COMMAND_METADATA_UNAVAILABLE');
-            if (currentKeycapLayout && (metadata.requiredAccess ?? null) !== ${JSON.stringify(REVIEWED_KEYCAP_COMMANDS_26903[keycapId]?.requiredAccess ?? null)}) throw new Error('E_COMMAND_ACCESS_REQUIRED');
+            if ((metadata.requiredAccess ?? null) !== (reviewedCommand?.requiredAccess ?? null)) throw new Error('E_COMMAND_ACCESS_REQUIRED');
             if (metadata.requiredAccess != null || dispatchCommand === 'manageTasks') {
               const scope = selectScope(
                 document,
@@ -2666,7 +2418,7 @@ export class CodexMicroRendererBridge {
         );
         if (!externalUrl) throw new Error('E_EXTERNAL_URL_NOT_ALLOWED');
         const openExternalUrl = selectExternalUrlOpener(
-          currentKeycapLayout ? { d2t: appInitial.A6t } : appInitial,
+          currentKeycapLayout ? { k8t: appInitial.A6t } : appInitial,
           appInitialSha256,
           standaloneExpectedHash
         );
@@ -2688,10 +2440,25 @@ export class CodexMicroRendererBridge {
       if (action.type === 'composer-text') {
         const selectHostBus = (${selectNativeMicroHostBus.toString()});
         const selectComposerController = (${selectNativeComposerTextController.toString()});
+        let hostBusNamespace = { r: appInitial._mn };
+        let hostBusHash = appInitialSha256;
+        let expectedHostBusHash = standaloneExpectedHash;
+        if (!currentKeycapLayout) {
+          if (!messageBusUrl || new URL(messageBusUrl).pathname !== '/assets/' + ${JSON.stringify(CURRENT_MESSAGE_BUS_ASSET)}) {
+            throw new Error('E_MICRO_STANDALONE_RUNTIME_UNAVAILABLE');
+          }
+          const messageBusSource = await fetch(messageBusUrl).then((response) => response.text());
+          const messageBusDigest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(messageBusSource));
+          hostBusHash = [...new Uint8Array(messageBusDigest)]
+            .map((byte) => byte.toString(16).padStart(2, '0')).join('');
+          expectedHostBusHash = ${JSON.stringify(CURRENT_MESSAGE_BUS_SHA256)};
+          if (hostBusHash !== expectedHostBusHash) throw new Error('E_MICRO_STANDALONE_RUNTIME_CHANGED');
+          hostBusNamespace = await import(messageBusUrl);
+        }
         const bus = selectHostBus(
-          currentKeycapLayout ? { Kun: appInitial._mn } : appInitial,
-          appInitialSha256,
-          standaloneExpectedHash
+          hostBusNamespace,
+          hostBusHash,
+          expectedHostBusHash
         );
         if (!bus) throw new Error('E_MICRO_STANDALONE_RUNTIME_UNAVAILABLE');
         assertActiveThread();
@@ -3037,6 +2804,7 @@ export class CodexMicroRendererBridge {
     rebase = false,
     bindActiveThread: boolean | ((snapshot: MicroSnapshot) => boolean) = false,
     captureActiveView = false,
+    bindFreshComposer = false,
   ): Promise<OperationRequest> {
     if (this.heldPttOperations.size > 0 && (!this.socket || this.socket.readyState !== WebSocket.OPEN)) {
       throw integrityError("E_FOREGROUND_TARGET_STALE");
@@ -3053,7 +2821,10 @@ export class CodexMicroRendererBridge {
     const shouldBindActiveThread = typeof bindActiveThread === "function" ? bindActiveThread(current) : bindActiveThread;
     if (shouldBindActiveThread) {
       if (!current.activeThreadKey && !current.activeComposerKey) throw integrityError("E_ACTIVE_VIEW_UNAVAILABLE");
-      if (expected) assertFreshActiveThread(expected, current);
+      // Submit targets the composer selected now, not the previous passive
+      // LCD sample. Once captured below, renderer dispatch and readback still
+      // enforce that exact identity; a failed send is never retried.
+      if (expected && !bindFreshComposer) assertFreshActiveThread(expected, current);
     }
     const request = {
       version: 1,
@@ -3359,8 +3130,8 @@ export class CodexMicroRendererBridge {
     if (!this.connectedTargetKey || this.hasActiveTargetLease()) return;
 
     try {
-      const current = await this.evaluate<RendererFocusState>(FOREGROUND_RENDERER_PROBE_EXPRESSION);
-      if (isFocusedVisibleRenderer(current)) return;
+      const current = await this.evaluate<RendererFocusState & { composerPresent: boolean }>(MUTATION_RENDERER_PROBE_EXPRESSION);
+      if (isFocusedVisibleRenderer(current) && current.composerPresent === true) return;
 
       const port = await discoverDebugPort();
       const targets = await fetchJson<DebugTarget[]>(`http://127.0.0.1:${port}/json/list`);
@@ -3368,11 +3139,39 @@ export class CodexMicroRendererBridge {
         targets,
         (candidate) => probeDebugTargetFocus(candidate, port),
       );
-      if (!foreground?.webSocketDebuggerUrl) return;
-      if (codexDebugTargetKey(foreground) === this.connectedTargetKey) return;
+      let observationTarget = foreground;
+      if (!observationTarget?.webSocketDebuggerUrl || current.composerPresent !== true) {
+        const composerObservations: Array<{
+          target: DebugTarget;
+          composerPresent: boolean;
+          visibilityState: string;
+        }> = [];
+        for (const candidate of enumerateCodexMainTargets(targets)) {
+          try {
+            const probe = await this.agentWindowRouting.command<RendererFocusState & { composerPresent: boolean }>(
+              candidate,
+              port,
+              "Runtime.evaluate",
+              { expression: MUTATION_RENDERER_PROBE_EXPRESSION, returnByValue: true },
+            );
+            composerObservations.push({
+              target: candidate,
+              composerPresent: probe.composerPresent === true,
+              visibilityState: probe.visibilityState,
+            });
+          } catch {}
+        }
+        observationTarget = selectUniqueComposerMutationTarget(composerObservations);
+      }
+      if (!observationTarget?.webSocketDebuggerUrl) return;
+      if (codexDebugTargetKey(observationTarget) === this.connectedTargetKey) return;
       if (this.hasActiveTargetLease()) return;
 
-      await this.connect({ port, target: foreground, requireFocused: true });
+      await this.connect({
+        port,
+        target: observationTarget,
+        requireFocused: observationTarget === foreground,
+      });
     } catch {
       // Observation is allowed to stay on the last good renderer while focus
       // is moving. The mutation path performs its own strict final guard.
@@ -3381,9 +3180,9 @@ export class CodexMicroRendererBridge {
 
   private async ensureForegroundMutationTarget(): Promise<boolean> {
     await this.ensureConnected();
-    let state: RendererFocusState | undefined;
+    let state: (RendererFocusState & { composerPresent?: boolean }) | undefined;
     try {
-      state = await this.evaluate<RendererFocusState>(FOREGROUND_RENDERER_PROBE_EXPRESSION);
+      state = await this.evaluate<RendererFocusState & { composerPresent?: boolean }>(MUTATION_RENDERER_PROBE_EXPRESSION);
     } catch {
       // A held PTT release is leased to this exact socket. Never close or
       // replace it merely because a foreground probe failed.
@@ -3391,15 +3190,67 @@ export class CodexMicroRendererBridge {
         throw integrityError("E_FOREGROUND_TARGET_STALE");
       }
     }
-    if (isFocusedVisibleRenderer(state)) return false;
+    if (isFocusedVisibleRenderer(state) && state.composerPresent !== false) return false;
     if (this.hasActiveTargetLease()) {
       throw integrityError("E_FOREGROUND_TARGET_STALE");
     }
 
     const port = await discoverDebugPort();
     const targets = await fetchJson<DebugTarget[]>(`http://127.0.0.1:${port}/json/list`);
-    const target = await resolveForegroundCodexTarget(targets, (candidate) => probeDebugTargetFocus(candidate, port));
+    let target = await resolveForegroundCodexTarget(targets, (candidate) => probeDebugTargetFocus(candidate, port));
     if (!target?.webSocketDebuggerUrl) throw integrityError("E_FOREGROUND_TARGET_UNAVAILABLE");
+    const foregroundProbe = await this.agentWindowRouting.command<RendererFocusState & { composerPresent: boolean }>(
+      target,
+      port,
+      "Runtime.evaluate",
+      { expression: MUTATION_RENDERER_PROBE_EXPRESSION, returnByValue: true },
+    );
+    if (foregroundProbe.composerPresent !== true) {
+      const composerObservations: Array<{
+        target: DebugTarget;
+        composerPresent: boolean;
+        visibilityState: string;
+      }> = [];
+      for (const candidate of enumerateCodexMainTargets(targets)) {
+        try {
+          const probe = await this.agentWindowRouting.command<RendererFocusState & { composerPresent: boolean }>(
+            candidate,
+            port,
+            "Runtime.evaluate",
+            { expression: MUTATION_RENDERER_PROBE_EXPRESSION, returnByValue: true },
+          );
+          composerObservations.push({
+            target: candidate,
+            composerPresent: probe.composerPresent === true,
+            visibilityState: probe.visibilityState,
+          });
+        } catch {}
+      }
+      const composerTarget = selectUniqueComposerMutationTarget(composerObservations);
+      if (!composerTarget?.webSocketDebuggerUrl) {
+        throw integrityError("E_FOREGROUND_TARGET_UNAVAILABLE");
+      }
+      target = composerTarget;
+      await this.agentWindowRouting.command(target, port, "Page.bringToFront");
+      const deadline = Date.now() + AGENT_ACTIVATION_TIMEOUT_MS;
+      let focused = false;
+      while (Date.now() < deadline) {
+        try {
+          const probe = await this.agentWindowRouting.command<RendererFocusState & { composerPresent: boolean }>(
+            target,
+            port,
+            "Runtime.evaluate",
+            { expression: MUTATION_RENDERER_PROBE_EXPRESSION, returnByValue: true },
+          );
+          if (isFocusedVisibleRenderer(probe) && probe.composerPresent === true) {
+            focused = true;
+            break;
+          }
+        } catch {}
+        await new Promise((resolve) => setTimeout(resolve, AGENT_ACTIVATION_POLL_MS));
+      }
+      if (!focused) throw integrityError("E_FOREGROUND_TARGET_UNAVAILABLE");
+    }
     const targetKey = codexDebugTargetKey(target);
     const targetChanged = targetKey !== this.connectedTargetKey;
     if (this.hasActiveTargetLease()) {

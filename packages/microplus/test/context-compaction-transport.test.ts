@@ -216,7 +216,7 @@ test("context compaction crosses the real CDP transport and confirms only after 
   assert.ok(compactionFrame, "the bridge must send native compaction through Runtime.evaluate");
   assert.equal(compactionFrame.params?.awaitPromise, true);
   assert.equal(compactionFrame.params?.returnByValue, true);
-  assert.match(compactionFrame.params?.expression ?? "", /appInitial\.\$4t\(scope, managerBinding\)/u);
+  assert.match(compactionFrame.params?.expression ?? "", /appInitial\.Q3t\(scope, managerBinding\)/u);
   assert.match(compactionFrame.params?.expression ?? "", /await manager\.compactThread\(rawConversationId\)/u);
 });
 

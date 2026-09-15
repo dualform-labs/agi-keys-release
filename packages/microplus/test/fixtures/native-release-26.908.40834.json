@@ -1,0 +1,64 @@
+{
+  "bundleVersion": "26.908.40834",
+  "build": "8881",
+  "assets": {
+    "bridge": {
+      "path": "webview/assets/codex-micro-bridge-d8b3d2dc46bd.js",
+      "bytes": 26451,
+      "sha256": "4a72fcf16503f4e5a5a69feea1e45944acc3483afb76f1651254fc1f14aed91c"
+    },
+    "appInitial": {
+      "path": "webview/assets/app-initial-9b95fa538c62.js",
+      "bytes": 9807807,
+      "sha256": "737070f94a072d2b4ede9f326e3e1c4142fb82198961251c2e70479b3f926275"
+    },
+    "appPrimary": {
+      "path": "webview/assets/app-primary-44ec287874b7.js",
+      "bytes": 5298817,
+      "sha256": "28d317396d30902ab5f2c01f069a7b9773f2299b35cc855272d4cf59b402c276"
+    },
+    "commands": {
+      "path": "webview/assets/codex-micro-commands-83e670b2b20a.js",
+      "bytes": 519,
+      "sha256": "5d5e582c441c213d29121a4c56eceaca51d1d5097e61bf5d5e3a2512dd0bbbf7"
+    },
+    "layout": {
+      "path": "webview/assets/codex-micro-layout-ce53c0b4e6f2.js",
+      "bytes": 5502,
+      "sha256": "eeb77c77780c02f39a644a8bcc0f474bec031870a43e47ea78b91ab8072e3594"
+    },
+    "slotSignals": {
+      "path": "webview/assets/codex-micro-slot-signals-1c73facc00e2.js",
+      "bytes": 6353,
+      "sha256": "f6d9db42ee933d617212cc1c1a79be6e932d9620714a114f913e1562416a5eba"
+    },
+    "messageBus": {
+      "path": "webview/assets/message-bus-828b3d0e2c34.js",
+      "bytes": 2702,
+      "sha256": "daec5cd2b8cfe9074143c15bbde1f45b76fe40f668cd486f1eff7304e6d4f2ae"
+    }
+  },
+  "runtimeExports": {
+    "commandRunner": "Wat",
+    "appScope": "e6t",
+    "access": "mqt",
+    "capability": "hU",
+    "slotThread": "ktt",
+    "slotGoal": "NOt",
+    "slotRequests": "hOt",
+    "slotPendingRequest": "uOt",
+    "slotResume": "_Ot",
+    "slotRuntime": "HOt",
+    "slotPendingChip": "pnt",
+    "slotPinned": "Oet"
+    ,"externalUrlOpener": "k8t"
+    ,"hostBus": "r"
+  },
+  "modelPickerCommand": {
+    "id": "composer.openModelPicker",
+    "catalogGetter": "n",
+    "requiredAccess": null,
+    "renderer": "electron",
+    "source": "codex_micro_encoder"
+  }
+}

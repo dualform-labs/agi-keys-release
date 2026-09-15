@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   CodexMicroRendererBridge,
+  CURRENT_APP_INITIAL_SHA256,
+  CURRENT_MICRO_SLOT_SIGNALS_SHA256,
   DIAL_RUNTIME_26903,
 } from "../src/codex-micro-renderer-bridge.js";
 import type { MicroSnapshot } from "../src/types.js";
@@ -9,6 +11,7 @@ import type { MicroSnapshot } from "../src/types.js";
 const CURRENT_SIGNAL_SHA256 = "e8089d7f8ebbc4dd76e38913c3d28ded0beb934c02e4c97f8930f1adacbf3c4d";
 const INITIAL_URL = "app://codex/assets/app-initial-1b87ae739476.js";
 const SIGNAL_URL = "app://codex/assets/codex-micro-slot-signals-8615b2aaeccf.js";
+const CURRENT_SIGNAL_URL = "app://codex/assets/codex-micro-slot-signals-1c73facc00e2.js";
 const METADATA_CACHE = "__codexDeckVerifiedMetadataInitial26903";
 
 function nativeSnapshot(): MicroSnapshot {
@@ -54,12 +57,12 @@ function currentMetadataGate(expression: string) {
     .replace("appInitial = await import(appInitialUrl);", "appInitial = { url: appInitialUrl };");
   const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor as new (
     ...args: string[]
-  ) => (urls: string[]) => Promise<{ appInitial: unknown; metadataCurrentRuntime: boolean }>;
-  return new AsyncFunction("urls", `${gate}\nreturn { appInitial, metadataCurrentRuntime };`);
+  ) => (urls: string[]) => Promise<{ appInitial: unknown; metadataCurrentRuntime: boolean; metadataSupportedRuntime: boolean }>;
+  return new AsyncFunction("urls", `${gate}\nreturn { appInitial, metadataCurrentRuntime, metadataSupportedRuntime };`);
 }
 
 async function evaluateGate(
-  gate: (urls: string[]) => Promise<{ appInitial: unknown; metadataCurrentRuntime: boolean }>,
+  gate: (urls: string[]) => Promise<{ appInitial: unknown; metadataCurrentRuntime: boolean; metadataSupportedRuntime: boolean }>,
   urls: string[],
   hashes: Array<[string, string]>,
 ) {
@@ -92,17 +95,42 @@ test("emitted snapshot gates current metadata on the exact app-initial and slot-
     [SIGNAL_URL, CURRENT_SIGNAL_SHA256],
   ]);
   assert.equal(matched.metadataCurrentRuntime, true);
+  assert.equal(matched.metadataSupportedRuntime, true);
   assert.deepEqual(matched.appInitial, { url: INITIAL_URL });
 
   const mismatched = await evaluateGate(gate, [INITIAL_URL, SIGNAL_URL], [
     [INITIAL_URL, DIAL_RUNTIME_26903.initial],
     [SIGNAL_URL, "changed-slot-signals"],
   ]);
-  assert.deepEqual(mismatched, { appInitial: null, metadataCurrentRuntime: false });
+  assert.deepEqual(mismatched, { appInitial: null, metadataCurrentRuntime: false, metadataSupportedRuntime: false });
 
   const ambiguous = await evaluateGate(gate, [INITIAL_URL, SIGNAL_URL, `${SIGNAL_URL}?duplicate=1`], [
     [INITIAL_URL, DIAL_RUNTIME_26903.initial],
     [SIGNAL_URL, CURRENT_SIGNAL_SHA256],
   ]);
-  assert.deepEqual(ambiguous, { appInitial: null, metadataCurrentRuntime: false });
+  assert.deepEqual(ambiguous, { appInitial: null, metadataCurrentRuntime: false, metadataSupportedRuntime: false });
+});
+
+test("emitted snapshot accepts only the exact 26.908 app-initial and slot-signals pair", async () => {
+  const expression = await emittedSnapshotExpression();
+  const gate = currentMetadataGate(expression);
+  const matched = await evaluateGate(gate, [INITIAL_URL, CURRENT_SIGNAL_URL], [
+    [INITIAL_URL, CURRENT_APP_INITIAL_SHA256],
+    [CURRENT_SIGNAL_URL, CURRENT_MICRO_SLOT_SIGNALS_SHA256],
+  ]);
+  assert.deepEqual(matched, {
+    appInitial: { url: INITIAL_URL },
+    metadataCurrentRuntime: false,
+    metadataSupportedRuntime: true,
+  });
+
+  const changed = await evaluateGate(gate, [INITIAL_URL, CURRENT_SIGNAL_URL], [
+    [INITIAL_URL, CURRENT_APP_INITIAL_SHA256],
+    [CURRENT_SIGNAL_URL, "changed-slot-signals"],
+  ]);
+  assert.deepEqual(changed, {
+    appInitial: null,
+    metadataCurrentRuntime: false,
+    metadataSupportedRuntime: false,
+  });
 });

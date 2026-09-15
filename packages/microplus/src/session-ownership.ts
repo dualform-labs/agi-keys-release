@@ -205,9 +205,11 @@ export class CodexSessionOwnershipIndex {
           contextUsedPercent: recentStatus.contextUsedPercent,
           contextRevision: Math.max(previousRevision ?? 0, recentStatus.contextRevision)
         });
-      } else {
-        this.contextUsageBySession.delete(threadId);
       }
+      // A bounded tail read can temporarily omit the latest token_count event
+      // while the same validated session keeps producing output. Retain the
+      // last observed value until the session itself disappears; callers use
+      // contextRevision to require a genuinely newer value after compaction.
       const { activityAt, contextRevision: _contextRevision, ...status } = recentStatus;
       return { threadId, activityAt: activityAt ?? fileActivityAt, ...status };
     }));

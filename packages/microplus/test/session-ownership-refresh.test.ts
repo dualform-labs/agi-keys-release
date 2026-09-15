@@ -259,6 +259,31 @@ test("active context revisions follow valid token-count byte offsets monotonical
   }
 });
 
+test("a validated session retains its last context value when a bounded refresh has no token count", async () => {
+  const root = await makeCanonicalTempDirectory("codex-deck-context-retain-");
+  try {
+    const path = join(root, `rollout-active-${firstId}.jsonl`);
+    await writeFile(path, JSON.stringify({
+      type: "event_msg",
+      payload: {
+        type: "token_count",
+        info: { last_token_usage: { total_tokens: 42_000 }, model_context_window: 100_000 },
+      },
+    }) + "\n");
+    const index = new CodexSessionOwnershipIndex([root], 0);
+    const snapshot = snapshotFor(firstId);
+    snapshot.activeThreadKey = `local:${firstId}`;
+    const first = await index.annotate(snapshot, Date.now());
+    assert.equal(index.getActiveThreadContextUsage(first)?.contextUsedPercent, 42);
+
+    await writeFile(path, JSON.stringify({ type: "event_msg", payload: { type: "task_started" } }) + "\n");
+    const second = await index.annotate(snapshot, Date.now() + 1);
+    assert.equal(index.getActiveThreadContextUsage(second)?.contextUsedPercent, 42);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 function snapshotFor(threadId: string): MicroSnapshot {
   return {
     slots: [{ id: 0, threadKey: `local:${threadId}`, title: "Task", status: "idle", selected: false }],

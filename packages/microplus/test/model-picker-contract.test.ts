@@ -229,7 +229,7 @@ function attachNativeModelOwner(document: FakeDocument, root: FakeElement): any 
     model: row.getAttribute("data-test-model-id")!,
     displayName: row.getAttribute("aria-label") ?? "Model",
     defaultReasoningEffort: "medium",
-    supportedReasoningEfforts: [{ reasoningEffort: "medium" }],
+    supportedReasoningEfforts: ["low", "medium", "high", "xhigh", "max"].map((reasoningEffort) => ({ reasoningEffort })),
   }));
   function NativePIrFixture(props: {
     modelPickerTriggerConfig?: unknown;
@@ -260,6 +260,7 @@ function attachNativeModelOwner(document: FakeDocument, root: FakeElement): any 
     onOpenChange: () => {},
     onSelectDefault: undefined,
     onSelectModel: (modelId: string) => replaceOwner({ model: modelId, selectionMode: "model" }),
+    onSelectReasoningEffort: (reasoningEffort: string) => replaceOwner({ reasoningEffort }),
     reasoningEffort: "medium",
     selectionMode: "model",
     showReasoningEffortControls: true,
@@ -369,10 +370,25 @@ test("model dial public methods are wired to the guarded picker interaction", ()
   assert.match(press, /runModelPickerInteraction/);
 });
 
+test("reasoning dial commits through the active model owner's supported effort order", async () => {
+  const root = openRoot();
+  const menu = modelMenu();
+  const view = menu.querySelector('[data-model-picker-view]')!;
+  view.append(modelRow("menuitemradio", true, "Model A"));
+  const document = new FakeDocument([menu], [root]);
+  document.activeElement = root.children.find((child) => child.kind === "trigger")!;
+  const owner = attachNativeModelOwner(document, root);
+
+  await executeOpenPickerInteraction("reasoning", "increase", document, root);
+  assert.equal(owner.memoizedProps.reasoningEffort, "high");
+  await executeOpenPickerInteraction("reasoning", "decrease", document, root);
+  assert.equal(owner.memoizedProps.reasoningEffort, "medium");
+});
+
 type PickerDirection = "increase" | "decrease";
 
 async function executeOpenPickerInteraction(
-  interaction: "rotate" | "press",
+  interaction: "rotate" | "press" | "reasoning",
   direction: PickerDirection | undefined,
   document: FakeDocument,
   expectedComposer: FakeElement,
@@ -388,7 +404,9 @@ async function executeOpenPickerInteraction(
     operationId: "operation-model-picker",
     connectionEpoch: 1,
     pageEpoch: 1,
-    physicalId: interaction === "press" ? "ENC_CLK" : direction === "increase" ? "ENC_CW" : "ENC_CC",
+    physicalId: interaction === "press" ? "ENC_CLK"
+      : interaction === "reasoning" ? direction === "increase" ? "KEYCAP_MIND+" : "KEYCAP_MIND-"
+        : direction === "increase" ? "ENC_CW" : "ENC_CC",
     phase: "invoke" as const,
     mappingFingerprint: "mapping",
     targetIdentity: "target",
@@ -416,7 +434,7 @@ async function executeOpenPickerInteraction(
     location: Object.getOwnPropertyDescriptor(globalThis, "location"),
     performance: Object.getOwnPropertyDescriptor(globalThis, "performance"),
     legacyPrimaryCache: Object.getOwnPropertyDescriptor(globalThis, "__codexDeckVerifiedAppPrimary"),
-    reviewedPrimaryCache: Object.getOwnPropertyDescriptor(globalThis, "__codexDeckVerifiedAppPrimary26903"),
+    reviewedPrimaryCache: Object.getOwnPropertyDescriptor(globalThis, "__agiKeysVerifiedAppPrimary26908"),
   };
   const appPrimaryUrl = `app://codex/assets/${appPrimaryAsset}`;
   const runtimeAssets = new Map<string, readonly [string, string]>([
@@ -438,7 +456,7 @@ async function executeOpenPickerInteraction(
   globals.__codexDeckComposerIds = { ids: new WeakMap([[expectedComposer, "composer-1"]]), next: 1 };
   if (legacyPrimaryCache) globals.__codexDeckVerifiedAppPrimary = legacyPrimaryCache;
   else delete globals.__codexDeckVerifiedAppPrimary;
-  delete globals.__codexDeckVerifiedAppPrimary26903;
+  delete globals.__agiKeysVerifiedAppPrimary26908;
   Object.defineProperty(globalThis, "location", { configurable: true, value: { href: "app://codex/index.html" } });
   Object.defineProperty(globalThis, "performance", {
     configurable: true,
@@ -473,6 +491,7 @@ async function executeOpenPickerInteraction(
       observeOperation: async () => ({ dispatch: "accepted", metadata: "matched", semanticOutcome: "unverified" }),
     });
     if (interaction === "press") await bridge.pressModelPicker();
+    else if (interaction === "reasoning") await bridge.adjustReasoning(direction!);
     else await bridge.rotateModelPicker(direction!);
   } finally {
     globals.document = prior.document;
@@ -484,7 +503,7 @@ async function executeOpenPickerInteraction(
     restoreGlobal("location", prior.location);
     restoreGlobal("performance", prior.performance);
     restoreGlobal("__codexDeckVerifiedAppPrimary", prior.legacyPrimaryCache);
-    restoreGlobal("__codexDeckVerifiedAppPrimary26903", prior.reviewedPrimaryCache);
+    restoreGlobal("__agiKeysVerifiedAppPrimary26908", prior.reviewedPrimaryCache);
   }
 }
 

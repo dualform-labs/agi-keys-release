@@ -3,7 +3,14 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import {
   CURRENT_APP_INITIAL_SHA256,
+  CURRENT_APP_PRIMARY_SHA256,
   CURRENT_MICRO_COMMANDS_SHA256,
+  CURRENT_MICRO_LAYOUT_ASSET,
+  CURRENT_MICRO_LAYOUT_SHA256,
+  CURRENT_MESSAGE_BUS_ASSET,
+  CURRENT_MESSAGE_BUS_SHA256,
+  CURRENT_MICRO_SLOT_SIGNALS_ASSET,
+  CURRENT_MICRO_SLOT_SIGNALS_SHA256,
   CURRENT_NATIVE_BRIDGE_SHA256,
   rendererFailureCode,
   selectActiveComposerState,
@@ -12,7 +19,8 @@ import {
 type ReleaseFixture = {
   bundleVersion: string;
   build: string;
-  assets: Record<"bridge" | "appInitial" | "commands", { path: string; bytes: number; sha256: string }>;
+  assets: Record<"bridge" | "appInitial" | "appPrimary" | "commands" | "layout" | "slotSignals" | "messageBus", { path: string; bytes: number; sha256: string }>;
+  runtimeExports: Record<string, string>;
   modelPickerCommand: {
     id: string;
     catalogGetter: string;
@@ -74,14 +82,27 @@ function generatedResolver(): (doc: FakeDocument) => { root: FakeElement | null;
 }
 
 test("release pins match independent metadata extracted from the installed app.asar", async () => {
-  const fixture = JSON.parse(await readFile(new URL("./fixtures/native-release-26.901.51231.json", import.meta.url), "utf8")) as ReleaseFixture;
-  assert.equal(fixture.bundleVersion, "26.901.51231");
-  assert.equal(fixture.build, "8109");
+  const fixture = JSON.parse(await readFile(new URL("./fixtures/native-release-26.908.40834.json", import.meta.url), "utf8")) as ReleaseFixture;
+  assert.equal(fixture.bundleVersion, "26.908.40834");
+  assert.equal(fixture.build, "8881");
   assert.equal(CURRENT_NATIVE_BRIDGE_SHA256, fixture.assets.bridge.sha256);
   assert.equal(CURRENT_APP_INITIAL_SHA256, fixture.assets.appInitial.sha256);
+  assert.equal(CURRENT_APP_PRIMARY_SHA256, fixture.assets.appPrimary.sha256);
   assert.equal(CURRENT_MICRO_COMMANDS_SHA256, fixture.assets.commands.sha256);
-  assert.equal(fixture.assets.commands.bytes, 517);
+  assert.equal(CURRENT_MICRO_LAYOUT_ASSET, fixture.assets.layout.path.split("/").at(-1));
+  assert.equal(CURRENT_MICRO_LAYOUT_SHA256, fixture.assets.layout.sha256);
+  assert.equal(CURRENT_MICRO_SLOT_SIGNALS_ASSET, fixture.assets.slotSignals.path.split("/").at(-1));
+  assert.equal(CURRENT_MICRO_SLOT_SIGNALS_SHA256, fixture.assets.slotSignals.sha256);
+  assert.equal(CURRENT_MESSAGE_BUS_ASSET, fixture.assets.messageBus.path.split("/").at(-1));
+  assert.equal(CURRENT_MESSAGE_BUS_SHA256, fixture.assets.messageBus.sha256);
+  assert.equal(fixture.assets.commands.bytes, 519);
   assert.match(fixture.assets.commands.path, /^webview\/assets\/codex-micro-commands-[a-f0-9]+\.js$/);
+  assert.deepEqual(fixture.runtimeExports, {
+    commandRunner: "Wat", appScope: "e6t", access: "mqt", capability: "hU",
+    slotThread: "ktt", slotGoal: "NOt", slotRequests: "hOt", slotPendingRequest: "uOt",
+    slotResume: "_Ot", slotRuntime: "HOt", slotPendingChip: "pnt", slotPinned: "Oet",
+    externalUrlOpener: "k8t", hostBus: "r",
+  });
   assert.deepEqual(fixture.modelPickerCommand, {
     id: "composer.openModelPicker",
     catalogGetter: "n",

@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "checks": [
+    {
+      "id": "plugin-behavior",
+      "kind": "behavior",
+      "argv": [
+        "npm",
+        "test"
+      ],
+      "timeoutMs": 600000
+    },
+    {
+      "id": "typescript",
+      "kind": "structure",
+      "argv": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "timeoutMs": 600000
+    },
+    {
+      "id": "renderer-boundaries",
+      "kind": "structure",
+      "argv": [
+        "node",
+        "scripts/check-renderer-boundaries.mjs"
+      ],
+      "timeoutMs": 60000
+    }
+  ]
+}

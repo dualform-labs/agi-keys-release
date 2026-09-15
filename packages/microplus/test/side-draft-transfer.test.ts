@@ -3,7 +3,8 @@ import test from "node:test";
 import WebSocket from "ws";
 import {
   CodexMicroRendererBridge,
-  DIAL_RUNTIME_26903,
+  CURRENT_APP_INITIAL_SHA256,
+  CURRENT_APP_PRIMARY_SHA256,
   moveSideDraftToMainInDocument,
 } from "../src/codex-micro-renderer-bridge.js";
 import type { MutationConfirmation, OperationRequest } from "../src/types.js";
@@ -65,6 +66,7 @@ function fixture(
     partialSourceClear?: boolean;
     extraSide?: boolean;
     currentScopeShape?: boolean;
+    emptyScopeValue?: boolean;
   } = {},
 ) {
   const source = controller(sourceText, {
@@ -83,10 +85,11 @@ function fixture(
     };
   }
   const roots = [sourceSurface.value, destinationSurface.value];
-  const scopes = new Map<object, { get(): boolean; value?: { kind: string; placement: string } }>([
+  const scopes = new Map<object, { get(): boolean; value?: { kind?: string; placement?: string } }>([
     [sourceSurface.value, options.currentScopeShape ? { get: () => true } : { get: () => true, value: { kind: "local", placement: "side" } }],
     [destinationSurface.value, options.currentScopeShape ? { get: () => true } : { get: () => true, value: { kind: "local", placement: "main" } }],
   ]);
+  if (options.emptyScopeValue) for (const scope of scopes.values()) scope.value = {};
   sourceSurface.hostFiber.sibling = destinationSurface.hostFiber;
   let lastHost = destinationSurface.hostFiber;
   if (options.extraSide) {
@@ -143,6 +146,23 @@ test("current Codex scopes without value metadata use committed side-chat identi
   assert.equal(value.source.getPersistedText(), "");
   assert.equal(value.destination.getPersistedText(), "current side draft");
   assert.equal(value.destination.focused, true);
+});
+
+test("26.908 empty scope values use committed identity and preserve the full draft", () => {
+  const value = fixture("draft\n日本語", "", { currentScopeShape: true, emptyScopeValue: true });
+  assert.equal(generatedMover()(value.document as unknown as Document, value.selectScope as never, {}, {}, {}), "moved");
+  assert.equal(value.destination.getPersistedText(), "draft\n日本語");
+  assert.equal(value.source.getPersistedText(), "");
+  assert.equal(value.destination.focused, true);
+});
+
+test("empty scope values still require an unambiguous side composer", () => {
+  const value = fixture("keep this draft", "", { currentScopeShape: true, emptyScopeValue: true });
+  delete value.sourceSurface.hostFiber.memoizedProps.SideChatTab;
+  assert.throws(() => generatedMover()(value.document as unknown as Document, value.selectScope as never, {}, {}, {}),
+    /E_DRAFT_TRANSFER_SURFACE_AMBIGUOUS/);
+  assert.deepEqual(value.source.writes, []);
+  assert.deepEqual(value.destination.writes, []);
 });
 
 test("current Codex side identity must be complete and unique", () => {
@@ -228,8 +248,8 @@ test("a partial source clear keeps the verified destination copy", () => {
 test("the public bridge route pins both native composer assets", () => {
   const source = CodexMicroRendererBridge.prototype.moveSideDraftToMain.toString();
   assert.match(source, /KEYCAP_SIDE_TO_MAIN/);
-  assert.ok(DIAL_RUNTIME_26903.initial.length === 64);
-  assert.ok(DIAL_RUNTIME_26903.primary.length === 64);
+  assert.ok(CURRENT_APP_INITIAL_SHA256.length === 64);
+  assert.ok(CURRENT_APP_PRIMARY_SHA256.length === 64);
 });
 
 test("verified side draft readback is returned as a confirmed semantic result", async () => {
@@ -264,11 +284,11 @@ test("verified side draft readback is returned as a confirmed semantic result", 
   });
   bridge.beginOperation = async () => operation;
   bridge.evaluate = async <T>(expression: string) => {
-    assert.ok(expression.includes(DIAL_RUNTIME_26903.initial));
-    assert.ok(expression.includes(DIAL_RUNTIME_26903.primary));
-    assert.match(expression, /appInitial\.t3t/);
-    assert.match(expression, /appInitial\.iKt/);
-    assert.match(expression, /appInitial\.pR/);
+    assert.ok(expression.includes(CURRENT_APP_INITIAL_SHA256));
+    assert.ok(expression.includes(CURRENT_APP_PRIMARY_SHA256));
+    assert.match(expression, /appInitial\.e6t/);
+    assert.match(expression, /appInitial\.mqt/);
+    assert.match(expression, /appInitial\.hU/);
     assert.doesNotMatch(expression, /appInitial\.V1t|appInitial\.QHt|appInitial\.AL/);
     return operation.operationId as T;
   };

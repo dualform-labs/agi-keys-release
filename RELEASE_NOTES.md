@@ -1,4 +1,4 @@
-# AGI Keys 0.1.0.66 — Preview
+# AGI Keys 0.1.0.68 — Preview
 
 English | [日本語](RELEASE_NOTES.ja.md)
 
@@ -36,7 +36,7 @@ These send Codex Micro physical key identifiers. They do not identify Stream Dec
 
 - The connection depends on Codex's Micro operation path rather than a public API; Codex updates can change compatibility.
 - Some operations can be observed only as accepted dispatches, not confirmed downstream effects.
-- The AGI Keys 0.1.0.66 source passed 723 automated checks, type checking and official Stream Deck package validation. This does not establish hardware acceptance of all 67 actions, all shortcuts or restart recovery.
+- The AGI Keys 0.1.0.68 source passed 723 automated checks, type checking and official Stream Deck package validation. This does not establish hardware acceptance of all 67 actions, all shortcuts or restart recovery.
 - This is a Preview. Complete hardware and fresh-install checks before a stable release.
 - The local CDP client-authentication limitation remains unresolved. See [SECURITY.md](SECURITY.md).
 

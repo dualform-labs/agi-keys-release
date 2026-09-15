@@ -114,16 +114,16 @@ test("non-command keycaps use the pinned current app runtime instead of the remo
     assert.throws(() => verify({ type: "command", command: "sendFollowUp" }, true), /E_MICRO_KEYCAP_ACTION_UNAVAILABLE/);
     assert.throws(() => verify({ ...reviewed[index], text: "changed", url: "https://example.com" }, true), /E_MICRO_KEYCAP_ACTION_UNAVAILABLE/);
   });
-  assert.match(expressions[0]!, /d2t: appInitial\.A6t/);
-  assert.match(expressions[1]!, /Kun: appInitial\._mn/);
+  assert.match(expressions[0]!, /k8t: appInitial\.A6t/);
+  assert.match(expressions[1]!, /r: appInitial\._mn/);
 
   for (const expression of expressions) {
     assert.doesNotMatch(expression, /vscode-api-/);
     assert.match(expression, new RegExp(CURRENT_APP_INITIAL_SHA256));
   }
-  assert.match(expressions[0]!, /namespace\.d2t/);
-  assert.match(expressions[1]!, /namespace\.Kun/);
-  assert.match(expressions[2]!, /namespace\.Kun/);
+  assert.match(expressions[0]!, /namespace\.k8t/);
+  assert.match(expressions[1]!, /namespace\.r/);
+  assert.match(expressions[2]!, /namespace\.r/);
   assert.deepEqual(results.map((result) => result.semanticOutcome), ["confirmed", "confirmed", "confirmed"]);
 });
 
@@ -146,7 +146,7 @@ test("standalone runtime selectors accept only the pinned current native exports
   const dispatchHostMessage = () => undefined;
   const bus = { dispatchHostMessage };
   const openExternal = () => true;
-  const namespace = { Kun: bus, d2t: openExternal };
+  const namespace = { r: bus, k8t: openExternal };
 
   assert.equal(
     selectNativeMicroHostBus(namespace, CURRENT_APP_INITIAL_SHA256, CURRENT_APP_INITIAL_SHA256),
@@ -158,8 +158,8 @@ test("standalone runtime selectors accept only the pinned current native exports
   );
   assert.equal(selectNativeMicroHostBus(namespace, "changed", CURRENT_APP_INITIAL_SHA256), undefined);
   assert.equal(selectNativeExternalUrlOpener(namespace, "changed", CURRENT_APP_INITIAL_SHA256), undefined);
-  assert.equal(selectNativeMicroHostBus({ Kun: {} }, CURRENT_APP_INITIAL_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
-  assert.equal(selectNativeExternalUrlOpener({ d2t: true }, CURRENT_APP_INITIAL_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
+  assert.equal(selectNativeMicroHostBus({ r: {} }, CURRENT_APP_INITIAL_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
+  assert.equal(selectNativeExternalUrlOpener({ k8t: true }, CURRENT_APP_INITIAL_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
 });
 
 test("composer readback accepts one exact insertion and rejects replacement or unrelated edits", () => {

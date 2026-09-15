@@ -5,6 +5,7 @@ import {
   ALLOWED_NATIVE_EXTERNAL_URLS,
   CodexMicroRendererBridge,
   CURRENT_APP_INITIAL_SHA256,
+  CURRENT_MICRO_LAYOUT_ASSET,
   CURRENT_MICRO_LAYOUT_SHA256,
   rendererFailureCode,
 } from "../src/codex-micro-renderer-bridge.js";
@@ -75,8 +76,8 @@ async function executeOaiExpression(
   layoutSha256: string,
   opened: string[],
 ): Promise<unknown> {
-  const layoutUrl = "app://codex/assets/codex-micro-layout-aced36735c61.js";
-  const appInitialUrl = "app://codex/assets/app-initial-cadb12d4a15e.js";
+  const layoutUrl = `app://codex/assets/${CURRENT_MICRO_LAYOUT_ASSET}`;
+  const appInitialUrl = "app://codex/assets/app-initial-9b95fa538c62.js";
   const sources = new Map([
     [layoutUrl, "current-layout-source"],
     [appInitialUrl, "current-app-initial-source"],
@@ -94,7 +95,7 @@ async function executeOaiExpression(
     }
     if (url === appInitialUrl) {
       return {
-        d2t: ({ href }: { href: string }) => {
+        k8t: ({ href }: { href: string }) => {
           opened.push(href);
           return true;
         },
@@ -130,7 +131,7 @@ async function executeOaiExpression(
   );
 }
 
-test("runKeycap OAI rejects layout-derived local and executable URLs before native open", async () => {
+test("runKeycap OAI rejects any URL that differs from the pinned layout contract", async () => {
   for (const url of [
     "file:///tmp/codex-keycap-payload",
     "javascript:globalThis.compromised=true",
@@ -151,7 +152,7 @@ test("runKeycap OAI rejects layout-derived local and executable URLs before nati
     `https://developers.openai.com/${"a".repeat(2048)}`,
   ]) {
     const { bridge, opened } = bridgeHarness(url);
-    await assert.rejects(bridge.runKeycap("OAI"), /E_EXTERNAL_URL_NOT_ALLOWED/);
+    await assert.rejects(bridge.runKeycap("OAI"), /E_MICRO_KEYCAP_ACTION_UNAVAILABLE/);
     assert.deepEqual(opened, []);
   }
 });
@@ -163,16 +164,10 @@ test("runKeycap OAI rejects a changed layout asset before importing its action",
 });
 
 test("runKeycap OAI preserves the exact allowlisted OpenAI documentation URL", async () => {
-  for (const url of [
-    "https://developers.openai.com",
-    "HTTPS://DEVELOPERS.OPENAI.COM",
-    "https://developers.openai.com:443/",
-  ]) {
-    const { bridge, opened } = bridgeHarness(url);
-    const result = await bridge.runKeycap("OAI");
-    assert.equal(result.semanticOutcome, "confirmed");
-    assert.deepEqual(opened, [ALLOWED_OPENAI_DOCS_URL]);
-  }
+  const { bridge, opened } = bridgeHarness("https://developers.openai.com");
+  const result = await bridge.runKeycap("OAI");
+  assert.equal(result.semanticOutcome, "confirmed");
+  assert.deepEqual(opened, [ALLOWED_OPENAI_DOCS_URL]);
 });
 
 test("the external URL denial remains a content-free renderer failure code", () => {

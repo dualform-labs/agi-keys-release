@@ -65,6 +65,38 @@ test("usage refresh awaits the one native query before reading the resulting sna
   assert.deepEqual(sequence, ["connected", "native-query-awaited", "snapshot-read"]);
 });
 
+test("send captures the newly selected composer rather than a stale passive snapshot", async () => {
+  const before = { ...microSnapshot(["thread-a", null, null, null, null, null]), activeThreadKey: "thread-a", activeComposerKey: "composer-1" };
+  const current = { ...before, activeThreadKey: "thread-b", activeComposerKey: "composer-2" };
+  const bridge: any = new CodexMicroRendererBridge(() => undefined);
+  bridge.connectionEpoch = current.connectionEpoch;
+  bridge.pageEpoch = current.pageEpoch;
+  primeBridgeTarget(bridge, current);
+  bridge.lastSnapshot = before;
+  bridge.refresh = async () => { bridge.lastSnapshot = current; return current; };
+  let dispatches = 0;
+  bridge.evaluate = async (expression: string) => {
+    dispatches++;
+    assert.match(expression, /expectedActiveThreadKey = "thread-b"/);
+    assert.match(expression, /expectedActiveComposerKey = "composer-2"/);
+    assert.match(expression, /E_ACTIVE_COMPOSER_STALE/);
+    return { operationId: expression.match(/operationId: "([0-9a-f-]{36})"/)![1] };
+  };
+  bridge.observeOperation = async (operation: OperationRequest) => {
+    assert.equal(operation.activeThreadKey, "thread-b");
+    assert.equal(operation.activeComposerKey, "composer-2");
+    return { dispatch: "accepted", metadata: "matched", semanticOutcome: "unverified" };
+  };
+  bridge.observeContentFreeCommand = async (_command: unknown, _operation: unknown, _before: unknown, confirmation: unknown) => confirmation;
+  await bridge.runKeycap("CODEX");
+  assert.equal(dispatches, 1);
+
+  bridge.evaluate = async () => { dispatches++; throw new Error("E_ACTIVE_COMPOSER_STALE"); };
+  await assert.rejects(bridge.runKeycap("CODEX"), /E_ACTIVE_COMPOSER_STALE/);
+  assert.equal(dispatches, 2, "a late composer change must fail once without retrying send");
+  assert.equal(bridge.operationTargetLeases.size, 0);
+});
+
 type ControllerHarness = {
   plusDials: Map<string, { kind: "reasoning" | "navigation" }>;
   health: { state: "ready" };
@@ -387,28 +419,23 @@ test("clockwise reasoning ticks increase and counter-clockwise ticks decrease", 
   assert.deepEqual(requested, ["increase", "increase", "decrease"]);
 });
 
-test("reasoning adjustments invoke the fixed native reasoning keycaps independent of encoder mode", async () => {
-  const calls: DispatchCall[] = [];
-  const bridge = configuredBridge(calls);
-  const keycaps: string[] = [];
-  (bridge as unknown as { runKeycap(keycapId: string): Promise<void> }).runKeycap = async (keycapId) => { keycaps.push(keycapId); };
-
-  await bridge.adjustReasoning("increase");
-  await bridge.adjustReasoning("decrease");
-
-  assert.deepEqual(keycaps, ["MIND+", "MIND-"]);
-  assert.deepEqual(calls, []);
+test("reasoning adjustments use the current composer callback instead of inactive keycap commands", () => {
+  const source = CodexMicroRendererBridge.prototype.adjustReasoning.toString();
+  assert.match(source, /onSelectReasoningEffort/);
+  assert.match(source, /supportedReasoningEfforts/);
+  assert.match(source, /E_REASONING_COMMIT_UNCHANGED/);
+  assert.doesNotMatch(source, /runKeycap/);
 });
 
 test("standalone keycaps select only the current native two-argument command runner export", () => {
   const runner = (_command: string, _source: string) => true;
-  assert.equal(selectNativeCommandRunner({ I5: runner }, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), runner);
+  assert.equal(selectNativeCommandRunner({ Wat: runner }, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), runner);
   assert.equal(selectNativeCommandRunner({ i: runner }, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
-  assert.equal(selectNativeCommandRunner({ I5: "not-a-function" }, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
-  assert.equal(selectNativeCommandRunner({ I5: runner }, "different-build", CURRENT_APP_INITIAL_SHA256, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
-  assert.equal(selectNativeCommandRunner({ I5: runner }, CURRENT_NATIVE_BRIDGE_SHA256, "different-module", CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
+  assert.equal(selectNativeCommandRunner({ Wat: "not-a-function" }, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
+  assert.equal(selectNativeCommandRunner({ Wat: runner }, "different-build", CURRENT_APP_INITIAL_SHA256, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
+  assert.equal(selectNativeCommandRunner({ Wat: runner }, CURRENT_NATIVE_BRIDGE_SHA256, "different-module", CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), undefined);
   const generated = Function(`return (${selectNativeCommandRunner.toString()})`)() as typeof selectNativeCommandRunner;
-  assert.equal(generated({ I5: runner }, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), runner);
+  assert.equal(generated({ Wat: runner }, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256, CURRENT_NATIVE_BRIDGE_SHA256, CURRENT_APP_INITIAL_SHA256), runner);
 });
 
 test("native UI readback exposes only structural markers and classifies approved routes", () => {
@@ -467,7 +494,8 @@ test("access-gated keycaps build the pinned native scope and capability checks",
   await bridge.runKeycap("TERM");
   await bridge.runKeycap("TIME");
   await bridge.runKeycap("LAB");
-  assert.ok(expressions.every((expression) => expression.includes("appInitial.QHt")));
+  assert.ok(expressions.every((expression) => expression.includes("appInitial.mqt")));
+  assert.ok(expressions.every((expression) => expression.includes("appInitial.hU")));
   assert.ok(expressions.some((expression) => expression.includes("automations.local") && expression.includes("automations.cloud")));
   assert.ok(expressions.every((expression) => expression.includes(CURRENT_APP_INITIAL_SHA256)));
   const labExpression = expressions.at(-1)!;
@@ -808,6 +836,24 @@ test("side-chat success accepts current AppScope wrappers whose value is null", 
   assert.deepEqual(
     selectVerifiedOpenedSideChat(doc, main, selectScope, {}, {}, {}, resolveActive),
     { root: side, activeThreadKey: "local:side-thread" },
+  );
+});
+
+test("side-chat success accepts activation of the one already-mounted side composer", () => {
+  const main = { isConnected: true } as unknown as Element;
+  const side = { isConnected: true } as unknown as Element;
+  const roots = [main, side];
+  const scopes = new Map<Element, { node: object; chain: object; value: null }>([
+    [main, { node: {}, chain: {}, value: null }],
+    [side, { node: {}, chain: {}, value: null }],
+  ]);
+  const doc = { querySelectorAll: () => roots } as unknown as Document;
+  const selectScope = ((_doc: Document, root: Element | null) => scopes.get(root!)) as never;
+  const resolveActive = () => ({ root: side, activeThreadKey: "local:main-thread" });
+
+  assert.deepEqual(
+    selectVerifiedOpenedSideChat(doc, main, selectScope, {}, {}, {}, resolveActive, [main, side]),
+    { root: side, activeThreadKey: "local:main-thread" },
   );
 });
 

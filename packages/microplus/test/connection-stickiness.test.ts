@@ -7,6 +7,7 @@ import {
   assertFocusedVisibleRendererForMutation,
   CodexMicroRendererBridge,
   selectBridgeObservationTarget,
+  selectUniqueComposerMutationTarget,
 } from "../src/codex-micro-renderer-bridge.js";
 import type { MicroSnapshot } from "../src/types.js";
 
@@ -31,6 +32,28 @@ test("cold-start routing does not mistake duplicate stale initialRoute values fo
 
   assert.equal(selectBridgeObservationTarget([first, second], undefined), undefined);
   assert.equal(selectBridgeObservationTarget([first, second], second), second);
+});
+
+test("mutation routing selects only one visible Composer window", () => {
+  const target = (id: string) => ({
+    id,
+    type: "page",
+    url: "app://-/index.html",
+    webSocketDebuggerUrl: `ws://127.0.0.1:41001/devtools/page/${id}`,
+  });
+  const composer = target("composer");
+  const auxiliary = target("auxiliary");
+  assert.equal(selectUniqueComposerMutationTarget([
+    { target: auxiliary, composerPresent: false, visibilityState: "visible" },
+    { target: composer, composerPresent: true, visibilityState: "visible" },
+  ]), composer);
+  assert.equal(selectUniqueComposerMutationTarget([
+    { target: composer, composerPresent: true, visibilityState: "visible" },
+    { target: target("second"), composerPresent: true, visibilityState: "visible" },
+  ]), undefined);
+  assert.equal(selectUniqueComposerMutationTarget([
+    { target: composer, composerPresent: true, visibilityState: "hidden" },
+  ]), undefined);
 });
 
 test("background app focus keeps an open observation socket sticky", async () => {
@@ -237,8 +260,10 @@ test("observation routing keeps the sticky socket when no Codex window is focuse
   const methodStart = source.indexOf("private async ensureObservationTarget");
   const methodEnd = source.indexOf("private async ensureForegroundMutationTarget", methodStart);
   const method = source.slice(methodStart, methodEnd);
-  assert.match(method, /if \(!foreground\?\.webSocketDebuggerUrl\) return;/u);
-  assert.match(method, /if \(isFocusedVisibleRenderer\(current\)\) return;/u);
+  assert.match(method, /MUTATION_RENDERER_PROBE_EXPRESSION/u);
+  assert.match(method, /current\.composerPresent === true/u);
+  assert.match(method, /selectUniqueComposerMutationTarget\(composerObservations\)/u);
+  assert.match(method, /if \(!observationTarget\?\.webSocketDebuggerUrl\) return;/u);
   assert.doesNotMatch(method, /throw integrityError\("E_FOREGROUND_TARGET_UNAVAILABLE"\)/u);
 });
 

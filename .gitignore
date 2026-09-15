@@ -11,3 +11,6 @@ coverage/
 # Retired builds and runtime caches remain local; existing tracked archives
 # are preserved locally and excluded by scripts/export-policy.mjs.
 /TRASH/
+
+# Local Remesh snapshots and verification logs; summary data is in docs/refactoring.
+/packages/microplus/.remesh/

@@ -121,6 +121,41 @@ test("an unresolved stale usage query is coalesced and does not block another di
   await flush();
 });
 
+test("a completed background usage refresh redraws dials and both usage key families", async () => {
+  const controller = readyController(undefined, Date.now() - 300_001);
+  const internals = controller as unknown as {
+    plusDials: Map<string, { action: DialAction; kind: "usage"; selection: number; layoutState: "ready" }>;
+    usageLimitActions: Map<string, { action: { id: string }; mode: "weekly" }>;
+    usageOverviewActions: Map<string, { id: string }>;
+    microBridge: { refreshUsage(): Promise<MicroSnapshot> };
+    refreshUsageInBackground(): void;
+    renderPlusDial(registration: unknown): Promise<void>;
+    renderUsageLimit(registration: unknown): Promise<void>;
+    renderUsageOverview(action: unknown): Promise<void>;
+  };
+  const redraws: string[] = [];
+  internals.plusDials.set("usage-dial-refresh", {
+    action: fakeDial("usage-dial-refresh") as unknown as DialAction,
+    kind: "usage",
+    selection: 0,
+    layoutState: "ready",
+  });
+  internals.usageLimitActions.set("usage-limit-refresh", {
+    action: { id: "usage-limit-refresh" },
+    mode: "weekly",
+  });
+  internals.usageOverviewActions.set("usage-overview-refresh", { id: "usage-overview-refresh" });
+  internals.microBridge.refreshUsage = async () => usageSnapshot();
+  internals.renderPlusDial = async () => { redraws.push("dial"); };
+  internals.renderUsageLimit = async () => { redraws.push("limit"); };
+  internals.renderUsageOverview = async () => { redraws.push("overview"); };
+
+  internals.refreshUsageInBackground();
+  await flush();
+
+  assert.deepEqual(redraws.sort(), ["dial", "limit", "overview"]);
+});
+
 function readyController(onRefresh: () => void = () => undefined, observedAt = Date.now()): DeckController {
   const controller = new DeckController();
   const snapshot = usageSnapshot(observedAt);

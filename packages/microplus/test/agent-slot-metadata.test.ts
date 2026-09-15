@@ -251,7 +251,7 @@ test("slot metadata requires the parameter-aware AppScope getter used by native 
   );
 });
 
-test("current metadata references expose goal and pending state without guessing pin state", () => {
+test("26.903 metadata references expose goal and pending state without guessing pin state", () => {
   const current = { B3: atoms.I4, nEt: atoms.jCt, BTt: atoms.gCt, PTt: atoms.uCt,
     HTt: atoms.vCt, cEt: atoms.LCt, S6: atoms.v3, F2: Symbol("unrelated-current-export") };
   const normalize = Function(`return (${agentSlotMetadataNamespace.toString()})`)() as typeof agentSlotMetadataNamespace;
@@ -265,6 +265,33 @@ test("current metadata references expose goal and pending state without guessing
   assert.deepEqual(result, { metadataAvailability: "available", goalStatus: "blocked", pendingQuestion: true, approvalPending: true });
   assert.equal("threadPinned" in result, false);
   assert.equal(JSON.stringify(result).includes("private"), false);
-  assert.equal(normalize(atoms, false), atoms);
   assert.deepEqual(generatedReader()({ threadKey: "local:current-task" }, metadataStore(values), normalize({}, true)), { metadataAvailability: "unavailable" });
+});
+
+test("26.908 metadata references expose goal, pending, approval, and pin state", () => {
+  const current = {
+    ktt: atoms.I4, NOt: atoms.jCt, hOt: atoms.gCt, uOt: atoms.uCt,
+    _Ot: atoms.vCt, HOt: atoms.LCt, pnt: atoms.v3, Oet: atoms.F2,
+  };
+  const normalize = Function(`return (${agentSlotMetadataNamespace.toString()})`)() as typeof agentSlotMetadataNamespace;
+  const values = new Map<unknown, unknown>([
+    [atoms.I4, { kind: "local", conversation: { id: "current-task" } }],
+    [atoms.jCt, { status: "active", objective: "private" }],
+    [atoms.gCt, []],
+    [atoms.uCt, null],
+    [atoms.vCt, "resumed"],
+    [atoms.LCt, { type: "active", activeFlags: [] }],
+    [atoms.v3, null],
+    [atoms.F2, true],
+  ]);
+  const result = generatedReader()({ threadKey: "local:current-task" }, metadataStore(values), normalize(current, false));
+  assert.deepEqual(result, {
+    metadataAvailability: "available",
+    goalStatus: "active",
+    pendingQuestion: false,
+    approvalPending: false,
+    threadPinned: true,
+  });
+  assert.equal(JSON.stringify(result).includes("private"), false);
+  assert.deepEqual(generatedReader()({ threadKey: "local:current-task" }, metadataStore(values), normalize({}, false)), { metadataAvailability: "unavailable" });
 });

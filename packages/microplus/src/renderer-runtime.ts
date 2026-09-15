@@ -266,7 +266,10 @@ export function selectNativeCommandRunner(
   expectedAppInitialSha256: string
 ): ((command: string, source: string) => unknown) | undefined {
   if (observedBridgeSha256 !== expectedBridgeSha256 || observedAppInitialSha256 !== expectedAppInitialSha256) return undefined;
-  const candidate = namespace.I5;
+  // Codex 26.908 exports the same two-argument native command runner as Wat.
+  // The surrounding asset hashes are part of the contract, so an identically
+  // named export from any other build is still rejected above.
+  const candidate = namespace.Wat;
   return typeof candidate === "function"
     ? candidate as (command: string, source: string) => unknown
     : undefined;
@@ -423,6 +426,17 @@ export function selectVerifiedOpenedSideChat(
   if (originalComposerRoots) {
     if (!originalComposerRoots.includes(originalMainRoot)) return null;
     const addedRoots = roots.filter((root) => !originalComposerRoots.includes(root));
+    if (addedRoots.length === 0) {
+      // Codex may keep an existing side composer mounted and only activate it
+      // on the next openSideChat command. Accept that reuse only for the exact
+      // two-root layout and only when both roots retain the reviewed AppScope.
+      if (originalComposerRoots.length !== 2 || roots.length !== 2
+        || !active.root || active.root === originalMainRoot
+        || !originalComposerRoots.includes(active.root)) return null;
+      if (!selectScope(doc, originalMainRoot, appScopeToken, accessAtom, capabilityAtom, false)
+        || !selectScope(doc, active.root, appScopeToken, accessAtom, capabilityAtom, false)) return null;
+      return active;
+    }
     if (addedRoots.length !== 1) return null;
     const openedRoot = addedRoots[0]!;
     if (active.root && active.root !== originalMainRoot && active.root !== openedRoot) return null;
@@ -465,8 +479,10 @@ export function moveSideDraftToMainInDocument(
     const scope = selectScope(doc, root, appScopeToken, accessAtom, capabilityAtom, false);
     if (!scope) continue;
     const placement = scope.value?.placement;
-    if (scope.value != null
-      && (scope.value.kind !== 'local' || (placement !== 'side' && placement !== 'main'))) continue;
+    // Current AppScope.value is an empty object, not legacy placement metadata.
+    // Only explicit legacy identity fields can exclude a composer here.
+    if ((scope.value?.kind != null || placement != null)
+      && (scope.value?.kind !== 'local' || (placement !== 'side' && placement !== 'main'))) continue;
 
     const fiberKeys = Object.getOwnPropertyNames(root).filter((key) => key.startsWith('__reactFiber$'));
     if (fiberKeys.length !== 1) throw new Error('E_DRAFT_TRANSFER_COMPOSER_AMBIGUOUS');
@@ -620,12 +636,25 @@ export type AgentSlotMetadata = {
 
 /** Read only content-free goal/question state for a local slot conversation. */
 export function agentSlotMetadataNamespace(namespace: Record<string, unknown>, current: boolean): Record<string, unknown> {
-  if (!current) return namespace;
+  if (current) {
+    return {
+      I4: namespace.B3, jCt: namespace.nEt, gCt: namespace.BTt,
+      uCt: namespace.PTt, vCt: namespace.HTt, LCt: namespace.cEt,
+      v3: namespace.S6,
+      // The 26.903 pin selector was not reviewed; omit it explicitly.
+    };
+  }
+  // Reviewed against Codex 26.908.40834. Keep the stable semantic names used
+  // by readAgentSlotMetadata on our side of the version boundary.
   return {
-    I4: namespace.B3, jCt: namespace.nEt, gCt: namespace.BTt,
-    uCt: namespace.PTt, vCt: namespace.HTt, LCt: namespace.cEt,
-    v3: namespace.S6,
-    // The current pin selector has not been reviewed; omit it explicitly.
+    I4: namespace.ktt,
+    jCt: namespace.NOt,
+    gCt: namespace.hOt,
+    uCt: namespace.uOt,
+    vCt: namespace._Ot,
+    LCt: namespace.HOt,
+    v3: namespace.pnt,
+    F2: namespace.Oet,
   };
 }
 

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import WebSocket from "ws";
-import { CodexMicroRendererBridge } from "../src/codex-micro-renderer-bridge.js";
+import { CodexMicroRendererBridge, CURRENT_APP_INITIAL_SHA256 } from "../src/codex-micro-renderer-bridge.js";
 import type { MicroSnapshot } from "../src/types.js";
 
 function snapshot(overrides: Partial<MicroSnapshot> = {}): MicroSnapshot {
@@ -57,9 +57,9 @@ test("context compaction uses the pinned native manager and confirms a newer low
   assert.equal(result.observedSnapshot?.activeContextUsedPercent, 31);
   assert.match(expression, /assertMutationForeground\(document\)/);
   assert.match(expression, /composerController\.getPersistedText\(\)\.length !== 0/);
-  assert.match(expression, /appInitial\.\$4t\(scope, managerBinding\)/);
+  assert.match(expression, /appInitial\.Q3t\(scope, managerBinding\)/);
   assert.match(expression, /manager\.compactThread\(rawConversationId\)/);
-  assert.ok(expression.includes("c87b94027faefdc31cc165975dc0f14b28e3f6d922f6a5188756c8f570f2b3d7"));
+  assert.ok(expression.includes(CURRENT_APP_INITIAL_SHA256));
   const begin = expression.indexOf("      const scope = selectScope(");
   const end = expression.indexOf("      assertMutationForeground(document);", begin);
   assert.ok(begin >= 0 && end > begin);
@@ -67,11 +67,11 @@ test("context compaction uses the pinned native manager and confirms a newer low
   const manager = { compactThread() {} };
   const binding = Symbol("current-host-selector");
   const scope = { get(selector: unknown, id: unknown) { calls.push([selector, id]); return "local"; } };
-  const initial = { t3t: Symbol("scope"), iKt: Symbol("access"), pR: Symbol("capability"), VTt: binding,
-    $4t(selected: unknown, host: unknown) { assert.equal(selected, scope); assert.equal(host, "local"); return manager; } };
+  const initial = { e6t: Symbol("scope"), mqt: Symbol("access"), hU: Symbol("capability"), gOt: binding,
+    Q3t(selected: unknown, host: unknown) { assert.equal(selected, scope); assert.equal(host, "local"); return manager; } };
   const resolve = Function("selectScope", "document", "active", "appInitial", "rawConversationId", expression.slice(begin, end) + "return manager;");
   assert.equal(resolve((_doc: unknown, _root: unknown, atom: unknown, access: unknown, capability: unknown) => {
-    assert.equal(atom, initial.t3t); assert.equal(access, initial.iKt); assert.equal(capability, initial.pR); return scope;
+    assert.equal(atom, initial.e6t); assert.equal(access, initial.mqt); assert.equal(capability, initial.hU); return scope;
   }, {}, { root: {} }, initial, "test-task"), manager);
   assert.deepEqual(calls, [[binding, "test-task"]]);
 

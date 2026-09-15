@@ -1,8 +1,9 @@
 import { trustedRendererAssetUrls } from "../src/renderer-security.js";
 
 export const REVIEWED_LAUNCHER_RUNTIME = {
-  initial: "c87b94027faefdc31cc165975dc0f14b28e3f6d922f6a5188756c8f570f2b3d7",
-  primary: "0aa689053d9e32d7286dfb1d85ac62cadc3858086335518f15b1f97604eb61e9",
+  initial: "737070f94a072d2b4ede9f326e3e1c4142fb82198961251c2e70479b3f926275",
+  primary: "28d317396d30902ab5f2c01f069a7b9773f2299b35cc855272d4cf59b402c276",
+  messageBus: "daec5cd2b8cfe9074143c15bbde1f45b76fe40f668cd486f1eff7304e6d4f2ae",
 } as const;
 
 export function reviewedRuntimePrelude(): string {
@@ -13,20 +14,22 @@ export function reviewedRuntimePrelude(): string {
     ];
     const urls = (${trustedRendererAssetUrls.toString()})(discoveredUrls, location.href);
     const expected = ${JSON.stringify(REVIEWED_LAUNCHER_RUNTIME)};
-    let initialUrl;
-    for (const kind of ['initial', 'primary']) {
-      const candidates = urls.filter(url => new URL(url).pathname.startsWith('/assets/app-' + kind + '-'));
+    const reviewedUrls = {};
+    for (const kind of ['initial', 'primary', 'messageBus']) {
+      const assetPrefix = kind === 'messageBus' ? 'message-bus-' : 'app-' + kind + '-';
+      const candidates = urls.filter(url => new URL(url).pathname.startsWith('/assets/' + assetPrefix));
       if (candidates.length !== 1) return { ready: false, reason: 'runtime-asset-ambiguous' };
       const response = await fetch(candidates[0]);
       if (!response.ok) return { ready: false, reason: 'runtime-asset-unavailable' };
       const digest = await crypto.subtle.digest('SHA-256', await response.arrayBuffer());
       const hash = [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
       if (hash !== expected[kind]) return { ready: false, reason: 'runtime-unreviewed' };
-      if (kind === 'initial') initialUrl = candidates[0];
+      reviewedUrls[kind] = candidates[0];
     }
     if (!document.hasFocus() || document.visibilityState !== 'visible') return { ready: false, reason: 'foreground-target-stale' };
-    const reviewedModule = await import(initialUrl);
-    const reviewedBus = reviewedModule._mn;
+    const initialUrl = reviewedUrls.initial;
+    const reviewedModule = await import(reviewedUrls.messageBus);
+    const reviewedBus = reviewedModule.r;
     if (!reviewedBus || typeof reviewedBus.dispatchHostMessage !== 'function' || !(reviewedBus.handlers instanceof Map)) {
       return { ready: false, reason: 'runtime-bus-unavailable' };
     }
