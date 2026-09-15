@@ -12,7 +12,7 @@ English · [日本語](README.ja.md)
 
 </div>
 
-![AGI Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product-v2.png)
+![AGI Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme/readme-hero-v3.png)
 
 The keyboard-only Codex era ends here—not with another chat tab, but with a surface your hands already understand.
 
@@ -22,20 +22,27 @@ For years, working with AI meant typing into a window, waiting, scrolling, switc
 
 This is not a thicker prompt box. It is a physical control deck for Codex on macOS—unofficial, focused, and honest about being Preview. When the boundaries are clear, trust compounds.
 
+
+<p align="center">
+  <img src="docs/assets/readme/readme-speak-turn-see.png" alt="Speak · Turn · See — plugin keycap renders" width="720">
+</p>
+
+<p align="center"><sub>Speak · Turn · See — renders from the running plugin UI (demonstration states).</sub></p>
+
 ## Stop hunting the chat window
 
 | | The moment | What lands under your fingers |
 |:--:|---|---|
-| <img src="packages/microplus/static/imgs/action-agent-1.svg" width="36" alt=""> | **Find your focus** | Switch tasks and read their state at a glance. |
-| <img src="packages/microplus/static/imgs/action-keycap-mic.svg" width="36" alt=""> | **Speak your next move** | Dictation on a key you press—your shortcut, per key. |
-| <img src="packages/microplus/static/imgs/action-keycap-codex.svg" width="36" alt=""> | **Keep the conversation moving** | Send stays at fingertip reach. |
-| <img src="packages/microplus/static/imgs/action-keycap-side-chat.svg" width="36" alt=""> | **Open a side thought** | Side chat enters the same physical rhythm. |
-| <img src="packages/microplus/static/imgs/action-plus-reasoning.svg" width="36" alt=""> | **Set the pace** | Model and reasoning turn on dials. |
-| <img src="packages/microplus/static/imgs/action-usage-overview.svg" width="36" alt=""> | **Know where you stand** | Usage stays visible; press behavior is yours. |
-| <img src="packages/microplus/static/imgs/action-keycap-diff.svg" width="36" alt=""> | **Stay close to the code** | Development controls sit beside the conversation. |
-| <img src="packages/microplus/static/imgs/action-keycap-skills.svg" width="36" alt=""> | **Make the deck yours** | Arrange the actions you actually repeat. |
+| <img src="docs/assets/readme/task-0.svg" width="72" alt=""> | **Find your focus** | Switch tasks and read their state at a glance. |
+| <img src="docs/assets/readme/voice.svg" width="72" alt=""> | **Speak your next move** | Dictation on a key you press—your shortcut, per key. |
+| <img src="docs/assets/readme/send.svg" width="72" alt=""> | **Keep the conversation moving** | Send stays at fingertip reach. |
+| <img src="docs/assets/readme/side.svg" width="72" alt=""> | **Open a side thought** | Side chat enters the same physical rhythm. |
+| <img src="docs/assets/readme/dial-1.svg" width="72" alt=""> | **Set the pace** | Model and reasoning turn on dials. |
+| <img src="docs/assets/readme/usage.svg" width="72" alt=""> | **Know where you stand** | Usage stays visible; press behavior is yours. |
+| <img src="docs/assets/readme/attach.svg" width="72" alt=""> | **Stay close to the code** | Development controls sit beside the conversation. |
+| <img src="docs/assets/readme/model.svg" width="72" alt=""> | **Make the deck yours** | Arrange the actions you actually repeat. |
 
-*The hero is a CG product visualization based on the running plugin UI. It shows an example layout with four AGI Keys dials, including usage on the right. Task names are examples; fine details may differ from the hardware. Icons in this table are the plugin’s action-list assets, not screenshots of its dynamic key displays.*
+*Hero is a product visualization based on the running plugin UI (example AGI Keys layout). Task names are samples; fine details may differ from hardware. Table icons are plugin keycap/dial renders at demonstration states—not live Codex status.*
 
 ## Speak. Turn. See.
 
@@ -119,6 +126,11 @@ Build on macOS with a Swift compiler. The plugin package is generated in `packag
 The public source export excludes private work records and development history. The retired web manager, managed-agent orchestration, scheduling and remote relay are outside the product scope—on purpose. The deck is the product.
 
 </details>
+
+
+<p align="center">
+  <a href="https://dualformai.com/agi-keys/"><img src="docs/assets/readme/readme-cta-en.png" alt="AGI Keys — Run Codex from your Stream Deck+. https://dualformai.com/agi-keys/" width="800"></a>
+</p>
 
 ## Built with respect
 
