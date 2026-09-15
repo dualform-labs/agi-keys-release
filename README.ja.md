@@ -53,7 +53,7 @@ Codexをキーボードだけで使う時代は、ここで終わる——別の
 ### プラグインUIのモーション
 
 <p align="center">
-  <img src="docs/assets/readme/motion-speak.gif" alt="話す — 音声キーのモーション" width="320">
+  <img src="docs/assets/readme/motion-speak-ja.gif" alt="話す — 音声キーのモーション" width="320">
   &nbsp;
   <img src="docs/assets/readme/motion-turn-ja.gif" alt="回す — ダイヤル操作のモーション" width="480"><br>
   <sub>Speak / Turn のモーションプレビュー（プラグイン検証レンダ）。</sub>
@@ -114,7 +114,7 @@ flowchart LR
 ### 67の操作を自由配置
 
 <p align="center">
-  <img src="docs/assets/readme/catalog-67.png" alt="AGI Keys 操作カタログ" width="800"><br>
+  <img src="docs/assets/readme/catalog-67-ja.png" alt="AGI Keys 操作カタログ" width="800"><br>
   <sub>プラグインの操作カタログ — 自分が回すデッキを組む。</sub>
 </p>
 
