@@ -55,24 +55,24 @@ Codexをキーボードだけで使う時代は、ここで終わる——別の
 <p align="center">
   <img src="docs/assets/readme/motion-speak.gif" alt="話す — 音声キーのモーション" width="320">
   &nbsp;
-  <img src="docs/assets/readme/motion-turn.gif" alt="回す — ダイヤル操作のモーション" width="480"><br>
+  <img src="docs/assets/readme/motion-turn-ja.gif" alt="回す — ダイヤル操作のモーション" width="480"><br>
   <sub>Speak / Turn のモーションプレビュー（プラグイン検証レンダ）。</sub>
 </p>
 
 ### 稼働UIから
 
 <p align="center">
-  <img src="docs/assets/readme/gallery-keys.png" alt="キーキャップ一覧 — 音声・タスク・送信・使用量" width="720"><br>
+  <img src="docs/assets/readme/gallery-keys-ja.png" alt="キーキャップ一覧 — 音声・タスク・送信・使用量" width="720"><br>
   <sub>キー面 — 音声、タスク状態、送信、使用量（デモ表示）。</sub>
 </p>
 
 <p align="center">
-  <img src="docs/assets/readme/gallery-turn-dials.png" alt="モデル・思考・使用量のダイヤル／LCD状態" width="720"><br>
+  <img src="docs/assets/readme/gallery-turn-dials-ja.png" alt="モデル・思考・使用量のダイヤル／LCD状態" width="720"><br>
   <sub>回す — モデル、思考レベル、使用量、タスクのダイヤルフィードバック。</sub>
 </p>
 
 <p align="center">
-  <img src="docs/assets/readme/gallery-see-dials.png" alt="ダイヤルLCDの静かなプレビュー" width="720"><br>
+  <img src="docs/assets/readme/gallery-see-dials-ja.png" alt="ダイヤルLCDの静かなプレビュー" width="720"><br>
   <sub>見る — 値はダイヤル帯に残り、メニューを探さない。</sub>
 </p>
 
@@ -84,7 +84,7 @@ Codexをキーボードだけで使う時代は、ここで終わる——別の
 </p>
 
 <p align="center">
-  <img src="docs/assets/readme/strip-dials-lcd.png" alt="LCDとダイヤルの実レンダ" width="720"><br>
+  <img src="docs/assets/readme/strip-dials-lcd-ja.png" alt="LCDとダイヤルの実レンダ" width="720"><br>
   <sub>LCD＋ダイヤルのプラグイン実レンダ（ライブのCodex状態ではない）。</sub>
 </p>
 
