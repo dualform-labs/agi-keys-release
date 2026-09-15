@@ -1,6 +1,10 @@
 <div align="center">
 
 # AGI Keys
+<p align="center">
+  <img src="docs/assets/readme/plugin-icon.png" alt="AGI Keys plugin icon" width="96">
+</p>
+
 ### Stream Deck+から、Codexを指で回す。
 **話す。回す。待ちも、キーの上で見える。**
 
@@ -44,6 +48,16 @@ Codexをキーボードだけで使う時代は、ここで終わる——別の
 
 *冒頭は稼働中プラグインUIに基づく商品ビジュアル（AGI Keysレイアウトの例）です。タスク名はサンプルで、細部は実機と異なる場合があります。表のアイコンはキーキャップ／ダイヤルの実レンダ（デモ状態）で、ライブのCodex状態ではありません。*
 
+
+
+### プラグインUIのモーション
+
+<p align="center">
+  <img src="docs/assets/readme/motion-speak.gif" alt="話す — 音声キーのモーション" width="320">
+  &nbsp;
+  <img src="docs/assets/readme/motion-turn.gif" alt="回す — ダイヤル操作のモーション" width="480"><br>
+  <sub>Speak / Turn のモーションプレビュー（プラグイン検証レンダ）。</sub>
+</p>
 
 ### 稼働UIから
 
@@ -95,6 +109,14 @@ flowchart LR
 ```
 
 操作を探す時間から、つくる時間へ。接続にはローカルCDP経由でCodexのMicro操作経路を使います。一部の操作は送信受付までしか確認できません——先に言います。[接続とセキュリティの制約](SECURITY.md)をご確認ください。
+
+
+### 67の操作を自由配置
+
+<p align="center">
+  <img src="docs/assets/readme/catalog-67.png" alt="AGI Keys 操作カタログ" width="800"><br>
+  <sub>プラグインの操作カタログ — 自分が回すデッキを組む。</sub>
+</p>
 
 ## あなたのキー。あなたのリズム。
 
@@ -160,6 +182,12 @@ macOSとSwiftコンパイラーが必要です。パッケージは `packages/mi
 
 <p align="center">
   <a href="https://dualformai.com/agi-keys/"><img src="docs/assets/readme/readme-cta-ja.png" alt="AGI Keys — Stream Deck+から、Codexを指で回す。 https://dualformai.com/agi-keys/" width="800"></a>
+</p>
+
+
+<p align="center">
+  <img src="docs/assets/readme/hardware-angle.png" alt="Stream Deck+ ハードウェア参照プレート" width="720"><br>
+  <sub>ハードウェア写真: Stream Deck+ device photography © Elgato/Corsair（メディアキット）。本リポジトリのMIT対象外。AGI Keysは独立ソフトウェアであり、Elgato製品ではない。サイト上のUI重ねは別途プラグイン実レンダ。</sub>
 </p>
 
 ## リスペクトとともに
