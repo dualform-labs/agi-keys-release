@@ -12,7 +12,7 @@
 
 </div>
 
-![AGI Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product-v2.png)
+![AGI Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme/readme-hero-v3-ja.png)
 
 Codexをキーボードだけで使う時代は、ここで終わる——別のチャットタブではなく、手がすでに知っている操作面へ。
 
@@ -22,20 +22,27 @@ Codexをキーボードだけで使う時代は、ここで終わる——別の
 
 これは厚いプロンプト窓ではない。macOS上のCodexのための物理操作盤だ——非公式で、焦点が狭く、Previewであることを隠さない。境界がはっきりしているほど、信頼は積み上がる。
 
+
+<p align="center">
+  <img src="docs/assets/readme/readme-speak-turn-see.png" alt="話す · 回す · 見る — プラグインのキーキャップ表示" width="720">
+</p>
+
+<p align="center"><sub>話す · 回す · 見る — 稼働中プラグインUIからのレンダ（デモ状態）。</sub></p>
+
 ## チャット窓を探さない
 
 | | その瞬間 | 指先に来るもの |
 |:--:|---|---|
-| <img src="packages/microplus/static/imgs/action-agent-1.svg" width="36" alt=""> | **集中するタスクへ** | タスクを切り替え、状態をひと目で。 |
-| <img src="packages/microplus/static/imgs/action-keycap-mic.svg" width="36" alt=""> | **思いつきを、そのまま声に** | キーごとに登録した音声ショートカット。 |
-| <img src="packages/microplus/static/imgs/action-keycap-codex.svg" width="36" alt=""> | **会話を止めない** | 送信を、指先の定位置へ。 |
-| <img src="packages/microplus/static/imgs/action-keycap-side-chat.svg" width="36" alt=""> | **横道のアイデアも同じリズムで** | サイドチャットを手元から。 |
-| <img src="packages/microplus/static/imgs/action-plus-reasoning.svg" width="36" alt=""> | **考えるペースを選ぶ** | モデルや思考レベルをダイヤルで。 |
-| <img src="packages/microplus/static/imgs/action-usage-overview.svg" width="36" alt=""> | **残量を、視界の中に** | 使用量を表示し、押した時の動作もカスタム。 |
-| <img src="packages/microplus/static/imgs/action-keycap-diff.svg" width="36" alt=""> | **コードとの距離を縮める** | 開発操作も会話のそばに。 |
-| <img src="packages/microplus/static/imgs/action-keycap-skills.svg" width="36" alt=""> | **あなたの操作面に** | 繰り返す操作だけを、使う順で。 |
+| <img src="docs/assets/readme/task-0.svg" width="72" alt=""> | **集中するタスクへ** | タスクを切り替え、状態をひと目で。 |
+| <img src="docs/assets/readme/voice.svg" width="72" alt=""> | **思いつきを、そのまま声に** | キーごとに登録した音声ショートカット。 |
+| <img src="docs/assets/readme/send.svg" width="72" alt=""> | **会話を止めない** | 送信を、指先の定位置へ。 |
+| <img src="docs/assets/readme/side.svg" width="72" alt=""> | **横道のアイデアも同じリズムで** | サイドチャットを手元から。 |
+| <img src="docs/assets/readme/dial-1.svg" width="72" alt=""> | **考えるペースを選ぶ** | モデルや思考レベルをダイヤルで。 |
+| <img src="docs/assets/readme/usage.svg" width="72" alt=""> | **残量を、視界の中に** | 使用量を表示し、押した時の動作もカスタム。 |
+| <img src="docs/assets/readme/attach.svg" width="72" alt=""> | **コードとの距離を縮める** | 開発操作も会話のそばに。 |
+| <img src="docs/assets/readme/model.svg" width="72" alt=""> | **あなたの操作面に** | 繰り返す操作だけを、使う順で。 |
 
-*冒頭は稼働中のプラグインUIを参照した商品CGです。右端の使用量を含め、4本ともAGI Keysのダイヤルを配置した例です。タスク名はサンプルで、細部は実機と異なる場合があります。一覧のアイコンは操作一覧用の実アセットで、動的なキー画面のスクリーンショットではありません。*
+*冒頭は稼働中プラグインUIに基づく商品ビジュアル（AGI Keysレイアウトの例）です。タスク名はサンプルで、細部は実機と異なる場合があります。表のアイコンはキーキャップ／ダイヤルの実レンダ（デモ状態）で、ライブのCodex状態ではありません。*
 
 ## 話す。回す。見る。
 
@@ -119,6 +126,11 @@ macOSとSwiftコンパイラーが必要です。パッケージは `packages/mi
 公開用ソースは個人用の作業記録と開発履歴を除外しています。旧Web manager、エージェント司令塔、予約、リモート中継は製品に含みません——意図的に。製品は操作盤そのものです。
 
 </details>
+
+
+<p align="center">
+  <a href="https://dualformai.com/agi-keys/"><img src="docs/assets/readme/readme-cta-ja.png" alt="AGI Keys — Stream Deck+から、Codexを指で回す。 https://dualformai.com/agi-keys/" width="800"></a>
+</p>
 
 ## リスペクトとともに
 
