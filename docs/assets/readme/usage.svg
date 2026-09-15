@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144" viewBox="0 0 144 144" role="img" aria-label="USAGE UNKNOWN">
+    <defs><linearGradient id="keycap" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1B232B"/><stop offset=".52" stop-color="#171E25"/><stop offset="1" stop-color="#141A20"/></linearGradient></defs>
+    <rect data-theme="dark" x="4" y="4" width="136" height="136" rx="18" fill="#0E1318"/>
+    <rect x="9" y="9" width="126" height="126" rx="13" fill="url(#keycap)" stroke="#39444D" stroke-width="1"/>
+    
+    <rect data-accent="#BAC4CB" data-selected="false" x="7" y="7" width="130" height="130" rx="16" fill="none" stroke="#BAC4CB" stroke-width="2" stroke-opacity=".94"/><!--key-content-->
+    <text data-key-label="true" x="16" y="25" text-anchor="start" fill="#AEBBC4" font-family="Hiragino Sans, Yu Gothic, Noto Sans CJK JP, Bahnschrift, Segoe UI, Arial, sans-serif" font-size="9.5" font-weight="700">USAGE</text>
+    <text data-usage-health="ready" data-usage-state="unknown" x="120" y="25" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" font-weight="750" fill="#BAC4CB">UNKNOWN</text>
+    <g data-usage-window="5H" data-usage-window-state="unknown">
+    <text x="24" y="48" fill="#F1F5F7" fill-opacity=".86" font-family="Hiragino Sans, Yu Gothic, Noto Sans CJK JP, Bahnschrift, Segoe UI, Arial, sans-serif" font-size="11" font-weight="700">5H</text>
+    <text data-usage-message="" x="120" y="48" text-anchor="end" fill="#F1F5F7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="750">70%</text>
+    <rect x="24" y="58" width="96" height="10" rx="5" fill="#34404A"/>
+    <rect data-usage-remaining="70" x="24" y="58" width="67.20" height="10" rx="5" fill="#BAC4CB"/>
+  </g>
+    <g data-usage-window="WK" data-usage-window-state="unknown">
+    <text x="24" y="91" fill="#F1F5F7" fill-opacity=".86" font-family="Hiragino Sans, Yu Gothic, Noto Sans CJK JP, Bahnschrift, Segoe UI, Arial, sans-serif" font-size="11" font-weight="700">WEEK</text>
+    <text data-usage-message="" x="120" y="91" text-anchor="end" fill="#F1F5F7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="750">82%</text>
+    <rect x="24" y="101" width="96" height="10" rx="5" fill="#34404A"/>
+    <rect data-usage-remaining="82" x="24" y="101" width="78.72" height="10" rx="5" fill="#BAC4CB"/>
+  </g>
+  </svg>
