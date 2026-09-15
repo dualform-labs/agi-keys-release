@@ -1,50 +1,54 @@
 <div align="center">
 
-# Codex Keys
-### AIと働く新時代を、手元から。
-**操作を探す時間から、つくる時間へ。**
+# AGI Keys
+### Stream Deck+から、Codexを指で回す。
+**話す。回す。待ちも、キーの上で見える。**
 
 [English](README.md) · 日本語
 
-[![Verify](https://github.com/dualform-labs/codex-keys-release/actions/workflows/verify.yml/badge.svg)](https://github.com/dualform-labs/codex-keys-release/actions/workflows/verify.yml) · **macOS** · **Stream Deck+** · **MIT** · **Preview**
+[![Verify](https://github.com/dualform-labs/agi-keys-release/actions/workflows/verify.yml/badge.svg)](https://github.com/dualform-labs/agi-keys-release/actions/workflows/verify.yml) · **macOS** · **Stream Deck+** · **MIT** · **Preview**
 
-[操作を見る](#次の操作が指先にある) · [使い始める](#使い始める) · [ビルド](#ビルドする) · [セキュリティ](SECURITY.md)
+[製品ページ](https://dualformai.com/agi-keys/) · [操作を見る](#チャット窓を探さない) · [使い始める](#使い始める) · [ビルド](#ビルドする) · [セキュリティ](SECURITY.md)
 
 </div>
 
-![Codex Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product-v2.png)
+![AGI Keys on Stream Deck+ — product visualization based on the running plugin UI](docs/assets/readme-product-v2.png)
 
-AIにできることが増えた。なら、AIとの付き合い方も進化していい。
+Codexをキーボードだけで使う時代は、ここで終わる——別のチャットタブではなく、手がすでに知っている操作面へ。
 
-**Codex Keysは、Stream Deck+をあなた専用のCodex操作面に変えます。** 思いつきを声にする。タスクを切り替える。モデルを選ぶ。次の指示を送る。繰り返す操作を、手が覚える場所へ。
+**複数のAIタスクを、ひとつの操作盤で。**
 
-目指すのは、AGI・ASIも視野に入る未来のAIを、直感的に扱うための物理インターフェース。いま届けるのは、具体的なタスクと入力、見えるフィードバックに向き合うCodexコントローラーです。
+長いあいだ、AIとの仕事は「窓に打つ → 待つ → スクロール → スレッドを探す → 状態を追う」だった。AGI Keysはそのループを Stream Deck+ へ移す。次の一手を声にし、ダイヤルでモデルと思考を回し、準備ができたら送り、タスクの状態と待ちの手がかりを、視線をデスクから外さずに置く。
 
-## 次の操作が、指先にある
+これは厚いプロンプト窓ではない。macOS上のCodexのための物理操作盤だ——非公式で、焦点が狭く、Previewであることを隠さない。境界がはっきりしているほど、信頼は積み上がる。
 
-| | 操作体験 | できること |
+## チャット窓を探さない
+
+| | その瞬間 | 指先に来るもの |
 |:--:|---|---|
 | <img src="packages/microplus/static/imgs/action-agent-1.svg" width="36" alt=""> | **集中するタスクへ** | タスクを切り替え、状態をひと目で。 |
-| <img src="packages/microplus/static/imgs/action-keycap-mic.svg" width="36" alt=""> | **思いつきを、そのまま声に** | 音声入力のショートカットをキーごとに登録。 |
+| <img src="packages/microplus/static/imgs/action-keycap-mic.svg" width="36" alt=""> | **思いつきを、そのまま声に** | キーごとに登録した音声ショートカット。 |
 | <img src="packages/microplus/static/imgs/action-keycap-codex.svg" width="36" alt=""> | **会話を止めない** | 送信を、指先の定位置へ。 |
-| <img src="packages/microplus/static/imgs/action-keycap-side-chat.svg" width="36" alt=""> | **横道のアイデアもすぐに** | サイドチャットを手元から展開。 |
-| <img src="packages/microplus/static/imgs/action-plus-reasoning.svg" width="36" alt=""> | **考えるペースを選ぶ** | モデルや思考レベルをダイヤルで調整。 |
+| <img src="packages/microplus/static/imgs/action-keycap-side-chat.svg" width="36" alt=""> | **横道のアイデアも同じリズムで** | サイドチャットを手元から。 |
+| <img src="packages/microplus/static/imgs/action-plus-reasoning.svg" width="36" alt=""> | **考えるペースを選ぶ** | モデルや思考レベルをダイヤルで。 |
 | <img src="packages/microplus/static/imgs/action-usage-overview.svg" width="36" alt=""> | **残量を、視界の中に** | 使用量を表示し、押した時の動作もカスタム。 |
-| <img src="packages/microplus/static/imgs/action-keycap-diff.svg" width="36" alt=""> | **コードとの距離を縮める** | 差分など開発操作も会話のそばに。 |
-| <img src="packages/microplus/static/imgs/action-keycap-skills.svg" width="36" alt=""> | **あなたの操作面に** | よく使う操作を、使う順番で配置。 |
+| <img src="packages/microplus/static/imgs/action-keycap-diff.svg" width="36" alt=""> | **コードとの距離を縮める** | 開発操作も会話のそばに。 |
+| <img src="packages/microplus/static/imgs/action-keycap-skills.svg" width="36" alt=""> | **あなたの操作面に** | 繰り返す操作だけを、使う順で。 |
 
-*冒頭は稼働中のプラグインUIを参照した商品CGです。右端の使用量を含め、4本ともCodex Keysのダイヤルを配置した例です。タスク名はサンプルで、細部は実機と異なる場合があります。一覧のアイコンは操作一覧用の実アセットで、動的なキー画面のスクリーンショットではありません。*
+*冒頭は稼働中のプラグインUIを参照した商品CGです。右端の使用量を含め、4本ともAGI Keysのダイヤルを配置した例です。タスク名はサンプルで、細部は実機と異なる場合があります。一覧のアイコンは操作一覧用の実アセットで、動的なキー画面のスクリーンショットではありません。*
 
-## 話す。回す。流れを止めない。
+## 話す。回す。見る。
+
+動詞は三つ。ループは一つ。
 
 | **話す** | **回す** | **見る** |
 |---|---|---|
-| キーから音声入力。準備ができたら送信。 | モデル、思考レベル、タスク、会話の操作をダイヤルへ。 | タスク状態、現在値、使用量をひと目で確認。 |
+| キー一押しで、思いつきが声になる。準備ができたら送信。 | モデル、思考レベル、タスク、会話をダイヤルへ——掘らずに回す。 | タスク状態、現在値、使用量、待ちの手がかりが視界に残る。メニュー探しはしない。 |
 
 ```mermaid
 flowchart LR
     A["✋ Stream Deck+
-キー・ダイヤル・タッチ"] --> B["Codex Keys
+キー・ダイヤル・タッチ"] --> B["AGI Keys
 自分の割当"]
     B --> C["Codex
 タスク・入力・操作"]
@@ -53,29 +57,31 @@ flowchart LR
     D --> A
 ```
 
-接続にはローカルCDP経由でCodexのMicro操作経路を使います。一部の操作は送信受付までしか確認できません。[接続とセキュリティの制約](SECURITY.md)をご確認ください。
+操作を探す時間から、つくる時間へ。接続にはローカルCDP経由でCodexのMicro操作経路を使います。一部の操作は送信受付までしか確認できません——先に言います。[接続とセキュリティの制約](SECURITY.md)をご確認ください。
 
 ## あなたのキー。あなたのリズム。
 
-- **67の操作を自由配置。** Stream Deck標準の操作一覧から選択。
+- **67の操作を自由配置。** Stream Deck標準の操作一覧から、自分が回すデッキを組む。
 - **キーごとに英語・日本語。** 表示名、外観、フィードバックも設定。
 - **表示系キーにも役割を。** 使用量などを押した時の動作をカスタム。
 - **音声ショートカットを実際に押して登録。** 左右の修飾キーにも対応。
 - **ダイヤルも調整。** 方向、ステップ、対応するタッチ・押下操作を設定。
 - **設定はすべてStream Deck内。** 別のWeb設定画面は不要。
 
-タスクスロットは直近のCodexウィンドウ内で切り替えます。ACT06〜ACT12はCodexの割当に従う互換キー識別子です。既存プロファイルとの互換性のため、内部UUIDは `io.local.codexdeck.microplus` を維持しています。
+タスクスロットは直近のCodexウィンドウ内で切り替えます。ACT06〜ACT12はCodexの割当に従う互換キー識別子です。プラグインUUID名前空間は `com.dualform.agikeys` です。旧開発UUIDを参照する事前検証用プロファイルでは、AGI Keysの操作を再配置してください。
 
 ## 使い始める
 
-> **現在はPreviewです。** 音声入力は0.1.0.60、圧縮は0.1.0.62で利用者の実機成功を確認しています。全67操作と再起動後の復帰の網羅的な実機確認は未完了です。ローカルCDP接続の認証制約も残っています。
+> **現在はPreviewです。その正直さ自体を、製品の一部にしています。** 音声入力は0.1.0.60、圧縮は0.1.0.62で利用者の実機成功を確認しています。全67操作と再起動後の復帰の網羅的な実機確認は未完了です。ローカルCDP接続の認証制約も残っています。売り切るより、境界を見せて信頼を積む方を選びます。
 
 1. **Stream Deckのプロファイルをバックアップ。**
-2. **公開後の[Releases](https://github.com/dualform-labs/codex-keys-release/releases)からパッケージを取得。** Draftは管理者向けです。ソースからビルドすることもできます。
+2. **[Releases](https://github.com/dualform-labs/agi-keys-release/releases)からパッケージを取得。** Draftは管理者向けです。ソースからビルドすることもできます。
 3. **`.streamDeckPlugin`を開いて導入。** Stream Deckで操作を配置します。
 4. **キーを設定してCodexへの接続を確認。** プラグイン導入だけで接続が成立するわけではありません。[導入説明](RELEASE_NOTES.ja.md)と[接続ガイド（英語）](packages/microplus/README.md)を参照してください。
 
 macOS、Stream Deck+、互換性のあるCodex desktopが必要です。公開操作APIではないため、Codexの更新で互換性が変わる場合があります。
+
+製品ページ: [https://dualformai.com/agi-keys/](https://dualformai.com/agi-keys/)
 
 <details>
 <summary><strong>音声入力：登録するショートカットについて</strong></summary>
@@ -110,14 +116,14 @@ macOSとSwiftコンパイラーが必要です。パッケージは `packages/mi
 | `packages/discovery/`, `packages/desktop/` | 調査・検証アダプター |
 | `scripts/` | ビルド検査・プロファイル管理 |
 
-公開用ソースは個人用の作業記録と開発履歴を除外しています。旧Web manager、エージェント司令塔、予約、リモート中継は製品に含みません。
+公開用ソースは個人用の作業記録と開発履歴を除外しています。旧Web manager、エージェント司令塔、予約、リモート中継は製品に含みません——意図的に。製品は操作盤そのものです。
 
 </details>
 
 ## リスペクトとともに
 
-[MITライセンス](LICENSE) · [第三者の帰属](packages/microplus/THIRD_PARTY_NOTICE.md) · [セキュリティ](SECURITY.md)
+[MITライセンス](LICENSE) · [第三者の帰属](packages/microplus/THIRD_PARTY_NOTICE.md) · [セキュリティ](SECURITY.md) · [製品ページ](https://dualformai.com/agi-keys/)
 
 Micro互換接続の基線にはMITライセンスの [dazer1234/codex-stream-deck](https://github.com/dazer1234/codex-stream-deck) を使用し、ライセンスと帰属を保持しています。
 
-**Codex Keysは独立した非公式プロジェクトです。** OpenAI、Elgato、Work Louderの公式製品ではありません。
+**AGI Keysは独立した非公式のPreviewです。** OpenAIでも、Elgatoでも、Work Louderでもない。Codexを、手元の静かな自信で回すための面です。
