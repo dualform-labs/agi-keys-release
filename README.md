@@ -1,6 +1,10 @@
 <div align="center">
 
 # AGI Keys
+<p align="center">
+  <img src="docs/assets/readme/plugin-icon.png" alt="AGI Keys plugin icon" width="96">
+</p>
+
 ### Run Codex from your Stream Deck+.
 **Speak. Turn. See waiting state on the keys.**
 
@@ -44,6 +48,16 @@ This is not a thicker prompt box. It is a physical control deck for Codex on mac
 
 *Hero is a product visualization based on the running plugin UI (example AGI Keys layout). Task names are samples; fine details may differ from hardware. Table icons are plugin keycap/dial renders at demonstration states—not live Codex status.*
 
+
+
+### Motion from the plugin UI
+
+<p align="center">
+  <img src="docs/assets/readme/motion-speak.gif" alt="Speak — dictation key motion" width="320">
+  &nbsp;
+  <img src="docs/assets/readme/motion-turn.gif" alt="Turn — dial interaction motion" width="480"><br>
+  <sub>Speak / Turn motion previews from plugin verification renders.</sub>
+</p>
 
 ### From the running UI
 
@@ -95,6 +109,14 @@ State · Model · Usage"]
 ```
 
 Less reaching. More creating. The connector uses Codex's native Micro path over local CDP. Some actions expose only dispatch acceptance rather than complete downstream confirmation—we say so up front. See [connection and security limits](SECURITY.md).
+
+
+### 67 actions to arrange
+
+<p align="center">
+  <img src="docs/assets/readme/catalog-67.png" alt="AGI Keys action catalog" width="800"><br>
+  <sub>Action catalog from the plugin — arrange the deck you actually work.</sub>
+</p>
 
 ## Your keys. Your rhythm.
 
@@ -160,6 +182,12 @@ The public source export excludes private work records and development history. 
 
 <p align="center">
   <a href="https://dualformai.com/agi-keys/"><img src="docs/assets/readme/readme-cta-en.png" alt="AGI Keys — Run Codex from your Stream Deck+. https://dualformai.com/agi-keys/" width="800"></a>
+</p>
+
+
+<p align="center">
+  <img src="docs/assets/readme/hardware-angle.png" alt="Stream Deck+ hardware reference plate" width="720"><br>
+  <sub>Hardware plate: Stream Deck+ device photography © Elgato/Corsair (media kit). Not covered by this repo’s MIT license. AGI Keys is independent software — not an Elgato product. UI overlays on the live site are separate plugin renders.</sub>
 </p>
 
 ## Built with respect
