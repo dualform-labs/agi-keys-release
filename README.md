@@ -28,7 +28,7 @@ This is not a thicker prompt box. It is a physical control deck for Codex on mac
 
 
 <p align="center">
-  <img src="docs/assets/readme/readme-speak-turn-see.png" alt="Speak · Turn · See — plugin keycap renders" width="720">
+  <img src="docs/assets/readme/readme-speak-turn-see-en.png" alt="Speak · Turn · See — plugin keycap renders" width="720">
 </p>
 
 <p align="center"><sub>Speak · Turn · See — renders from the running plugin UI (demonstration states).</sub></p>
