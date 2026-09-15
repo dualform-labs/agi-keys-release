@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144" viewBox="0 0 144 144" role="img" aria-label="Codex agent A01 THINKING">
+    <defs><linearGradient id="agent-glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1B232B"/><stop offset=".48" stop-color="#171E25"/><stop offset="1" stop-color="#141A20"/></linearGradient></defs>
+    <rect data-theme="dark" x="4" y="4" width="136" height="136" rx="18" fill="#0E1318"/>
+    <rect x="9" y="9" width="126" height="126" rx="13" fill="url(#agent-glass)" stroke="#39444D" stroke-width="1"/>
+    <rect data-agent-selection-glow="true" x="7" y="7" width="130" height="130" rx="16" fill="none" stroke="#57D6A0" stroke-width="8" stroke-opacity=".24"/><rect data-agent-selected="true" data-agent-status-frame="thinking" x="7" y="7" width="130" height="130" rx="16" fill="none" stroke="#57D6A0" stroke-width="3" stroke-opacity=".94"/>
+    <line x1="16" y1="34" x2="128" y2="34" stroke="#303A44" stroke-width="1"/>
+    <g data-context-used="38" aria-label="Context usage 38 percent"><circle cx="22" cy="22" r="8" fill="none" stroke="#303A44" stroke-width="3"/><circle cx="22" cy="22" r="8" fill="none" stroke="#AEBBC4" stroke-width="3" stroke-linecap="round" stroke-dasharray="19.10 50.27" transform="rotate(-90 22 22)"/></g>
+    
+    <g data-agent-slot="1" font-family="Hiragino Sans, Yu Gothic, Noto Sans CJK JP, Bahnschrift, Segoe UI, Arial, sans-serif">
+      <text data-agent-slot-label="1" x="126" y="24" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" font-weight="750" fill="#AEBBC4">A01</text>
+      
+      <g data-agent-title="Build"><text x="16" y="62" font-size="18.00" font-weight="650" fill="#F1F5F7">Build</text></g>
+      
+    </g>
+    <g data-agent-motion="working"><rect x="42" y="101" width="60" height="6" rx="3" fill="#78858E" fill-opacity=".28"/><rect x="69.00" y="101" width="20" height="6" rx="3" fill="#62A9FF" fill-opacity=".98"/></g>
+    <text data-agent-status-label="thinking" data-host-health="ready" x="16" y="128" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" font-weight="750" letter-spacing=".25" fill="#62A9FF">THINKING</text>
+  </svg>
