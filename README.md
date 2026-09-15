@@ -55,24 +55,24 @@ This is not a thicker prompt box. It is a physical control deck for Codex on mac
 <p align="center">
   <img src="docs/assets/readme/motion-speak.gif" alt="Speak — dictation key motion" width="320">
   &nbsp;
-  <img src="docs/assets/readme/motion-turn.gif" alt="Turn — dial interaction motion" width="480"><br>
+  <img src="docs/assets/readme/motion-turn-en.gif" alt="Turn — dial interaction motion" width="480"><br>
   <sub>Speak / Turn motion previews from plugin verification renders.</sub>
 </p>
 
 ### From the running UI
 
 <p align="center">
-  <img src="docs/assets/readme/gallery-keys.png" alt="Keycap grid — voice, tasks, send, usage" width="720"><br>
+  <img src="docs/assets/readme/gallery-keys-en.png" alt="Keycap grid — voice, tasks, send, usage" width="720"><br>
   <sub>Key surfaces — dictation, task state, send, usage (demonstration).</sub>
 </p>
 
 <p align="center">
-  <img src="docs/assets/readme/gallery-turn-dials.png" alt="Dial and LCD states for model, reasoning, usage" width="720"><br>
+  <img src="docs/assets/readme/gallery-turn-dials-en.png" alt="Dial and LCD states for model, reasoning, usage" width="720"><br>
   <sub>Turn — model, reasoning, usage and task dial feedback.</sub>
 </p>
 
 <p align="center">
-  <img src="docs/assets/readme/gallery-see-dials.png" alt="Quiet dial LCD preview" width="720"><br>
+  <img src="docs/assets/readme/gallery-see-dials-en.png" alt="Quiet dial LCD preview" width="720"><br>
   <sub>See — values stay on the dial strip without hunting menus.</sub>
 </p>
 
@@ -84,7 +84,7 @@ This is not a thicker prompt box. It is a physical control deck for Codex on mac
 </p>
 
 <p align="center">
-  <img src="docs/assets/readme/strip-dials-lcd.png" alt="LCD task model usage and dial renders" width="720"><br>
+  <img src="docs/assets/readme/strip-dials-lcd-en.png" alt="LCD task model usage and dial renders" width="720"><br>
   <sub>LCD + dial renders from the plugin (not live Codex status).</sub>
 </p>
 
