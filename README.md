@@ -53,7 +53,7 @@ This is not a thicker prompt box. It is a physical control deck for Codex on mac
 ### Motion from the plugin UI
 
 <p align="center">
-  <img src="docs/assets/readme/motion-speak.gif" alt="Speak — dictation key motion" width="320">
+  <img src="docs/assets/readme/motion-speak-en.gif" alt="Speak — dictation key motion" width="320">
   &nbsp;
   <img src="docs/assets/readme/motion-turn-en.gif" alt="Turn — dial interaction motion" width="480"><br>
   <sub>Speak / Turn motion previews from plugin verification renders.</sub>
@@ -114,7 +114,7 @@ Less reaching. More creating. The connector uses Codex's native Micro path over 
 ### 67 actions to arrange
 
 <p align="center">
-  <img src="docs/assets/readme/catalog-67.png" alt="AGI Keys action catalog" width="800"><br>
+  <img src="docs/assets/readme/catalog-67-en.png" alt="AGI Keys action catalog" width="800"><br>
   <sub>Action catalog from the plugin — arrange the deck you actually work.</sub>
 </p>
 
