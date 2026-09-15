@@ -44,6 +44,36 @@ Codexをキーボードだけで使う時代は、ここで終わる——別の
 
 *冒頭は稼働中プラグインUIに基づく商品ビジュアル（AGI Keysレイアウトの例）です。タスク名はサンプルで、細部は実機と異なる場合があります。表のアイコンはキーキャップ／ダイヤルの実レンダ（デモ状態）で、ライブのCodex状態ではありません。*
 
+
+### 稼働UIから
+
+<p align="center">
+  <img src="docs/assets/readme/gallery-keys.png" alt="キーキャップ一覧 — 音声・タスク・送信・使用量" width="720"><br>
+  <sub>キー面 — 音声、タスク状態、送信、使用量（デモ表示）。</sub>
+</p>
+
+<p align="center">
+  <img src="docs/assets/readme/gallery-turn-dials.png" alt="モデル・思考・使用量のダイヤル／LCD状態" width="720"><br>
+  <sub>回す — モデル、思考レベル、使用量、タスクのダイヤルフィードバック。</sub>
+</p>
+
+<p align="center">
+  <img src="docs/assets/readme/gallery-see-dials.png" alt="ダイヤルLCDの静かなプレビュー" width="720"><br>
+  <sub>見る — 値はダイヤル帯に残り、メニューを探さない。</sub>
+</p>
+
+<p align="center">
+  <img src="docs/assets/readme/strip-tasks.png" alt="タスクキー Build Review Done Ready" width="720">
+  &nbsp;
+  <img src="docs/assets/readme/strip-waiting.png" alt="待ち・思考中のキー状態" width="720"><br>
+  <sub>タスクスロットと待ちの手がかり — 視界に残るループ。</sub>
+</p>
+
+<p align="center">
+  <img src="docs/assets/readme/strip-dials-lcd.png" alt="LCDとダイヤルの実レンダ" width="720"><br>
+  <sub>LCD＋ダイヤルのプラグイン実レンダ（ライブのCodex状態ではない）。</sub>
+</p>
+
 ## 話す。回す。見る。
 
 動詞は三つ。ループは一つ。
